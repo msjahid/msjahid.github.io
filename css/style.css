@@ -306,6 +306,13 @@ figure figcaption {
   font-weight: bolder;
 }
 
+.short_title_underline {
+  font-family: "Scope One", serif;
+  font-size: 25px;
+  border-bottom: 2px solid #607d8b;
+  font-weight: bolder;
+}
+
 .big_title_underline {
   font-family: "Scope One", serif;
   font-size: 30px;
