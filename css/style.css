@@ -117,6 +117,69 @@ figure figcaption {
   position: relative;
 }
 
+.label {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+
+.columnbi {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.columnbi img {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.columnbi img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.rowt:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.containert {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: -4px;
+  left: 17px;
+  color: rgb(233, 0, 0);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: -20px;
+  right: 7px;
+  color: rgb(247, 2, 2);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 #colorlib-aside {
   padding-top: 3em;
   padding-bottom: 40px;
