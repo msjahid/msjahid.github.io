@@ -162,8 +162,8 @@ figure figcaption {
 /* Expanding image text */
 #imgtext {
   position: absolute;
-  bottom: -4px;
-  left: 17px;
+  bottom: -7px;
+  left: 14px;
   color: rgb(233, 0, 0);
   font-size: 16px;
   font-weight: bold;
@@ -173,9 +173,9 @@ figure figcaption {
 .closebtn {
   position: absolute;
   top: -20px;
-  right: 7px;
+  right: 285px;
   color: rgb(247, 2, 2);
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
   cursor: pointer;
 }
