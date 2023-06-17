@@ -184,7 +184,7 @@ figure figcaption {
   padding-top: 3em;
   padding-bottom: 40px;
   float: left;
-  width: 250px;
+  width: 255px;
   position: fixed;
   overflow-y: scroll;
   z-index: 1001;
