@@ -132,8 +132,19 @@ figure figcaption {
 
 .columnbi {
   float: left;
-  width: 25%;
-  padding: 10px;
+  width: 38%;
+  padding: 5px;
+}
+
+.original-border {
+  font-family: "Kameron", serif;
+  height: 25px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 15px;
+  background-color: #d9534f;
+  border: 5px dotted #d9534f;
 }
 
 /* Style the images inside the grid */
