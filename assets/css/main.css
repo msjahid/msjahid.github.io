@@ -1,0 +1,42 @@
+.project-card {
+            background-color: #1f1f2e;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: auto;
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adjust the space between the tags */
+            justify-content: center; /* Center the tags */
+            }
+
+        .tags span {
+        background-color: #f1f1f1; /* Tag background color */
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        white-space: nowrap;
+        text-align: center;
+        }
+        .btn-custom {
+            background-color: #6a28c4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+            display: inline-block;
+            width: 48%;
+        }
+        .btn-custom:hover {
+            background-color: #5c20b2;
+        }
+
