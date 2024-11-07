@@ -1,0 +1,269 @@
+---
+title: "Netflix Movie Analysis"
+author: "[Jahid Hasan](https://github.com/msjahid)"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+mail: "msjahid.ai@gmail.com"
+linkedin: "msjahid"
+twitter: "msjahids"
+github: "msjahid"
+home: "msjahid.github.io"
+# !!! Your logo image name
+logo: "brain_less.png"
+output:
+  epuRate::epurate:
+    toc: TRUE
+    number_sections: FALSE
+    code_folding: "show"
+---
+
+<br><br>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Libraries
+
+------------------------------------------------------------------------
+
+#### Load required libraries and set up the environment
+
+```{r, warning=FALSE, message=FALSE }
+# Libraries
+library(ggplot2)  # For data visualization
+library(dplyr)     # For data manipulation
+library(readr)     # For reading data files
+library(stringr)   # For string manipulation
+library(tidyr)     # For data tidying
+library(plotly)      # For interactive plots
+```
+
+## Data Loading and Inspection
+
+------------------------------------------------------------------------
+
+#### View the first few rows of the dataset
+
+```{r}
+# Check if the file exists before loading
+if(file.exists("./data/netflix_titles.csv")) {
+  netflix_data <- read.csv("./data/netflix_titles.csv")
+  print("File loaded successfully!")
+} else {
+  stop("File not found!")
+}
+
+# Display the first few rows
+head(netflix_data) 
+```
+
+#### Addressing Missing Values
+
+```{r}
+# Check for missing values in the dataset
+missing_values <- colSums(is.na(netflix_data))
+print(missing_values)
+
+# Handle missing values in the 'country' column by replacing NA with "Unknown"
+netflix_data <- netflix_data %>%
+    mutate(country = ifelse(is.na(country), "Unknown", country))
+
+# Convert 'date_added' to Date format and handle potential NAs
+netflix_data <- netflix_data %>%
+    mutate(date_added = as.Date(date_added, format = "%B %d, %Y")) %>%
+    mutate(year_added = ifelse(is.na(date_added), NA, as.numeric(format(date_added, "%Y"))))
+
+# Check if the 'year_added' column was created correctly
+summary(netflix_data$year_added)
+
+# Count the number of genres each title is listed under
+netflix_data <- netflix_data %>%
+    mutate(genre_count = str_count(listed_in, ",") + 1)  # Each comma indicates an additional genre
+
+# Filter for movies and extract the duration in minutes from the 'duration' column
+movie_data <- netflix_data %>%
+    filter(type == "Movie") %>%
+    mutate(duration = as.numeric(str_extract(duration, "\\d+")))  # Extract numeric duration
+
+# Separate the genres into distinct rows for better analysis
+movie_genres <- movie_data %>%
+    separate_rows(listed_in, sep = ",\\s*") %>%
+    rename(genre = listed_in)
+
+# Convert 'duration' to numeric by removing " min" and converting to numeric
+netflix_data <- netflix_data %>%
+    mutate(duration = as.numeric(gsub(" min", "", duration)))  # Remove " min" and convert to numeric
+
+# Count the number of NAs in the 'duration' column
+na_count <- sum(is.na(netflix_data$duration))
+cat("Number of NA values in duration:", na_count)
+
+```
+
+## Summary Statistics for Dataset
+
+------------------------------------------------------------------------
+
+#### Ensure numeric removing any non-numeric characters
+
+```{r}
+library(dplyr)
+
+# Ensure 'duration' is numeric by removing any non-numeric characters (e.g., " min")
+netflix_data <- netflix_data %>%
+  mutate(duration = as.numeric(gsub(" min", "", duration)))
+
+# Generate summary statistics for the dataset
+summary_stats <- netflix_data %>%
+  summarise(
+    avg_duration = mean(duration, na.rm = TRUE),          # Average duration of all shows (in minutes)
+    total_shows = n(),                                     # Total number of shows in the dataset
+    avg_rating = mean(as.numeric(rating), na.rm = TRUE),    # Average rating across all shows
+    total_countries = n_distinct(country),                 # Number of unique countries represented
+    total_directors = n_distinct(director),                # Number of unique directors
+    total_cast = sum(!is.na(cast)),                        # Total number of shows with available cast info
+    total_genres = n_distinct(listed_in),                  # Number of unique genres
+    .groups = "drop"                                       # Drop grouping after summarization
+  )
+
+# Display the summary statistics
+summary_stats
+
+```
+
+## Data Visualization of Netflix
+
+------------------------------------------------------------------------
+
+#### Netflix Content Evolution: Number of Movies vs. TV Shows Added Since 2015
+
+```{r}
+# Filter data for titles added after 2015 and group by 'type' and 'year_added'
+recent_titles <- netflix_data %>%
+  filter(!is.na(year_added) & year_added > 2015) %>%
+  group_by(type, year_added) %>%
+  summarize(count = n(), .groups = "drop")
+
+# Create a bar plot using ggplot2 for the trend of Movies vs. TV Shows added after 2015
+plot <- ggplot(recent_titles, aes(x = year_added, y = count, fill = type)) +
+  geom_col(position = "dodge") +                           # Bar plot with dodged bars for each type
+  labs(
+    title = "Number of Movies vs. TV Shows on Netflix (After 2015)",  # Title of the plot
+    x = "Year Added",                                             # X-axis label
+    y = "Count"                                                   # Y-axis label
+  ) +
+  theme_minimal()                                               # Minimal theme for a clean look
+
+# Convert the ggplot2 plot to a plotly interactive plot
+interactive_plot <- ggplotly(plot)
+
+# Display the plotly interactive plot
+interactive_plot
+```
+
+The chart reveals a shift in Netflix's content strategy, with a significant rise in TV show additions post-2018, likely driven by the popularity of original series and binge-watching culture. This trend may also reflect the need to stand out amidst growing competition from other streaming platforms. However, the rapid increase in TV shows raises concerns about potential content quality dilution, as Netflix may prioritize quantity over quality. The COVID-19 pandemic likely accelerated this shift, with more people turning to streaming for entertainment during lockdowns.
+
+#### Trend of Netflix Additions Over the Years
+
+```{r}
+# Convert 'date_added' to 'year_added' (extracting the year from the date)
+netflix_data <- netflix_data %>%
+  mutate(year_added = as.numeric(format(as.Date(date_added, format = "%B %d, %Y"), "%Y")))
+
+# Create a bar plot with ggplot2 to show the number of Netflix additions over the years
+plot <- ggplot(netflix_data, aes(x = year_added)) +
+  geom_bar(fill = "steelblue") +                               # Bar plot with steelblue color for the bars
+  labs(
+    title = "Number of Netflix Additions Over the Years",       # Title of the plot
+    x = "Year Added",                                           # X-axis label: Year Added
+    y = "Count"                                                 # Y-axis label: Count of titles added
+  ) +
+  theme_minimal()                                               # Apply minimal theme for a clean look
+
+# Convert the ggplot2 plot to a Plotly interactive plot
+interactive_plot <- ggplotly(plot)
+
+# Display the Plotly interactive plot
+interactive_plot
+```
+
+The chart shows a notable increase in Netflix's title additions, especially after 2014. This surge can be attributed to the growing popularity of streaming, Netflix's focus on original content, global expansion, and binge-watching culture. However, the chart doesn't reveal insights into the quality or popularity of these additions. While the quantity has risen, the quality and relevance of content are key to retaining subscribers.
+
+#### Trend of Average Number of Genres per Netflix Title Over Time
+
+```{r}
+# Filter data and calculate average number of genres per title by year added
+genre_trend <- netflix_data %>%
+  filter(!is.na(year_added)) %>%
+  group_by(year_added) %>%
+  summarize(avg_genre_count = mean(genre_count))
+
+# Create a line plot using ggplot2 for average genre count over time
+plot <- ggplot(genre_trend, aes(x = year_added, y = avg_genre_count)) +
+  geom_line(color = "blue") +                                # Line plot with blue color for the trend
+  labs(
+    title = "Average Number of Genres per Title on Netflix Over Time",  # Title of the plot
+    x = "Year Added",                                              # X-axis label
+    y = "Average Genre Count"                                       # Y-axis label
+  ) +
+  theme_minimal()                                                # Minimal theme for a clean and clear look
+
+# Convert the ggplot2 plot to a plotly interactive plot
+interactive_plot <- ggplotly(plot)
+
+# Display the plotly interactive plot
+interactive_plot
+```
+
+The chart "Average Number of Genres per Title on Netflix Over Time" shows an increase in the average genres per title, peaking around 2018 and then gradually declining. This suggests Netflix initially refined content categorization to improve recommendations. However, the rise in genre count could also indicate over-categorization, which may not enhance the user experience. The decline post-2018 could point to a shift in strategy, focusing on broader or simplified categories.
+
+#### Distribution of Movie Duration by Genre on Netflix
+
+```{r}
+# Create a boxplot for movie duration by genre
+plot <- ggplot(movie_genres, aes(x = genre, y = duration)) +
+  geom_boxplot(fill = "tomato") +                          # Boxplot with tomato color for movie durations
+  coord_flip() +                                           # Flip coordinates for better readability of genre names
+  labs(
+    title = "Movie Duration by Genre on Netflix",            # Title of the plot
+    x = "Genre",                                            # X-axis label
+    y = "Duration (Minutes)"                                 # Y-axis label
+  ) +
+  theme_minimal()                                           # Minimal theme for a clean and simple look
+
+# Convert the ggplot2 plot to a plotly interactive plot
+interactive_plot <- ggplotly(plot)
+
+# Display the plotly interactive plot
+interactive_plot
+```
+
+The boxplot "Movie Duration by Genre on Netflix" reveals significant variation in movie durations across genres. Thrillers and sports movies generally have shorter runtimes, while documentaries and dramas are longer. The chart also highlights outliers, showing films with unusually long or short durations. Genres like comedies and children's movies have a wider interquartile range (IQR), indicating more varied durations. Overall, this chart provides insights into movie duration trends, helping viewers understand typical runtimes within genres and offering content creators opportunities for diverse movie formats.
+
+#### Top 10 Countries by Content on Netflix
+
+```{r}
+# Ensure you have the necessary data pre-loaded
+top_countries <- netflix_data %>%
+  filter(!is.na(country)) %>%   # Remove rows with missing country values
+  count(country, sort = TRUE) %>% # Count the occurrences of each country
+  top_n(10)  # Get the top 10 countries by content count
+
+# Create a bar plot for the top 10 countries by content count on Netflix
+plot <- ggplot(top_countries, aes(x = reorder(country, -n), y = n, fill = country)) +
+  geom_bar(stat = "identity") +                              # Bar plot for content count by country
+  labs(
+    title = "Top 10 Countries by Content on Netflix",           # Title of the plot
+    x = "Country",                                            # X-axis label
+    y = "Count"                                               # Y-axis label
+  ) +
+  theme_minimal()                                             # Minimal theme for a clean, simple look
+
+# Convert the ggplot2 plot to a plotly interactive plot
+interactive_plot <- ggplotly(plot)
+
+# Display the plotly interactive plot
+interactive_plot
+```
+
+The bar chart "Top 10 Countries by Content on Netflix" highlights the dominance of US content, reflecting the country's significant influence on the entertainment industry and Netflix's investment in original US productions. However, the inclusion of countries like India, the UK, and South Korea shows Netflix's growing international presence and focus on local content for diverse global audiences. The "Unknown" category suggests that a large portion of content lacks clear origin attribution, emphasizing the complexity of Netflix's content acquisition and distribution strategies.
