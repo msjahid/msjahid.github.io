@@ -1,0 +1,46 @@
+# Rosé Pine Dawn Matplotlib Theme
+
+# Light background color for a soft, warm look
+figure.facecolor: "#faf4ed"
+
+# Axes styling
+axes.facecolor: "#faf4ed"
+axes.edgecolor: "#575279"
+axes.labelcolor: "#575279"
+axes.titlesize: 16
+axes.labelsize: 14
+
+# Tick styling
+xtick.color: "#575279"
+ytick.color: "#575279"
+xtick.labelsize: 10
+ytick.labelsize: 10
+
+# Text color
+text.color: "#575279"
+
+# Grid styling
+grid.color: "#9893a5"
+grid.alpha: 0.3
+axes.grid: True
+
+# Spines (borders) styling
+axes.spines.top: False
+axes.spines.right: False
+
+# Line styling
+lines.linewidth: 2.0
+
+# Patch (e.g., bar edges) styling
+patch.edgecolor: "#575279"
+
+# Font styling
+font.size: 12
+
+# Custom colors for multiple line plots
+axes.prop_cycle: "cycler('color', ['#d7827e', '#ea9d34', '#286983', '#56949f', '#907aa9'])"
+
+# Legend background color
+legend.facecolor: "#faf4ed"
+legend.edgecolor: "#575279"
+

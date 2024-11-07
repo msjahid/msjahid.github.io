@@ -1,0 +1,46 @@
+# Rosé Pine Moon Matplotlib Theme
+
+# Figure background color
+figure.facecolor: "#232136"
+
+# Axes styling
+axes.facecolor: "#232136"
+axes.edgecolor: "#e0def4"
+axes.labelcolor: "#e0def4"
+axes.titlesize: 16
+axes.labelsize: 14
+
+# Tick styling
+xtick.color: "#e0def4"
+ytick.color: "#e0def4"
+xtick.labelsize: 10
+ytick.labelsize: 10
+
+# Text color
+text.color: "#e0def4"
+
+# Grid styling
+grid.color: "#908caa"
+grid.alpha: 0.3
+axes.grid: True
+
+# Spines (borders) styling
+axes.spines.top: False
+axes.spines.right: False
+
+# Line styling
+lines.linewidth: 2.0
+
+# Patch (e.g., bar edges) styling
+patch.edgecolor: "#e0def4"
+
+# Font styling
+font.size: 12
+
+# Custom colors for multiple line plots
+axes.prop_cycle: "cycler('color', ['#eb6f92', '#9ccfd8', '#c4a7e7', '#f6c177', '#e0def4'])"
+
+# Legend background color
+legend.facecolor: "#232136"
+legend.edgecolor: "#e0def4"
+
