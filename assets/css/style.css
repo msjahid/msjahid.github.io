@@ -2774,3 +2774,64 @@ section,
     border: 1px solid #34495e; /* Dark border for contrast */
     padding: 10px; /* Padding for better spacing in the textarea */
 }
+
+/* Basic Table Style */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    font-weight: bold;
+}
+
+/* On mobile screens, turn rows into card-style blocks */
+@media (max-width: 768px) {
+    .table thead {
+        display: none; /* Hide the header in responsive mode */
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table th, .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .table td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .table td {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .table td a {
+        text-decoration: none;
+        color: #007bff;
+    }
+}
