@@ -1,0 +1,573 @@
+:root {
+    --md-bg-color: #171520; /* Dark background */
+    --md-bg-color-light: #222031; /* Slightly lighter background for chunks */
+    --md-fg-color: #e0def4; /* Soft white for text */
+    --md-code-bg-color: #1e1b28; /* Background for code blocks */
+    --md-output-bg-color: #252230; /* Background for R output */
+    --md-border-color: #2e2a33; /* Border color for separation */
+    --md-code-text-color: #8be9fd; /* Light purple for code text */
+    --md-output-text-color: #98c379; /* Green for R output text */
+}
+
+/* Pacifico Font */
+@font-face {
+    font-family: 'Pacifico';
+    src: url('../fonts/bariol_regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Source Code Pro Font */
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('../fonts/SourceCodePro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Global body styling */
+body {
+    background-color: var(--md-bg-color);
+    color: var(--md-fg-color);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 15px; /* Add horizontal padding for small screens */
+    max-width: 1200px; /* Restrict max width for better readability */
+}
+
+.GNTYACMBFHD.GNTYACMBEHD {
+    display: none !important;
+}
+
+#rmd-download-source {
+    display: none !important; /* Completely hides the element */
+}
+
+li[role="separator"].divider {
+    display: none !important; /* Completely hides the element */
+}
+
+
+/* Override highlight.js styles for better visibility */
+
+/* Literals (e.g., `TRUE`, `FALSE`) */
+.hljs-literal {
+    color: #00d8ff !important; /* Bright cyan for literals */
+}
+
+/* Numbers (e.g., `42`) */
+.hljs-number {
+    color: #ffd700 !important; /* Bright yellow for numbers */
+}
+
+/* Comments (e.g., `# This is a comment`) */
+.hljs-comment {
+    color: #6272a4 !important; /* Muted gray for comments */
+    font-style: italic; /* Italic for differentiation */
+}
+
+/* Keywords (e.g., `library`, `if`, `else`) */
+.hljs-keyword {
+    color: #ff79c6 !important; /* Pink for keywords */
+    font-weight: bold; /* Bold for emphasis */
+}
+
+/* Strings (e.g., `"Hello World"`) */
+.hljs-string {
+    color: #50fa7b !important; /* Bright green for strings */
+}
+
+/* Apply a uniform background to all code blocks */
+pre {
+    background-color: #1e1b28 !important; /* Dark background */
+    color: #ffffff !important; /* Default white text for visibility */
+    font-family: "Fira Code", Courier, monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #2e2a33;
+    overflow-x: auto;
+}
+
+/* Output Block Styling */
+pre.r-output, pre:not(.input) {
+    border-top: none !important; /* Remove the top border */
+    border-bottom: none !important; /* Remove the bottom border */
+    background-color: #252230; /* Ensure the background matches the rest of the theme */
+    color: #98c379; /* Green text for output readability */
+    padding: 10px;
+    border-left: 1px solid #2e2a33; /* Keep left border */
+    border-right: 1px solid #2e2a33; /* Keep right border */
+    border-radius: 0 0 6px 6px; /* Rounded bottom corners */
+}
+
+/* Inline Code Styling */
+code {
+    background-color: #282a36; /* Slightly lighter background for contrast */
+    color: #f8f8f2; /* Light text for readability */
+    padding: 3px 6px; /* Padding for spacing */
+    border-radius: 4px; /* Slightly rounded corners */
+    font-family: "Fira Code", Courier, monospace; /* Monospace font */
+    font-size: 14px; /* Adjusted font size */
+    line-height: 1.5; /* Consistent line spacing */
+    border: 1px solid #44475a; /* Subtle border to define the element */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+/* Hover Effect */
+code:hover {
+    background-color: #44475a; /* Slightly lighter hover background */
+    color: #50fa7b; /* Bright green text on hover */
+    border-color: #50fa7b; /* Green border on hover */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Headings */
+/* Headings Styling */
+h1 {
+    font-family: "Source Code Pro", sans-serif; /* Font for h1 */
+    color: #ff79c6; /* Pink color for h1 */
+    font-size: 36px; /* Adjusted font size */
+    font-weight: bold; /* Bold for emphasis */
+}
+
+h2 {
+    font-family: "Source Code Pro", sans-serif; /* Font for h2 */
+    color: #bd93f9; /* Purple color for h2 */
+    font-size: 30px; /* Adjusted font size */
+    font-weight: 600; /* Semi-bold */
+}
+
+h3 {
+    font-family: "Source Code Pro", sans-serif; /* Font for h3 */
+    color: #8be9fd; /* Cyan color for h3 */
+    font-size: 26px; /* Adjusted font size */
+    font-weight: 600; /* Semi-bold */
+}
+
+h4 {
+    font-family: "Source Code Pro", sans-serif; /* Font for h4 */
+    color: #50fa7b; /* Green color for h4 */
+    font-size: 22px; /* Adjusted font size */
+    font-weight: 500; /* Medium weight */
+}
+
+h5 {
+    font-family: "Source Code Pro", sans-serif; /* Font for h5 */
+    color: #f1fa8c; /* Yellow color for h5 */
+    font-size: 18px; /* Adjusted font size */
+    font-weight: 500; /* Medium weight */
+}
+
+h6 {
+    font-family: "Source Code Pro", sans-serif; /* Font for h6 */
+    color: #ff5555; /* Red color for h6 */
+    font-size: 16px; /* Adjusted font size */
+    font-weight: 400; /* Regular weight */
+}
+
+
+/* Links */
+a {
+    color: #98c379; /* Green links for readability */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #56b6c2; /* Teal hover color for links */
+}
+
+/* Default Button Styling */
+.btn-default {
+    background-color: #171520 !important; /* Dark background */
+    color: #e0def4 !important; /* Soft white text */
+    border: 1px solid #2e2a33 !important; /* Subtle border color */
+    border-radius: 6px; /* Rounded corners */
+    padding: 5px 12px;
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: all 0.2s ease-in-out; /* Smooth transitions */
+}
+
+.btn-default {
+    background-image: linear-gradient(to bottom, #44475a, #282a36); !important; /* Dark gradient */
+    background-repeat: no-repeat; /* Ensure gradient doesn’t repeat */
+    color: #e0def4 !important; /* Soft white text */
+    border: 1px solid #2e2a33 !important; /* Subtle border */
+    border-radius: 6px; /* Rounded corners */
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Default button styling */
+.btn-group.pull-right.float-right .btn{
+    background-color: #171520 !important; /* Default dark background */
+    color: #e0def4 !important; /* Default soft white text color */
+    border: 1px solid #2e2a33 !important; /* Subtle border */
+    border-radius: 6px; /* Rounded corners */
+    padding: 5px 12px;
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: all 0.2s ease-in-out; /* Smooth transitions */
+}
+
+/* Hover state */
+.btn-group.pull-right.float-right .btn:hover {
+    background-color: #252230 !important; /* Lighter background on hover */
+    color: #50fa7b !important; /* Bright green text on hover */
+    border: 1px solid #50fa7b !important; /* Green border on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6); /* Slightly deeper shadow */
+}
+
+/* Focus state */
+.btn-group.pull-right.float-right .btn:focus {
+    background-color: #252230 !important; /* Maintain hover color on focus */
+    color: #50fa7b !important; /* Bright green text on focus */
+    border: 1px solid #50fa7b !important; /* Green border */
+    outline: none; /* Remove default browser focus outline */
+    box-shadow: 0 0 6px #50fa7b; /* Green glow on focus */
+}
+
+/* Active state */
+.btn-group.pull-right.float-right .btn:active,
+.btn-group.pull-right.float-right .btn:focus:active {
+    background-color: #2e2a33 !important; /* Slightly darker active state */
+    color: #8be9fd !important; /* Bright cyan text for active state */
+    border: 1px solid #8be9fd !important; /* Cyan border for active state */
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.6); /* Inset shadow for pressed effect */
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    background-color: #171520; /* Dark background */
+    border: 1px solid #2e2a33; /* Subtle border */
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Dropdown menu items */
+.dropdown-menu > li > a {
+    color: #e0def4; /* Soft white text */
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 14px;
+    display: block;
+}
+
+/* Dropdown menu hover effect */
+.dropdown-menu > li > a:hover {
+    background-color: #252230;
+    color: #50fa7b;
+}
+
+
+/* Footer Styling */
+.footer {
+    background-color: #171520; /* Dark background */
+    color: #e0def4; /* Light text for readability */
+    padding: 20px;
+    border-top: 1px solid #2e2a33; /* Subtle border for separation */
+    text-align: center; /* Center-align text */
+    font-family: 'Fira Code', Courier, monospace;
+}
+
+/* Footer Headings */
+.footer h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #bd93f9; /* Soft purple for heading */
+}
+
+.footer h6 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #e0def4; /* Slightly lighter for subtext */
+}
+
+/* Footer Links */
+.footer-links a {
+    color: #8be9fd; /* Cyan for footer links */
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links span {
+    color: #6272a4; /* Muted divider between links */
+    margin: 0 5px;
+}
+
+.footer-links a:hover {
+    color: #50fa7b; /* Bright green hover color */
+    text-decoration: underline;
+}
+
+/* Footer Small Text */
+.footer small {
+    color: #6272a4; /* Muted text for copyright or small notes */
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+
+/* Title Styling */
+.title.toc-ignore {
+    font-size: 38px; /* Default size for larger screens */
+    font-weight: bold;
+    font-family: 'Pacifico', sans-serif !important;
+    background: linear-gradient(90deg, #ff79c6, #bd93f9, #8be9fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-align: center;
+    letter-spacing: 2px;
+    margin: 20px 0; /* Add vertical spacing */
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for better depth */
+}
+
+/* Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+    .title.toc-ignore {
+        font-size: 30px; /* Smaller font for tablets */
+        margin: 15px 0; /* Reduce margin */
+        letter-spacing: 1.5px; /* Adjust spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    .title.toc-ignore {
+        font-size: 24px; /* Compact size for phones */
+        margin: 10px 0;
+        letter-spacing: 1px;
+    }
+
+    /* Ensure GitHub Corner Icon doesn't overlap */
+    .github-corner {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* General Paragraph Styling */
+p {
+    font-family: "Roboto", sans-serif; /* Change to your desired font */
+    font-size: 18px; /* Adjust font size */
+    line-height: 1.6; /* Improve readability with proper spacing */
+    color: #e0def4; /* Light text color for visibility */
+    margin-bottom: 15px; /* Add spacing between paragraphs */
+}
+
+/* Optional Styling for Links Inside Paragraphs */
+p a {
+    color: #8be9fd; /* Cyan color for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make links bold */
+}
+
+p a:hover {
+    color: #bd93f9; /* Purple color on hover */
+    text-decoration: underline; /* Add underline on hover */
+    transition: color 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+/* GitHub Corner Placement */
+.github-corner {
+    position: fixed;
+    top: 0;
+    right: 0; /* Keep it fixed in the top-right corner */
+    width: 60px; /* Adjust the size for smaller screens */
+    height: 60px;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+/* Prevent Title Overlap with GitHub Corner */
+.title.toc-ignore {
+    margin-top: 80px; /* Add top margin to create space for the GitHub corner */
+}
+
+/* Responsive Adjustments for GitHub Corner */
+@media (max-width: 768px) {
+    .github-corner {
+        width: 50px; /* Reduce size for smaller screens */
+        height: 50px;
+    }
+
+    .title.toc-ignore {
+        margin-top: 70px; /* Adjust margin to keep spacing proportional */
+    }
+}
+
+@media (max-width: 480px) {
+    .github-corner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .title.toc-ignore {
+        margin-top: 60px; /* Further adjust margin for very small screens */
+    }
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%, 100% { transform: rotate(0); }
+  20%, 60% { transform: rotate(-25deg); }
+  40%, 80% { transform: rotate(10deg); }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none; /* Disable animation for small screens */
+  }
+}
+
+/* General Table Styling */
+.table-condensed {
+  width: 100%; /* Full-width table */
+  border-collapse: collapse; /* Merge table borders */
+  background-color: #1e1b28; /* Dark background */
+  color: #e0def4; /* Light text for readability */
+  font-family: "Fira Code", Courier, monospace;
+  text-align: left;
+  border: 1px solid #2e2a33; /* Border around the table */
+  margin: 20px 0; /* Spacing around the table */
+}
+
+/* Table Header Styling */
+.table-condensed thead {
+  background-color: #2e2a33; /* Slightly lighter header */
+  text-transform: uppercase; /* Capitalize headers */
+  color: #8be9fd; /* Bright cyan for header text */
+}
+
+.table-condensed th {
+  padding: 10px; /* Add padding for readability */
+  border: 1px solid #2e2a33; /* Header borders */
+}
+
+/* Table Body Styling */
+.table-condensed tbody tr {
+  border-bottom: 1px solid #2e2a33; /* Row borders */
+}
+
+.table-condensed td {
+  padding: 8px; /* Add padding for readability */
+  border: 1px solid #2e2a33; /* Cell borders */
+}
+
+/* Alternate Row Coloring */
+.table-condensed tbody tr:nth-child(odd) {
+  background-color: #252230; /* Darker background for odd rows */
+}
+
+.table-condensed tbody tr:nth-child(even) {
+  background-color: #2e2a33; /* Slightly lighter background for even rows */
+}
+
+/* Hover Effect */
+.table-condensed tbody tr:hover {
+  background-color: #38304a; /* Highlight row on hover */
+  color: #ffffff; /* Make text stand out */
+}
+
+/* Small Table Padding */
+.table-condensed.table-condensed td, 
+.table-condensed.table-condensed th {
+  padding: 5px; /* Reduce padding for a more compact table */
+}
+
+/* Fix large gap caused by tocify-extend-page */
+.tocify-extend-page {
+    height: auto !important; /* Automatically adjusts to content height */
+    display: none; /* Alternatively, hide it completely if not needed */
+}
+
+/* TOC Container Styling */
+#TOC {
+    background-color: #1e1b28; /* Dark background */
+    border: 1px solid #2e2a33; /* Subtle border for separation */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Add padding inside the container */
+    font-family: 'Fira Code', Courier, monospace; /* Monospace font for consistency */
+    color: #e0def4; /* Light text for readability */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* Add shadow for depth */
+    overflow-y: auto; /* Enable scrolling if needed */
+    max-height: 80vh; /* Ensure it fits smaller screens */
+}
+
+/* Header Styling */
+#TOC .tocify-header {
+    margin: 0;
+    padding: 10px;
+    background-color: #252230; /* Slightly lighter background */
+    border-radius: 6px;
+    color: #8be9fd; /* Cyan text for header */
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Subheader Styling */
+#TOC .tocify-subheader {
+    margin-top: 5px;
+    padding-left: 15px; /* Indent subheaders */
+    list-style-type: none; /* Remove default bullet points */
+}
+
+/* Subheader Items Styling */
+#TOC .tocify-subheader .tocify-item {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px; /* Rounded corners for items */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover and Active State for Items */
+#TOC .tocify-subheader .tocify-item:hover {
+    background-color: #44475a; /* Highlight background on hover */
+    color: #50fa7b; /* Bright green text on hover */
+}
+
+/* Active Subheader Item */
+#TOC .tocify-subheader .tocify-item.active {
+    background-color: #6272a4; /* Muted purple background for active items */
+    color: #f8f8f2; /* White text for active items */
+}
+
+/* List Group Styling */
+#TOC .list-group-item {
+    border: none; /* Remove default borders */
+    background-color: transparent; /* Transparent background */
+}
+
+/* Scrollbar Styling (Optional) */
+#TOC::-webkit-scrollbar {
+    width: 8px; /* Set scrollbar width */
+}
+
+#TOC::-webkit-scrollbar-thumb {
+    background-color: #44475a; /* Dark scrollbar thumb */
+    border-radius: 4px; /* Rounded scrollbar */
+}
+
+#TOC::-webkit-scrollbar-thumb:hover {
+    background-color: #50fa7b; /* Highlight scrollbar on hover */
+}

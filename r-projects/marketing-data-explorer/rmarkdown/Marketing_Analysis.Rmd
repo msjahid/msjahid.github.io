@@ -1,0 +1,1614 @@
+---
+title: "Customer Profitability and Marketing Analysis"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    css: ../assets/css/styles.css
+    includes:
+      before_body: ../templates/github.html
+      after_body: ../templates/footer.html
+editor_options:  
+  chunk_output_type: inline
+---
+
+------------------------------------------------------------------------
+
+# 1. Introduction
+
+In today's competitive market, understanding customer behavior is crucial for driving profitability and long-term success. By analyzing transaction data, businesses can gain insights into key factors such as **customer demographics**, **marketing channel performance**, and **profitability trends**. These insights enable businesses to make data-driven decisions to enhance customer retention, optimize marketing strategies, and increase overall revenue.
+
+This project leverages a comprehensive dataset to explore these dynamics, focusing on actionable outcomes and recommendations.
+
+---
+
+## Dataset Column Information
+
+Below is the description of each column in the dataset:
+
+| SN  | Column Name                    | Column Description                                                        |
+|-----|---------------------------------|---------------------------------------------------------------------------|
+| 1   | Customer_ID                    | Unique identifier for each customer                                        |
+| 2   | Gender                          | Gender of the customer (Male/Female)                                      |
+| 3   | Date_Of_Birth                   | Birth date of the customer in MM/DD/YYYY format                           |
+| 4   | Location                        | Location (city) of the customer                                           |
+| 5   | Contact_Allowed                 | Whether the customer has allowed to be contacted (Y/N)                     |
+| 6   | Registration_Date               | Date and time when the customer registered                                |
+| 7   | Marketing_Channel_Type          | The marketing channel through which the customer was acquired             |
+| 8   | First_Order_Profit              | Profit from the customer’s first order                                    |
+| 9   | Subsequent_Order_Profit         | Profit from all subsequent orders of the customer                         |
+| 10  | Subsequent_Orders_Count         | Number of subsequent orders placed by the customer                        |
+| 11  | Total_value_of_all_promotions   | Total value of all promotions the customer received                       |
+| 12  | Age                             | Age of the customer (calculated from Date_Of_Birth)                       |
+| 13  | Total_Profit                    | Total profit generated from the customer (First + Subsequent)             |
+
+---
+
+## Goal
+
+The primary goal of this project is to analyze **customer behavior** and **profitability** in relation to various marketing channels. By leveraging the dataset, which includes essential customer and transaction details, we aim to uncover factors that drive **Customer Lifetime Value (CLV)** and measure the effectiveness of different marketing strategies.
+
+Through this analysis, the business will gain actionable insights to:
+- Optimize marketing efforts.
+- Improve customer retention.
+- Increase overall profits.
+
+---
+
+## Deliverables
+
+### 1. **Data Cleaning and Transformation**
+- Clean and preprocess the dataset by:
+  - Handling missing values.
+  - Detecting and addressing outliers.
+  - Converting columns to appropriate formats for analysis.
+
+---
+
+### 2. **Exploratory Data Analysis (EDA)**
+- Perform statistical analysis and visualizations to:
+  - Identify trends, relationships, and patterns.
+  - Highlight anomalies or unusual behaviors in the data.
+  
+### 3. **Outlier Detection**
+- **Purpose**: Detect unusual patterns in customer transactions, such as:
+  - **Exceptionally high profits**
+  - **Promotions or discounts**
+  - **Unusual order behavior**
+- **Goal**: Understand exceptional cases, refine marketing strategies, and manage both high-value and low-value customers effectively.
+
+---
+
+## Summary
+
+This analysis will empower the business to:
+- Understand its customer base more deeply.
+- Tailor marketing strategies to maximize engagement and profitability.
+- Refine campaigns to improve **customer satisfaction** and **long-term growth**.
+
+By focusing on these objectives, the business can turn data-driven insights into impactful actions.
+
+------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+# Load required libraries
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(ggplot2)
+library(gridExtra)
+library(dplyr)
+library(knitr)
+library(tidyr)
+library(GGally)
+library(reshape2)
+library(lubridate)
+library(ggthemes) # For custom themes
+library(lsr) # For Cramér's V
+library(rosepineTheme)
+
+# Extract the first n accents from rose_pine_colors
+get_rose_pine_colors <- function(n) {
+  accents <- grep("accent", names(rose_pine_colors), value = TRUE) # Get all accent keys
+  unlist(rose_pine_colors[accents])[1:n]  # Extract first n accent values
+}
+```
+
+------------------------------------------------------------------------
+
+# 2. Data Exploration and Preprocessing
+
+
+## Loading and Previewing the Data
+
+In this section, we will load the dataset from a CSV file and preview the first few rows.
+
+```{r}
+# Load the CSV file
+df <- read.csv("../data/marketing_data.csv")
+```
+
+**Displaying the First Few Rows of the Dataset**
+
+```{r}
+# Display the first few rows
+head(df)
+```
+
+## Dataset Overview
+
+---
+
+### Number of Rows and Columns
+```{r}
+# Total number of rows
+num_rows <- dim(df)[1]
+
+# Total number of columns
+num_columns <- dim(df)[2]
+
+# Print the results
+cat("Number of rows:", num_rows, "\n")
+cat("Number of columns:", num_columns, "\n")
+```
+
+### Checking Column Names
+```{r}
+# Get column names
+as.data.frame(colnames(df))
+```
+
+### Checking for NA values and Handling Missing Data
+```{r}
+as.data.frame(colSums(is.na(df)))
+```
+
+### Identifying and Removing Duplicates
+```{r}
+# Find duplicate rows
+df[duplicated(df), ]
+```
+
+### Displaying the Data Structure
+```{r}
+# Check the structure of the dataset
+str(df)
+```
+
+### Generating Summary of Data
+```{r}
+# Get a statistical summary of numerical columns
+summary(df)
+```
+
+# 3. Explatory Data Analysis
+
+---
+
+## Histogram Analysis
+
+This section presents the histograms for the following six key variables from the dataset:
+
+- **First Order Profit**
+- **Subsequent Order Profit**
+- **Subsequent Orders Count**
+- **Total Value of All Promotions**
+- **Age**
+- **Total Profit**
+
+These histograms provide insights into the distributions of the data, helping us identify skewness, the presence of outliers, and potential data transformations.
+
+```{r, fig.width=16, fig.height=10}
+# Select specific columns
+selected_cols <- c(
+  "First_Order_Profit", "Subsequent_Order_Profit", "Subsequent_Orders_Count",
+  "Total_value_of_all_promotions", "Age", "Total_Profit"
+)
+
+# Automatically extract the required number of colors
+colors <- get_rose_pine_colors(length(selected_cols)) 
+
+# Prepare the data list
+data_list <- lapply(selected_cols, function(col) df[[col]])
+names(data_list) <- selected_cols
+
+# Generate Histograms Dynamically
+histograms <- lapply(seq_along(data_list), function(i) {
+  formatted_title <- tools::toTitleCase(gsub("_", " ", names(data_list)[i]))  # Format column name
+  
+  ggplot(data.frame(value = data_list[[i]]), aes(x = value)) +
+    geom_histogram_default(data_length = length(data_list[[i]]), fill_color = colors[i]) +  # Dynamic bins & color
+    labs(
+      title = paste("", formatted_title),  # Use formatted title
+      x = "",
+      y = "Frequency"
+    ) + 
+    theme_rose_pine()
+})
+
+# Combine All Histograms into a Grid Layout
+do.call(grid.arrange, c(histograms, ncol = 3))
+```
+### Observations and Recommendations
+
+#### **1. First Order Profit**
+- **Observation**:
+  - Highly right-skewed distribution with most values near zero.
+  - A long tail suggests high-profit outliers.
+- **Recommendation**:
+  - Apply a logarithmic transformation to reduce skewness for analysis.
+  - Investigate outliers to determine their validity or consider capping them.
+
+---
+
+#### **2. Subsequent Order Profit**
+- **Observation**:
+  - Right-skewed with most values near zero and a few very high profits.
+  - The distribution is similar to the First Order Profit.
+- **Recommendation**:
+  - Use similar treatment as First Order Profit (e.g., logarithmic transformation or outlier capping).
+  - Explore customer segments that generate high subsequent profits.
+
+---
+
+#### **3. Subsequent Orders Count**
+- **Observation**:
+  - Majority of customers placed very few subsequent orders (**≤ 5**).
+  - A sharp decline in customer count as the number of orders increases.
+- **Recommendation**:
+  - Group higher order counts into bins for better visual interpretability.
+  - Investigate factors influencing customers with higher order counts (e.g., age, promotions).
+
+---
+
+#### **4. Total Value of All Promotions**
+- **Observation**:
+  - Highly skewed with most customers receiving promotions of low value.
+  - Few customers received significantly high-value promotions, creating a long tail.
+- **Recommendation**:
+  - Investigate whether high promotion values correlate with high profit or order counts.
+  - Consider grouping promotion values into bins for better interpretability.
+
+---
+
+#### **5. Age**
+- **Observation**:
+  - Approximately bell-shaped, with most customers falling between 20–50 years of age.
+  - Fewer customers are younger than 20 or older than 50.
+- **Recommendation**:
+  - No immediate action required; the distribution is balanced and can be used as-is for modeling.
+
+---
+
+#### **6. Total Profit**
+- **Observation**:
+  - Similar to profit variables, the distribution is right-skewed with most values concentrated near zero.
+  - High-profit outliers are present.
+- **Recommendation**:
+  - Investigate high-profit customers and their characteristics.
+  - Consider transformations or outlier handling for modeling purposes.
+  
+This analysis helps identify potential preprocessing steps and guides exploratory analysis to better understand customer behavior.
+
+---
+
+## Density Plot Analysis
+
+This section provides observations and recommendations based on the density plots of the following variables:
+
+- **First Order Profit**
+- **Subsequent Order Profit**
+- **Subsequent Orders Count**
+- **Total Value of All Promotions**
+- **Age**
+- **Total Profit**
+
+```{r, fig.width=16, fig.height=10}
+# Generate KDE plots dynamically
+kde <- lapply(seq_along(data_list), function(i) {
+  formatted_title <- tools::toTitleCase(gsub("_", " ", names(data_list)[i]))
+  
+  ggplot(data.frame(value = data_list[[i]]), aes(x = value)) +
+    geom_density_default(fill_color = colors[i]) +  # Dynamic color assignment
+    labs(
+      title = paste("", formatted_title),
+      x = "",
+      y = "Density"
+    ) +
+    theme_rose_pine()
+})
+
+# Combine all plots into a grid layout
+do.call(grid.arrange, c(kde, ncol = 3))
+```
+### Observations and Recommendations
+
+#### **1. First Order Profit**
+- **Observation**:
+  - Right-skewed distribution with a sharp peak at low profit values.
+  - Long tail due to high-profit customers.
+- **Recommendation**:
+  - Apply a logarithmic transformation for skewness correction.
+  - Examine outliers for validity or apply capping to reduce influence.
+
+---
+
+#### **2. Subsequent Order Profit**
+- **Observation**:
+  - Sharp peak at low values, with a similar right-skewed trend as First Order Profit.
+  - Long tail extending towards very high values.
+- **Recommendation**:
+  - Consider handling outliers through capping or Winsorization.
+  - Investigate customer segments contributing to high subsequent profits.
+
+---
+
+#### **3. Subsequent Orders Count**
+- **Observation**:
+  - Clear peak at 1–2 orders, indicating most customers made few repeat purchases.
+  - Distribution flattens significantly for higher order counts.
+- **Recommendation**:
+  - Group higher counts into bins for clearer insights.
+  - Explore factors (e.g., demographics, promotions) influencing customers with many orders.
+
+---
+
+#### **4. Total Value of All Promotions**
+- **Observation**:
+  - Highly skewed, with most values concentrated near zero.
+  - Long tail suggests a few customers received significantly high promotion values.
+- **Recommendation**:
+  - Assess whether high promotion values translate to higher profits or order counts.
+  - Consider segmenting customers based on promotion levels for further analysis.
+
+---
+
+#### **5. Age**
+- **Observation**:
+  - Distribution is approximately bell-shaped, centered around 30–40 years.
+  - Skewness is minimal, with balanced data for most age ranges.
+- **Recommendation**:
+  - No transformation needed. The variable can be used as-is in analysis.
+
+---
+
+#### **6. Total Profit**
+- **Observation**:
+  - Similar right-skewed trend as other profit variables, with a peak at low values.
+  - Long tail shows the presence of a few high-profit customers.
+- **Recommendation**:
+  - Consider transformations to address skewness and reduce outlier effects.
+  - Investigate high-profit customers to understand their characteristics.
+
+This density plot analysis highlights key trends and provides actionable recommendations for preprocessing and further exploration.
+
+---
+
+## Gender Distribution Analysis
+
+This section visualizes the distribution of gender across the dataset using a bar plot and a pie chart.
+
+```{r, fig.width=16, fig.height=8}
+gender_counts <- as.data.frame(table(df$Gender))
+names(gender_counts) <- c("Gender", "Count")
+
+# Create Count Plot using geom_count_default
+count_plot <- ggplot(gender_counts, aes(x = Gender, y = Count, fill = Gender)) +
+  geom_bar(stat = "identity") +
+  theme_rose_pine() +  # Apply the custom theme
+  scale_fill_rose_pine() +  # Apply the fill color scale
+  labs(title = "Gender Distribution Plot", x = "Gender", y = "Count") +  # Title and axis labels
+  theme(
+    plot.title = element_text(size = 18, face = "bold", color = "white"),  # Title font size and color
+    axis.title.x = element_text(size = 14, color = "white"),  # X-axis label font size and color
+    axis.title.y = element_text(size = 14, color = "white"),  # Y-axis label font size and color
+    axis.text = element_text(size = 12, color = "white"),  # Axis tick labels font size and color
+    legend.position = "right",
+    legend.title = element_text(size = 13, color = "white"),  # Legend title font size and color
+    legend.text = element_text(size = 11, color = "white"),  # Legend text font size and color
+    legend.key.size = unit(1, "cm")  # Adjust the size of legend keys (the color boxes)
+  )
+
+# Generate the Pie Chart
+pie_chart <- geom_pie_default(
+  data = gender_counts,
+  category_col = "Gender",
+  value_col = "Count"
+) + 
+  theme(
+    legend.position = "none",
+)
+
+# Combine the plots using grid.arrange
+grid.arrange(count_plot, pie_chart, ncol = 2)
+```
+### Observations
+
+#### **1. Bar Plot**
+- **Observation**:
+  - The majority of customers are **Male**, making up the largest group.
+  - A smaller proportion of customers are **Female**.
+  - A notable percentage of customers fall into the **Not Defined** category, which might indicate missing or unspecified data.
+
+#### **2. Pie Chart**
+- **Observation**:
+  - **Male** customers constitute approximately **63.5%** of the dataset.
+  - **Female** customers account for **23.5%**.
+  - The **Not Defined** category represents **13%**.
+
+#### **Recommendations**
+- Investigate the **Not Defined** category to determine whether this data can be clarified or excluded.
+- Use this distribution to segment analysis or marketing strategies based on gender.
+
+---
+
+## Marketing Channel Type Distribution
+
+This section visualizes the distribution of marketing channels, providing insights into which channels are most effective in acquiring customers.
+
+```{r, fig.width=16, fig.height=8}
+marketing_channel_type_count <- as.data.frame(table(df$Marketing_Channel_Type))
+names(marketing_channel_type_count) <- c("Marketing_Channel_Type", "Count")
+
+# Create Count Plot using geom_count_default
+count_plot <- ggplot(marketing_channel_type_count, aes(x = Marketing_Channel_Type, y = Count, fill = Marketing_Channel_Type)) +
+  geom_bar(stat = "identity") +
+  theme_rose_pine() +  # Apply the custom theme
+  scale_fill_rose_pine() +  # Apply the fill color scale
+  labs(title = "Marketing Channel Type Distribution", x = "", y = "Count") +  # Title and axis labels
+  theme(
+    plot.title = element_text(size = 18, face = "bold", color = "white"),  # Title font size and color
+    #axis.title.x = element_text(size = 14, color = "white"),  # X-axis label font size and color
+    axis.text.x = element_blank(),  # Hide x-axis text
+    axis.title.y = element_text(size = 14, color = "white"),  # Y-axis label font size and color
+    axis.text = element_text(size = 12, color = "white", angle = 90),  # Axis tick labels font size and color
+    legend.position = "right",
+    legend.title = element_text(size = 13, color = "white"),  # Legend title font size and color
+    legend.text = element_text(size = 11, color = "white"),  # Legend text font size and color
+    legend.key.size = unit(1, "cm")  # Adjust the size of legend keys (the color boxes)
+  )
+
+# Generate the Pie Chart
+pie_chart <- geom_pie_default(
+  data = marketing_channel_type_count,
+  category_col = "Marketing_Channel_Type",
+  value_col = "Count"
+) + 
+  theme(
+    legend.position = "none",
+)
+
+# Combine the plots using grid.arrange
+grid.arrange(count_plot, pie_chart, ncol = 2)
+```
+### Observations
+
+#### **1. Bar Plot**
+- **Observation**:
+  - The **Direct** channel contributes the largest share, with approximately **35.8%** of customers.
+  - **Organic Search** and **Paid Search** are the second and third most common channels, at **26.7%** and **20.8%**, respectively.
+  - **Affiliates** represent **12.3%**, and **Paid Social** contributes the smallest share at **4.5%**.
+
+#### **2. Pie Chart**
+- **Observation**:
+  - The proportional view confirms that **Direct**, **Organic Search**, and **Paid Search** are the dominant channels.
+  - **Paid Social**, despite being a minor channel, might target niche customer segments.
+
+#### **Recommendations**
+- Focus marketing efforts on **Direct** and **Organic Search** channels, as they have a significant impact.
+- Evaluate the performance of **Paid Social** to determine whether it is cost-effective or requires adjustments.
+- Explore opportunities to improve customer acquisition through **Affiliates** by refining the strategy.
+
+---
+
+## Contact Allowed Distribution
+
+This section examines the distribution of customer consent for being contacted, represented by two visualizations: a bar plot and a pie chart.
+
+```{r, fig.width=16, fig.height=8}
+contact_allowed_count <- as.data.frame(table(df$Contact_Allowed))
+names(contact_allowed_count) <- c("Contact_Allowed", "Count")
+
+# Create Count Plot using geom_count_default
+count_plot <- ggplot(contact_allowed_count, aes(x = Contact_Allowed, y = Count, fill = Contact_Allowed)) +
+  geom_bar(stat = "identity") +
+  theme_rose_pine() +  # Apply the custom theme
+  scale_fill_rose_pine() +  # Apply the fill color scale
+  labs(title = "Contact Allowed Distribution", x = "", y = "Count") +  # Title and axis labels
+  theme(
+    plot.title = element_text(size = 18, face = "bold", color = "white"),  # Title font size and color
+    #axis.title.x = element_text(size = 14, color = "white"),  # X-axis label font size and color
+    axis.text.x = element_blank(),  # Hide x-axis text
+    axis.title.y = element_text(size = 14, color = "white"),  # Y-axis label font size and color
+    axis.text = element_text(size = 12, color = "white", angle = 90),  # Axis tick labels font size and color
+    legend.position = "right",
+    legend.title = element_text(size = 13, color = "white"),  # Legend title font size and color
+    legend.text = element_text(size = 11, color = "white"),  # Legend text font size and color
+    legend.key.size = unit(1, "cm")  # Adjust the size of legend keys (the color boxes)
+  )
+
+# Generate the Pie Chart
+pie_chart <- geom_pie_default(
+  data = contact_allowed_count,
+  category_col = "Contact_Allowed",
+  value_col = "Count"
+) + 
+  theme(
+    legend.position = "none",
+)
+
+# Combine the plots using grid.arrange
+grid.arrange(count_plot, pie_chart, ncol = 2)
+```
+### Observations
+
+#### **1. Bar Plot**
+- **Observation**:
+  - Approximately **57.7%** of customers have allowed contact.
+  - **42.3%** of customers have opted out of being contacted.
+
+#### **2. Pie Chart**
+- **Observation**:
+  - The pie chart confirms that the majority of customers allow contact, though a significant portion prefers not to be contacted.
+
+#### **Recommendations**
+- Focus outreach and marketing strategies on the **57.7%** of customers who allow contact.
+- Consider alternative, non-intrusive marketing strategies for the **42.3%** of customers who do not allow contact, such as personalized emails or targeted ads.
+
+---
+
+## Top 20 Location Count Analysis
+
+This section explores the distribution of customer counts across the top 20 locations in the dataset. 
+
+```{r, fig.width=16, fig.height=6}
+# Calculate Gender Counts (Location Counts)
+location_counts <- data.frame(table(df$Location))
+names(location_counts) <- c("Location", "Count")
+
+# Filter for the top 20 locations by count
+top_20_locations <- location_counts %>%
+  arrange(desc(Count)) %>%
+  head(20)
+
+# Count Plot for Top 20 Locations
+count_plot <- ggplot(top_20_locations, aes(x = Location, y = Count, fill = Location)) +
+  geom_bar(stat = "identity") +
+  theme_rose_pine() +  # Apply the custom theme
+  scale_fill_rose_pine() +  # Apply the fill color scale
+  labs(title = "Top 20 Location Count Plot", x = "Location", y = "Count") +  # Title and axis labels
+  theme(legend.position = "none", 
+        axis.text.x = element_text(angle = 90, hjust = 1))  # Rotate x-axis labels for better readability
+
+# Show the count plot
+count_plot
+```
+### Observations
+
+#### **Bar Plot**
+- **Observation**:
+  - **Dublin** dominates the dataset, contributing the highest count of customers, significantly surpassing all other locations.
+  - Other locations such as **Cork**, **Galway**, and **Limerick** contribute a smaller but noticeable count.
+  - A long tail exists for other locations, indicating a relatively small representation from these areas.
+
+#### **Recommendations**
+- Given Dublin's significant contribution, marketing and business strategies should focus heavily on this region.
+- For smaller locations, consider regional campaigns or promotions to increase customer engagement.
+- Evaluate if the concentration in Dublin skews the dataset or limits insights into other regions.
+
+---
+
+## Box Plot Analysis
+
+This section examines the distribution and presence of outliers across six key variables using box plots. The visualizations provide a clear understanding of data variability and potential anomalies.
+
+```{r, fig.width=16, fig.height=8}
+# Generate Boxplots Dynamically
+box_plot_list <- lapply(seq_along(data_list), function(i) {
+  formatted_title <- tools::toTitleCase(gsub("_", " ", names(data_list)[i]))
+  
+  ggplot(df, aes(x = factor(1), y = data_list[[i]])) +
+    geom_boxplot_default(data = df, x_col = "factor(1)", y_col = names(data_list)[i], fill_color = colors[i]) +  # Dynamic colors
+    labs(
+      title = paste("", formatted_title),
+      x = "Category", 
+      y = "Value"
+    ) +
+    theme_rose_pine() +  # Apply Rose Pine theme
+    theme(
+      axis.text.x = element_blank(),  # Remove x-axis text
+      axis.ticks.x = element_blank(),  # Remove x-axis ticks
+      plot.title = element_text(size = 10, face = "bold")  # Title formatting
+    )
+})
+
+# Combine All Boxplots into a Grid Layout using grid.arrange
+grid.arrange(grobs = box_plot_list, ncol = length(selected_cols))  # Arrange plots horizontally
+```
+### Observations
+
+#### **1. First Order Profit**
+- **Observation**:
+  - The majority of data points are clustered below **20 units**.
+  - A few extreme outliers extend up to **60 units**, suggesting a skewed distribution.
+
+#### **2. Subsequent Order Profit**
+- **Observation**:
+  - Most values are below **100 units**, with significant outliers reaching beyond **400 units**.
+  - Highlights variability in profit generation from subsequent orders.
+
+#### **3. Subsequent Orders Count**
+- **Observation**:
+  - Data is tightly clustered below **10 orders**, with a few outliers exceeding **30 orders**.
+
+#### **4. Total Value of All Promotions**
+- **Observation**:
+  - The majority of data points fall below **20 units**.
+  - Numerous extreme outliers exceed **100 units**, indicating promotional anomalies.
+
+#### **5. Age**
+- **Observation**:
+  - Most customers are between **20 and 50 years old**.
+  - Few outliers extend beyond **80 years**, which could indicate data inconsistencies or older customers.
+
+#### **6. Total Profit**
+- **Observation**:
+  - The bulk of data is below **100 units**.
+  - Outliers extend beyond **400 units**, pointing to high-value customers or data irregularities.
+
+---
+
+### Recommendations
+- **Outlier Treatment**: Consider winsorizing or transforming data to minimize the influence of extreme outliers.
+- **Data Quality Check**: Verify the accuracy of outlier data points, particularly for variables like **Age** and **Total Value of All Promotions**.
+- **Further Analysis**: Investigate the relationship between high outliers in **Total Profit** and promotional activity.
+
+---
+
+## Age Distribution by Gender
+
+This section explores the distribution of customers' ages, segmented by gender. The visualization provides insights into age demographics and highlights gender-based trends.
+
+```{r, fig.width=16, fig.height=6}
+ggplot(df, aes(x = Age, fill = Gender)) + # Group by Gender
+  geom_histogram(binwidth = 0.5, position = "dodge") +
+  labs(
+    title = "Age Distribution by Gender",
+    x = "Age",
+    y = "Frequency"
+  ) +
+  theme_rose_pine() +
+  scale_fill_rose_pine()
+```
+### Observations
+
+1. **Overall Age Distribution**:
+   - The majority of customers fall between **20 and 50 years**.
+   - A sharp decline in frequency is observed beyond **50 years**, with sparse data for customers above **80 years**.
+
+2. **Gender Segmentation**:
+   - **Males** form the largest segment across all age groups.
+   - **Females** represent a smaller but consistent portion across most age groups.
+   - **Not Defined** gender has minimal representation, primarily in the younger age brackets.
+
+3. **Peaks in Age**:
+   - Noticeable peaks around **25–30 years**, indicating a concentrated customer base in this age range.
+
+---
+
+### Recommendations
+- **Target Marketing**:
+  - Focus marketing efforts on the **20-50 age group**, as it constitutes the majority of the customer base.
+- **Data Validation**:
+  - Ensure accuracy for customers with undefined gender or those above **80 years**, as these may indicate data entry errors.
+
+---
+
+## Impact of Promotions on Total Profit
+
+This section investigates the relationship between the **Total Value of All Promotions** and **Total Profit**. The scatter plot provides a visual representation of how promotional activities influence customer profitability.
+
+```{r, fig.width=16, fig.height=6}
+ggplot(df, aes(x = Total_value_of_all_promotions, y = Total_Profit)) +
+  geom_point(size = 1, color = colors[1]) +  # Custom color for points from Rosé Pine palette
+  labs(
+    title = "Impact of Promotions on Total Profit", 
+    x = "Total Value of All Promotions", 
+    y = "Total Profit"
+  ) +
+  theme_rose_pine()  # Apply the custom Rosé Pine theme
+```
+### Observations
+
+1. **Overall Relationship**:
+   - A positive trend is evident, indicating that higher promotional values are associated with increased total profit.
+   - However, the scatterplot suggests **diminishing returns** as promotions exceed a certain value.
+
+2. **Concentration of Data**:
+   - A large cluster of data points lies in the lower range of **Total Value of All Promotions**, suggesting that most customers receive limited promotions.
+   - The **Total Profit** shows significant variability, even for customers with low promotional values.
+
+3. **Outliers**:
+   - A few customers exhibit extremely high promotional values with varying profit levels. These points could represent special cases like bulk discounts or loyalty rewards.
+
+4. **Potential Non-Linear Pattern**:
+   - Beyond a certain promotional threshold, the relationship between promotions and profit appears less linear, highlighting the need for further investigation.
+
+---
+
+### Recommendations
+
+- **Optimizing Promotional Strategy**:
+  - Identify the threshold for diminishing returns and optimize promotional spending to maximize profitability.
+- **Customer Segmentation**:
+  - Analyze segments of customers with high promotions but low profits to improve targeted marketing efforts.
+- **Outlier Analysis**:
+  - Investigate outliers with extremely high promotional values to understand unique cases and refine marketing strategies.
+
+---
+
+## Total Profit Analysis
+
+This section provides insights into total profit distribution across different genders and marketing channel types. The bar plots illustrate the total profit contribution for each category.
+
+```{r, fig.width=19, fig.height=9}
+# Plot 1: Total Profit by Gender
+plot_gender <- ggplot(df, aes(x = factor(Gender), y = Total_Profit, fill = Gender)) +
+  geom_bar(stat = "summary", fun = "sum", position = "dodge") +  # Summing the total profit by gender
+  labs(
+    title = "Total Profit by Gender",
+    x = "Gender",
+    y = "Total Profit"
+  ) +
+  theme_rose_pine() + 
+  scale_fill_rose_pine() +
+  theme(legend.position = "top")  # Move legend to the top
+
+# Plot 2: Total Profit by Marketing Channel Type
+plot_marketing_channel <- ggplot(df, aes(x = factor(Marketing_Channel_Type), y = Total_Profit, fill = Marketing_Channel_Type)) +
+  geom_bar(stat = "summary", fun = "sum", position = "dodge") +  # Summing total profit by marketing channel
+  labs(
+    title = "Total Profit by Marketing Channel Type",
+    x = "Marketing Channel Type",
+    y = "Total Profit"
+  ) +
+  theme_rose_pine() +
+  scale_fill_rose_pine() +
+  theme(legend.position = "top")  # Move legend to the top
+
+
+# Merge the three plots into a grid layout
+grid.arrange(plot_gender, plot_marketing_channel, ncol = 2)
+
+```
+### Observations
+
+#### Total Profit by Gender
+1. **Male Dominance**:
+   - Male customers contribute the highest total profit compared to other genders.
+   - Female customers show a significant contribution, but it is still much lower than male customers.
+   - The "Not Defined" gender category contributes the least to total profit.
+
+2. **Implications**:
+   - Marketing strategies targeted toward male customers appear to be more effective in driving profits.
+   - Potential opportunity exists to improve engagement and profit generation from female customers.
+
+---
+
+#### Total Profit by Marketing Channel Type
+1. **Top Performing Channels**:
+   - **Direct marketing** channels contribute the highest total profit, showcasing the effectiveness of direct customer engagement.
+   - **Organic search** also performs well, indicating the importance of SEO and organic traffic in driving profitability.
+
+2. **Underperforming Channels**:
+   - **Paid social** and **affiliates** channels contribute the least to total profit, suggesting the need to evaluate and optimize strategies for these channels.
+
+3. **Implications**:
+   - Businesses should prioritize resources on direct and organic channels for maximum profitability.
+   - Evaluate the ROI for underperforming channels and refine strategies for better returns.
+
+---
+
+```{r, fig.width=16, fig.height=6}
+# Summarize percentage distribution of Gender by Marketing_Channel_Type
+gender_channel_distribution <- df %>%
+  group_by(Gender, Marketing_Channel_Type) %>%
+  summarise(Count = n()) %>%
+  group_by(Marketing_Channel_Type) %>%
+  mutate(Percentage = (Count / sum(Count)) * 100)
+
+# Pivot data for heatmap
+heatmap_data <- gender_channel_distribution %>%
+  select(Gender, Marketing_Channel_Type, Percentage) %>%
+  pivot_wider(names_from = Marketing_Channel_Type, values_from = Percentage)
+
+# Melt the data for ggplot
+melted_data <- melt(heatmap_data, id.vars = "Gender", variable.name = "Marketing_Channel_Type", value.name = "Percentage")
+
+# Plot the heatmap with `scale_fill_gradient2` and Rosé Pine colors
+ggplot(melted_data, aes(x = Marketing_Channel_Type, y = Gender, fill = Percentage)) +
+  geom_tile() +
+  geom_text(aes(label = sprintf("%.2f", Percentage)), size = 6) + # Show percentage with 2 decimals
+  scale_fill_gradient2(
+    low = colors[2],      # Low color
+    mid = colors[1],      # Mid color
+    high = colors[3],     # High color
+    midpoint = 0.5,        # Assume midpoint at 50% for percentages
+    limits = c(0, 100),   # Set limits for percentage
+    name = "Percentage"
+  ) +
+  theme_rose_pine(base_size = 14) +
+  labs(
+    title = "Gender Distribution by Marketing Channel Type (%)",
+    x = "Marketing Channel Type",
+    y = "Gender"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 19), # Center and bold title
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 14), # Rotate x-axis labels
+    axis.text.y = element_text(size = 14), # Adjust y-axis text size
+    legend.position = "right", # Place the legend on the right
+    legend.text = element_text(size = 12), # Adjust legend text size
+    legend.title = element_text(size = 13, face = "bold") # Adjust legend title size
+  )
+```
+
+
+## Impact of Promotions and Marketing Channels on Total Profit
+
+This section explores the relationship between the total value of promotions and total profit across various marketing channels. The scatter plot highlights the impact of marketing efforts and promotions on customer profitability.
+
+```{r, fig.width=16, fig.height=6}
+ggplot(df, aes(x = Total_value_of_all_promotions, y = Total_Profit, color = Marketing_Channel_Type)) +
+  geom_point(size = 3) +  # Add points with size
+  labs(
+    title = "Impact of Promotions and Marketing Channels on Total Profit", 
+    x = "Total Value of All Promotions", 
+    y = "Total Profit"
+  ) +
+  theme_rose_pine() +  # Apply the custom Rosé Pine theme
+  scale_color_rose_pine()  # Apply the Rosé Pine color scale to the color aesthetic
+```
+### Observations
+
+1. **General Trend**:
+   - As the total value of promotions increases, there is a corresponding increase in total profit, but the relationship appears non-linear.
+   - The majority of data points cluster in the lower ranges of promotion value and profit, indicating many customers generate modest profits with limited promotion expenditure.
+
+2. **Channel-wise Insights**:
+   - **Affiliates** and **Paid Social** tend to have lower profit contributions even with increased promotion values.
+   - **Direct** and **Organic Search** channels exhibit more consistent profit generation, especially at higher promotion values.
+   - **Paid Search** displays a scattered pattern with some high-profit outliers.
+
+3. **Outliers**:
+   - Certain customers achieve high profits without substantial promotion value, suggesting high-value customers may require less incentive.
+   - Some high promotion values do not correspond to high profits, signaling inefficient promotion strategies.
+
+---
+
+### Recommendations
+
+- Focus marketing efforts on **Direct** and **Organic Search** channels to maximize profitability.
+- Reassess promotion strategies for **Affiliates** and **Paid Social** to improve their return on investment (ROI).
+- Investigate high-profit customers with minimal promotions to identify characteristics that can guide customer segmentation and targeted campaigns.
+
+---
+
+## Locations by Total Profit and Gender
+
+This visualization presents the distribution of total profit across different locations, segmented by gender (Female, Male, and Not Defined). The analysis focuses on identifying geographical profitability trends.
+
+```{r, fig.width=18, fig.height=10}
+# Summarize the total profit by Location
+location_rev <- df %>%
+  group_by(Location) %>%
+  summarise(Total_Profit = sum(Total_Profit, na.rm = TRUE)) %>%
+  arrange(Total_Profit) %>%
+  mutate(Location = factor(Location, levels = .$Location))
+
+# Summarize total profit by Location and Gender
+location_gender_rev <- df %>%
+  group_by(Location, Gender) %>%
+  summarise(Total_Profit = sum(Total_Profit, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(Location = factor(Location, levels = location_rev$Location))
+
+# Plot the data for the top 20 locations by Total_Profit and Gender
+ggplot(location_gender_rev, aes(Location, Total_Profit, fill = Gender)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  coord_flip() +
+  facet_wrap(~ Gender) +
+  theme_rose_pine() +  # Apply the custom theme
+  scale_fill_rose_pine() +  # Apply the fill color scale
+  labs(title = "Locations by Total Profit and Gender", x = "Location", y = "Total Profit") +
+  theme(legend.position = "top")  # Move the legend to the top
+```
+### Observations
+
+1. **Overall Insights**:
+   - **Dublin** significantly outperforms all other locations in total profit contributions, irrespective of gender.
+   - Locations such as **Cork**, **Galway**, and **Limerick** follow Dublin, but their profit contributions are considerably lower.
+
+2. **Gender-Based Distribution**:
+   - **Male customers** dominate the total profit contributions across almost all locations, highlighting their significant role in revenue generation.
+   - **Female customers** show notable contributions in Dublin and a few other top cities but lag behind male customers overall.
+   - The **Not Defined** gender group has minimal profit contributions and is mostly concentrated in a few locations.
+
+3. **Geographical Distribution**:
+   - A long tail of smaller towns contributes marginally to total profit. These locations could indicate untapped potential or low market penetration.
+   - High concentration of profit in major cities like Dublin suggests a strong urban customer base.
+
+---
+
+### Recommendations
+
+- Focus marketing and customer engagement efforts on high-profit cities such as **Dublin**, **Cork**, and **Galway**.
+- Develop strategies to increase female customer engagement in smaller towns and cities.
+- Investigate the "Not Defined" gender group to understand its characteristics and potential for growth.
+- Explore opportunities in smaller towns with low profit contributions to expand market reach.
+
+---
+
+## Impact of Promotions on Total Profit
+
+This scatter plot visualizes the relationship between the **Total Value of All Promotions** and the **Total Profit**, showcasing how promotional efforts influence overall profitability.
+
+```{r, fig.width=16, fig.height=6}
+# Create scatter plot with regression line
+ggplot(df, aes(x = Total_value_of_all_promotions, y = Total_Profit)) +
+  geom_point(color = colors[1]) +  # Scatter plot with points colored in orange
+  geom_smooth(method = "lm", color = colors[2], se = FALSE) +  # Add regression line
+  labs(
+    title = "Impact of Promotions on Total Profit",
+    x = "Total Value of All Promotions",
+    y = "Total Profit"
+  ) +
+  theme_rose_pine()  # Apply Rose Pine theme
+```
+### Observations
+
+1. **Positive Correlation**:
+   - The scatter plot demonstrates a **positive correlation** between the total value of promotions and total profit. As the promotional value increases, the profit generally rises.
+   - The fitted trend line further supports this relationship, indicating that promotions effectively contribute to profit generation.
+
+2. **Diminishing Returns**:
+   - Beyond a certain promotional value (~50 units), the incremental increase in profit becomes less pronounced.
+   - This suggests **diminishing returns** on investment in promotions, where further spending may yield marginal profit gains.
+
+3. **High Variability**:
+   - A high concentration of points at lower promotional values (~0 to 20 units) reflects variability in profits, indicating that other factors may influence customer behavior and profitability.
+
+---
+
+### Recommendations
+
+- **Optimize Promotional Spending**:
+  - Focus on promotional values that yield the highest return on investment, potentially within the range of 20 to 50 units.
+- **Analyze High Variability**:
+  - Investigate factors contributing to the variability in profit for lower promotional values to refine strategies.
+- **Targeted Promotions**:
+  - Design promotions targeted at customer segments most responsive to increased spending.
+
+---
+
+# 4. Outlier Detection Methods
+
+This document demonstrates how to detect outliers using **Z-Score**, **Modified Z-Score**, and **IQR methods** on a small dataset. We will calculate the outliers step-by-step for a simple 5-row dataset.
+
+---
+
+**Example Dataset**
+
+We will use the following dataset:
+
+| Row | Value |
+|-----|-------|
+| 1   | 10    |
+| 2   | 12    |
+| 3   | 14    |
+| 4   | 100   |
+| 5   | 16    |
+
+---
+
+## Z-Score Method
+
+### Formula
+\[
+Z = \frac{(X - \mu)}{\sigma}
+\]
+
+Where:
+- \(X\): The value.
+- \(\mu\): Mean of the dataset.
+- \(\sigma\): Standard deviation of the dataset.
+
+### Steps
+1. **Compute the Mean (\(\mu\))**:
+   \[
+   \mu = \frac{10 + 12 + 14 + 100 + 16}{5} = 30.4
+   \]
+
+2. **Compute the Standard Deviation (\(\sigma\))**:
+   \[
+   \sigma = \sqrt{\frac{\sum{(X - \mu)^2}}{n}}
+   \]
+   Substituting values:
+   \[
+   \sigma = \sqrt{\frac{(10-30.4)^2 + (12-30.4)^2 + (14-30.4)^2 + (100-30.4)^2 + (16-30.4)^2}{5}}
+   \]
+   \[
+   \sigma \approx 38.89
+   \]
+
+3. **Compute Z-Scores**:
+   Using \(Z = \frac{(X - \mu)}{\sigma}\):
+   - \(10: Z \approx -0.524\)
+   - \(12: Z \approx -0.473\)
+   - \(14: Z \approx -0.423\)
+   - \(100: Z \approx 1.792\)
+   - \(16: Z \approx -0.372\)
+
+4. **Threshold**: Outliers are values with \(|Z| > 3\).
+
+---
+
+## Modified Z-Score Method
+
+### Formula
+\[
+MZ = 0.6745 \cdot \frac{(X - \text{median})}{MAD}
+\]
+
+Where:
+- \(X\): The value.
+- \(\text{median}\): Median of the dataset.
+- \(MAD\): Median Absolute Deviation:
+  \[
+  MAD = \text{Median}(|X_i - \text{median}|)
+  \]
+
+### Steps
+1. **Compute the Median**:
+   \[
+   \text{Median} = 14
+   \]
+
+2. **Compute MAD**:
+   \[
+   |10-14| = 4, \, |12-14| = 2, \, |14-14| = 0, \, |100-14| = 86, \, |16-14| = 2
+   \]
+   Median of absolute deviations:
+   \[
+   MAD = \text{Median}([4, 2, 0, 86, 2]) = 2
+   \]
+
+3. **Compute Modified Z-Scores**:
+   Using \(MZ = 0.6745 \cdot \frac{(X - \text{median})}{MAD}\):
+   - \(10: MZ \approx -1.349\)
+   - \(12: MZ \approx -0.675\)
+   - \(14: MZ \approx 0\)
+   - \(100: MZ \approx 28.916\)
+   - \(16: MZ \approx 0.675\)
+
+4. **Threshold**: Outliers are values with \(|MZ| > 3.5\). Hence, \(100\) is an outlier.
+
+---
+
+## IQR Method
+
+### Formula
+Outliers are values outside:
+\[
+[\text{Q1} - 1.5 \cdot \text{IQR}, \text{Q3} + 1.5 \cdot \text{IQR}]
+\]
+Where:
+- \(Q1\): 25th percentile.
+- \(Q3\): 75th percentile.
+- \(\text{IQR} = Q3 - Q1\).
+
+### Steps
+1. **Compute Quartiles**:
+   - Sorted dataset: \([10, 12, 14, 16, 100]\).
+   - \(Q1 = 12, Q3 = 16\).
+
+2. **Compute IQR**:
+   \[
+   \text{IQR} = Q3 - Q1 = 16 - 12 = 4
+   \]
+
+3. **Compute Outlier Bounds**:
+   - Lower Bound:
+     \[
+     \text{Lower Bound} = Q1 - 1.5 \cdot \text{IQR} = 12 - 1.5 \cdot 4 = 6
+     \]
+   - Upper Bound:
+     \[
+     \text{Upper Bound} = Q3 + 1.5 \cdot \text{IQR} = 16 + 1.5 \cdot 4 = 22
+     \]
+
+4. **Identify Outliers**:
+   - Values outside \([6, 22]\) are outliers. In this case, \(100\) is an outlier.
+
+---
+
+## Summary Table
+
+| Row | Value | Z-Score | Modified Z-Score | IQR Outlier |
+|-----|-------|---------|------------------|-------------|
+| 1   | 10    | -0.524  | -1.349           | No          |
+| 2   | 12    | -0.473  | -0.675           | No          |
+| 3   | 14    | -0.423  | 0.000            | No          |
+| 4   | 100   | 1.792   | 28.916           | Yes         |
+| 5   | 16    | -0.372  | 0.675            | No          |
+
+---
+
+## Key Observations
+
+- **Z-Score**: Detects no outliers (\(|Z| > 3\)).
+- **Modified Z-Score**: Detects \(100\) as an outlier (\(|MZ| > 3.5\)).
+- **IQR Method**: Detects \(100\) as an outlier (outside \([6, 22]\)).
+
+---
+
+## Conclusion
+
+- Use **IQR** for simple EDA or robust cleaning.
+- Use **Modified Z-Score** for skewed datasets or small sample sizes.
+- Use **Z-Score** for symmetric, normal distributions.
+
+
+```{r}
+# Filter numeric columns only from selected_cols
+numeric_data <- df %>% select(all_of(selected_cols)) %>% select(where(is.numeric))
+
+## 1. Z-SCORE METHOD
+z_score_outliers <- numeric_data %>%
+  summarise(across(everything(), ~ {
+    z_scores <- scale(.)  # Standardize data
+    sum(abs(z_scores) > 3, na.rm = TRUE)  # Count outliers
+  })) %>%
+  pivot_longer(everything(), names_to = "Column", values_to = "Z_Score_Outliers")
+
+## 2. MODIFIED Z-SCORE METHOD
+modified_z_outliers <- numeric_data %>%
+  summarise(across(everything(), ~ {
+    median_val <- median(., na.rm = TRUE)
+    mad_val <- mad(., constant = 1.4826, na.rm = TRUE)  # MAD-based scale
+    modified_z <- 0.6745 * (.-median_val) / mad_val
+    sum(abs(modified_z) > 3.5, na.rm = TRUE)  # Count robust outliers
+  })) %>%
+  pivot_longer(everything(), names_to = "Column", values_to = "Modified_Z_Outliers")
+
+## 3. IQR METHOD
+iqr_outliers <- numeric_data %>%
+  summarise(across(everything(), ~ {
+    Q1 <- quantile(., 0.25, na.rm = TRUE)
+    Q3 <- quantile(., 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    lower_bound <- Q1 - 1.5 * IQR
+    upper_bound <- Q3 + 1.5 * IQR
+    sum(. < lower_bound | . > upper_bound, na.rm = TRUE)  # Count IQR outliers
+  })) %>%
+  pivot_longer(everything(), names_to = "Column", values_to = "IQR_Outliers")
+
+## Combine Results for All Methods
+outlier_summary <- z_score_outliers %>%
+  full_join(modified_z_outliers, by = "Column") %>%
+  full_join(iqr_outliers, by = "Column")
+
+# Print the full summary
+print(outlier_summary)
+```
+---
+
+# 5. Handling Outliers
+
+When dealing with outlier removal, two popular IQR-based methods are:
+
+1. **Column-Wise Filtering**: Removes outliers for each column individually.
+2. **Row-Wise Filtering**: Removes entire rows if any column contains an outlier.
+
+This document explores their characteristics, advantages, disadvantages, and use cases.
+
+---
+
+## Column-Wise Filtering
+
+Column-Wise Filtering is a less aggressive approach to outlier removal. It detects and removes outliers from each column **individually** while retaining rows that are valid for other columns. This method is especially useful for exploratory data analysis (EDA), where retaining as much data as possible is essential.
+
+```{r}
+remove_outliers_columnwise <- function(data, cols) {
+  for (col in cols) {
+    Q1 <- quantile(data[[col]], 0.25, na.rm = TRUE)
+    Q3 <- quantile(data[[col]], 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    lower_bound <- Q1 - 1.5 * IQR
+    upper_bound <- Q3 + 1.5 * IQR
+    data <- data %>% filter(data[[col]] >= lower_bound & data[[col]] <= upper_bound)
+  }
+  return(data)
+}
+```
+
+**Example Execution**
+```{r}
+cleaned_df_columnwise <- remove_outliers_columnwise(df, selected_cols)
+cat("Original Rows:", nrow(df))
+cat("Cleaned Rows:", nrow(cleaned_df_columnwise))
+```
+
+### Characteristics of Column-Wise Filtering
+
+#### How It Works
+
+- Outliers are detected and removed for each column **independently**.
+- Rows are retained unless flagged as an outlier in the **current column** being processed.
+
+#### Advantages
+
+- Retains more data overall, as rows valid in other columns are **not removed**.
+- Less aggressive, making it suitable for **exploratory data analysis (EDA)** or initial cleaning steps.
+
+#### Disadvantages
+
+- Inconsistent cleaning: A row flagged as an outlier in one column but valid in another remains, potentially leading to **inconsistent results**.
+
+---
+
+## Row-Wise Filtering
+
+```{r}
+remove_outliers_iqr <- function(data, cols) {
+  data %>%
+    filter(across(all_of(cols), ~ {
+      Q1 <- quantile(., 0.25, na.rm = TRUE)
+      Q3 <- quantile(., 0.75, na.rm = TRUE)
+      IQR <- Q3 - Q1
+      lower_bound <- Q1 - 1.5 * IQR
+      upper_bound <- Q3 + 1.5 * IQR
+      . >= lower_bound & . <= upper_bound
+    }))
+}
+```
+
+**Example Execution**
+```{r}
+# Example: Applying Row-Wise Filtering
+cleaned_df_rowwise <- remove_outliers_iqr(df, selected_cols)
+
+# Output: Before and After Row Counts
+cat("Original Rows:", nrow(df))
+cat("Cleaned Rows:", nrow(cleaned_df_rowwise))
+```
+
+### Characteristics of Row-Wise Filtering
+
+#### How It Works
+
+- Outliers are detected across all selected columns **at the same time**.
+- If **any column** in a row contains an outlier, the **entire row is removed**.
+
+#### Advantages
+
+- Ensures **consistent cleaning** across all selected columns.
+- Suitable for **machine learning pipelines** or **strict statistical analysis**, where clean and complete data is crucial.
+
+#### Disadvantages
+
+- More aggressive: This approach often leads to **significant data loss** when variability exists across multiple columns.
+
+---
+
+## Which One Should You Use?
+
+Selecting the appropriate outlier removal method depends on your goal. Here’s a straightforward guide to help you decide.
+
+---
+
+**If Your Goal is Exploratory Data Analysis (EDA) or You Want to Retain as Much Data as Possible:**
+
+- **Use**: `remove_outliers_columnwise`
+- **Why Choose This Method?**
+  - This approach is **less aggressive**, removing outliers column by column.
+  - Rows that are valid in other columns remain intact, allowing you to retain more of your dataset.
+  - Perfect for **initial data cleaning** or **early-stage exploratory data analysis (EDA)**, where preserving data for a broader overview is essential.
+
+---
+
+**If Your Goal is Machine Learning or Statistical Modeling, Where Consistency Across Rows is Critical:**
+
+- **Use**: `remove_outliers_iqr`
+- **Why Choose This Method?**
+  - This method is **more stringent**, removing entire rows if any column contains an outlier.
+  - Ensures that your dataset is **consistent** and free from outliers in the specified columns.
+  - Ideal for **machine learning pipelines** or **statistical modeling**, where clean and consistent data is crucial for accurate results.
+
+---
+
+## Quick Comparison
+
+| Goal                     | Recommended Method         | Why?                                  |
+|--------------------------|---------------------------|---------------------------------------|
+| **Exploratory Data Analysis (EDA)** | `remove_outliers_columnwise` | Retains more data for exploration.    |
+| **Machine Learning/Modeling**       | `remove_outliers_iqr`       | Ensures strict consistency across rows.|
+
+---
+
+### Final Thoughts
+
+- Use **Column-Wise Filtering** (`remove_outliers_columnwise`) when exploring data and aiming to preserve as much information as possible.
+- Use **Row-Wise Filtering** (`remove_outliers_iqr`) when consistency across rows is critical for downstream tasks like modeling or analysis.
+
+Note: Always evaluate the impact of your chosen method on the dataset to ensure it aligns with your goals.
+
+---
+
+## Violin Plots Column-Wise Filtering
+
+Violin plots provide a detailed representation of the distribution of data, combining the information of a box plot and a density plot. This visualization is particularly useful for identifying patterns, spread, and potential outliers within a dataset.
+
+The following violin plots display the distributions of key features in the dataset **after applying column-wise outlier removal using the IQR method**. The selected features include:
+
+1. **First Order Profit**
+2. **Subsequent Order Profit**
+3. **Subsequent Orders Count**
+4. **Total Value of All Promotions**
+5. **Age**
+6. **Total Profit**
+
+---
+
+```{r, fig.width=16, fig.height=8}
+# Step 3: Generate Violin Plots Dynamically
+violin_plot_list <- lapply(seq_along(selected_cols), function(i) {
+  col_name <- selected_cols[i]
+  formatted_title <- tools::toTitleCase(gsub("_", " ", col_name))
+  
+  ggplot(cleaned_df_columnwise, aes(x = factor(1), y = .data[[col_name]])) +
+    geom_violin(fill = colors[i], color = colors[i], amount = 0.2) +  # Dynamic colors
+    labs(
+      title = paste("", formatted_title),
+      x = "", 
+      y = "Value"
+    ) +
+    theme_rose_pine() +  # Apply Rose Pine theme
+    theme(
+      axis.text.x = element_blank(),  # Remove x-axis text
+      axis.ticks.x = element_blank(),  # Remove x-axis ticks
+      plot.title = element_text(size = 11, face = "bold")  # Title formatting
+    )
+})
+
+# Step 4: Combine All Violin Plots into a Grid Layout
+grid.arrange(grobs = violin_plot_list, ncol = length(selected_cols))
+```
+### Observations
+
+#### First Order Profit
+- The majority of the values are concentrated within the lower range, indicating most customers' first orders yield relatively low profit.
+- A small tail suggests a few customers have significantly higher profits.
+
+#### Subsequent Order Profit
+- Similar to the first order, the density is concentrated at the lower end with fewer customers contributing to higher profits.
+
+#### Subsequent Orders Count
+- Most customers have placed a limited number of subsequent orders.
+- The distribution reveals a small number of customers with many subsequent orders.
+
+#### Total Value of All Promotions
+- Promotions are concentrated at low values, suggesting limited usage or impact for the majority of customers.
+- The density plot shows a sharp decline as the value increases.
+
+#### Age
+- Age distribution is fairly uniform in the middle range (20–40 years), tapering off for younger and older customers.
+
+#### Total Profit
+- The overall profit is primarily low, with a few customers contributing to high profits.
+
+---
+
+### Advantages of Violin Plots
+- Combines the features of a box plot and density plot, making it easier to identify the spread and density of data.
+- Highlights potential outliers visually while retaining the overall shape of the distribution.
+
+### Limitations
+- Does not provide a direct count of outliers.
+- Interpretation can be challenging for features with highly skewed distributions.
+
+---
+
+### Conclusion
+
+The violin plots offer a comprehensive overview of the cleaned data distributions, highlighting the concentration of values, the spread, and the presence of potential outliers. These visualizations serve as a valuable tool for exploratory data analysis (EDA) and preparing data for further modeling.
+
+```{r, fig.width=16, fig.height=8}
+# Subset the cleaned dataset to the selected columns
+correlation_data <- cleaned_df_columnwise[, selected_cols]
+
+# Compute the correlation matrix
+correlation_matrix <- cor(correlation_data, use = "pairwise.complete.obs")
+
+# Melt the correlation matrix for ggplot
+correlation_melted <- melt(correlation_matrix)
+
+# Generate the correlation heatmap
+ggplot(data = correlation_melted, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() + # Add white border for tiles
+  geom_text(aes(label = round(value, 2)), size = 6) + # Add correlation coefficients
+  scale_fill_gradient2(
+    low = colors[3], 
+    high = colors[1], 
+    mid = colors[2], 
+    midpoint = 0, 
+    limits = c(-1, 1),
+    guide = guide_colorbar(
+      title = "",
+      barwidth = 40, # Make the color bar wider
+      barheight = 1  # Adjust the height of the bar
+    )
+  ) +
+  theme_rose_pine() + # Apply the Rosé Pine theme
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 16),
+    axis.text.y = element_text(size = 16),
+    plot.title = element_text(size = 20, face = "bold", hjust = 0.28), # Center and adjust title size
+    axis.title = element_blank(), # Remove axis titles
+    panel.grid = element_blank(), # Remove grid lines
+    legend.position = "top",
+    legend.text = element_text(size = 11), # Adjust legend text size
+  )+
+  ggtitle("Correlation Matrix") # Add plot title
+```
+```{r, fig.width=16, fig.height=8}
+# Select categorical columns
+categorical_cols <- c("Gender", "Location", "Contact_Allowed", "Marketing_Channel_Type")
+
+# Subset the dataset
+categorical_data <- cleaned_df_columnwise[, categorical_cols]
+
+# Define a function to compute Cramér's V for a pair of categorical features
+cramers_v_matrix <- function(data) {
+  n <- ncol(data)
+  matrix <- matrix(NA, n, n, dimnames = list(names(data), names(data)))
+  for (i in seq_len(n)) {
+    for (j in seq_len(n)) {
+      if (i <= j) {
+        matrix[i, j] <- cramersV(data[[i]], data[[j]], simulate.p.value = TRUE)
+      } else {
+        matrix[i, j] <- matrix[j, i]
+      }
+    }
+  }
+  return(matrix)
+}
+
+# Compute the Cramér's V matrix
+cramers_v <- cramers_v_matrix(categorical_data)
+
+# Melt the matrix for ggplot
+melted_cramers_v <- melt(cramers_v, na.rm = TRUE)
+
+# Generate the heatmap
+ggplot(data = melted_cramers_v, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() + # Add white borders for tiles
+  geom_text(aes(label = round(value, 2)), size = 6) + # Add Cramér's V values
+  scale_fill_gradient2(
+    low = colors[2], 
+    high = colors[1], 
+    mid = colors[3], 
+    midpoint = 0.5,
+    limits = c(0, 1),
+    guide = guide_colorbar(
+      title = "",
+      barwidth = 30, # Adjust color bar width
+      barheight = 1  # Adjust color bar height
+    )
+  ) +
+  theme_rose_pine(base_size = 14) + # Apply Rosé Pine theme
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 16),
+    axis.text.y = element_text(size = 16),
+    plot.title = element_text(size = 20, face = "bold", hjust = 0.5), # Center the title
+    axis.title = element_blank(), # Remove axis titles
+    panel.grid = element_blank(), # Remove grid lines
+    legend.position = "top",
+    legend.text = element_text(size = 12), # Adjust legend text size
+    legend.title = element_text(size = 14, face = "bold")
+  ) +
+  ggtitle("Cramér's V Correlation Matrix for Categorical Features") # Add plot title
+```
+
+```{r, fig.width=20, fig.height=20}
+ggpairs(
+  data = cleaned_df_columnwise[, selected_cols],
+  mapping = aes(color = "Total_Profit"), # Replace with a relevant column if needed
+  lower = list(
+    continuous = wrap("smooth", color = colors[2], size = 0.8),
+    combo = wrap("facetdensity", alpha = 0.7, fill = colors[3])
+  ),
+  upper = list(
+    continuous = wrap("cor", size = 6, color = rose_pine_colors$text)
+  ),
+  diag = list(
+    continuous = wrap("densityDiag", fill = colors[1], alpha = 0.7)
+  )
+) +
+  theme_rose_pine(base_size = 12) + # Apply the Rosé Pine theme
+  theme(
+    plot.title = element_text(size = 30, face = "bold"), # Title font size
+    axis.text = element_text(size = 22), # Axis text size
+    axis.title = element_text(size = 22), # Axis title size
+    strip.text = element_text(size = 14) # Size of facet labels
+  ) +
+  labs(
+    title = "Pairplot with Correlation"
+  )
+```
+
+```{r, fig.width=16, fig.height=8}
+# Parse Registration_Date as datetime
+cleaned_df_columnwise$Registration_Date <- mdy_hm(cleaned_df_columnwise$Registration_Date)
+
+# Extract the month and year
+cleaned_df_columnwise <- cleaned_df_columnwise %>%
+  mutate(Month = month(Registration_Date, label = TRUE, abbr = TRUE)) # e.g., Jan, Feb
+
+monthly_profit <- cleaned_df_columnwise %>%
+  group_by(Month) %>%
+  summarise(Total_Profit = sum(Total_Profit, na.rm = TRUE)) %>%
+  arrange(Month)
+
+ggplot(monthly_profit, aes(x = Month, y = Total_Profit, group = 1)) +
+  geom_line(color = colors[1], size = 1.2, linetype="twodash") + # Line with custom color
+  geom_point(color = colors[2], size = 3) + # Points on the line
+  labs(
+    title = "Monthly Total Profit in 2013",
+    x = "Month",
+    y = "Total Profit"
+  ) +
+  theme_rose_pine(base_size = 15) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"), # Centered title
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14)
+  )
+
+```
+```{r, fig.width=16, fig.height=6}
+# Group data by Marketing_Channel_Type and Month, then calculate the total profit
+monthly_profit_by_channel <- cleaned_df_columnwise %>%
+  group_by(Month, Marketing_Channel_Type) %>%
+  summarise(Total_Profit = sum(Total_Profit, na.rm = TRUE)) %>%
+  arrange(Month)
+
+# Check the unique marketing channels and colors
+unique_channels <- unique(monthly_profit_by_channel$Marketing_Channel_Type)
+
+# Ensure the colors match the unique channels
+colors_for_channels <- setNames(colors[1:length(unique_channels)], unique_channels)
+
+# Plot with color mapping
+ggplot(monthly_profit_by_channel, aes(x = Month, y = Total_Profit, color = Marketing_Channel_Type, group = Marketing_Channel_Type)) +
+  geom_line(size = 1.2, linetype="twodash") + # Line for each marketing channel
+  geom_point(size = 3) + # Points on the lines
+  scale_color_manual(values = colors_for_channels) + # Map colors to channels
+  labs(
+    title = "Monthly Total Profit by Marketing Channel in 2013",
+    x = "Month",
+    y = "Total Profit",
+    color = "Marketing Channel" # Legend title
+  ) +
+  theme_rose_pine(base_size = 15) + # Apply Rosé Pine theme
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"), # Centered title
+    axis.text.x = element_text(size = 16),
+    axis.text.y = element_text(size = 16),
+    legend.position = "right", # Legend position
+    legend.text = element_text(size = 14), # Legend text size
+    legend.title = element_text(size = 16, face = "bold") # Legend title size
+  )
+```
+
+# 5. Conclusion
+
+This report highlights the key metrics, major data points, and correlations from the dataset. The visualization provides a clear picture of the characteristics of different attributes.
