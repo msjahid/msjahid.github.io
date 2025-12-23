@@ -18,7 +18,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #010e1b;
+  background: #171520;
   background-size: cover;
   left: 0;
   right: 0;
@@ -288,7 +288,7 @@ h6 {
   left: 0;
   top: 0;
   right: 0;
-  background: #09203a;
+  background: #15141d;
 }
 
 #header.header-top .social-links,
@@ -495,7 +495,7 @@ section .container {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #09203a;
+  background: #1e1c2e;
   transition: ease-in-out 0.3s;
 }
 
@@ -669,7 +669,7 @@ section .container {
 --------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
-  background: #09203a;
+  background: #1e1c2e;
   padding: 40px 40px;
   transition: all ease-in-out 0.3s;
   margin: 10px;
@@ -724,7 +724,7 @@ section .container {
 }
 
 .services .icon-box:hover {
-  background: #042e5f;
+  background: #2d2b39;
   border-color: #1c7d32;
 }
 
@@ -910,7 +910,7 @@ section .container {
   color: #444444;
   padding: 20px;
   width: 100%;
-  background: #09203a;
+  background: #1e1c2e;
 }
 
 .contact .info-box i.bx {
@@ -1667,7 +1667,7 @@ h6 {
 --------------------------------------------------------------*/
 .footer {
   color: var(--default-color);
-  background-color: #121828;
+  background-color: #1e1c2e;
   font-size: 14px;
   text-align: center;
   padding: 30px 0;
@@ -2657,7 +2657,7 @@ h6 {
 /* Styles for Skills Section */
 .skills-section {
   text-align: left;
-  background-color: #121828; /* Dark background color */
+  background-color: #1e1c2e; /* Dark background color */
   padding: 20px;
   margin-top: 20px;
   border-radius: 5px;
@@ -2803,7 +2803,7 @@ h6 {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 8px;
-    background-color: #121828;
+    background-color: #1e1c2e;
   }
 
   .table td:before {
