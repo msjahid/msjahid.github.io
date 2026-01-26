@@ -3,77 +3,60 @@
 // ============================================
 // NAVBAR SCROLL & ACTIVE SECTION HIGHLIGHTING
 // ============================================
+// ============================================
+// RESPONSIVE NAVBAR TOGGLE
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav a');
-    const sections = document.querySelectorAll('section');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    // Function to update active nav link based on scroll position
-    function updateActiveNavLink() {
-        let current = '';
-        const scrollPosition = window.pageYOffset;
-        
-        // Check if we're at the top of the page (home section)
-        if (scrollPosition < 100) {
-            current = 'home';
-        } else {
-            // Find which section we're currently in
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollPosition >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-        }
-        
-        // Remove active styling from all links
-        navLinks.forEach(link => {
-            link.style.color = '';
-            link.style.fontWeight = '';
-        });
-        
-        // Add active styling to current section
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
+    // Toggle mobile menu
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
             
-            if (href === `#${current}`) {
-                link.style.color = 'var(--primary-color)';
-                link.style.fontWeight = '600';
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
             }
         });
     }
 
-    // Add click event to nav links for smooth scrolling
+    // Close menu when clicking on a link
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Only handle internal links (starting with #)
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                
-                const targetSection = document.querySelector(href);
-                if (targetSection) {
-                    // Smooth scroll to section
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active state immediately after click
-                    setTimeout(updateActiveNavLink, 100);
-                }
-            }
+        link.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
-    // Listen to scroll event
-    window.addEventListener('scroll', updateActiveNavLink);
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideNav = navMenu.contains(event.target);
+        const isClickOnToggle = navToggle.contains(event.target);
+        
+        if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 
-    // Initial highlight on page load
-    updateActiveNavLink();
+    // Close menu on window resize if menu is open
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 });
+
 
 // ============================================
 // NEURAL NETWORK ANIMATION
