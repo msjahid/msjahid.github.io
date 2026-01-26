@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Movie Analysis - Hassan Jahid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --base: #191724;
+        --surface: #1f1d2e;
+        --overlay: #26233a;
+        --muted: #6e6a86;
+        --subtle: #908caa;
+        --text: #e0def4;
+        --love: #eb6f92;
+        --gold: #f6c177;
+        --rose: #ebbcba;
+        --pine: #31748f;
+        --foam: #9ccfd8;
+        --iris: #c4a7e7;
+        --highlight-low: #21202e;
+        --highlight-med: #403d52;
+        --highlight-high: #524f67;
+      }
+
+      body {
+        font-family: "Source Code Pro", monospace;
+        background: var(--base);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      /* Header */
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--surface) 0%,
+          var(--overlay) 100%
+        );
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 2px solid var(--iris);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .back-btn {
+        background: var(--pine);
+        color: var(--text);
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .back-btn:hover {
+        background: var(--foam);
+        color: var(--base);
+        border-color: var(--foam);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(156, 207, 216, 0.3);
+      }
+
+      .project-title {
+        font-size: 1.8rem;
+        color: var(--iris);
+        font-weight: 700;
+      }
+
+      /* Hero Section */
+      .hero {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 3px solid var(--highlight-med);
+      }
+
+      /* Content Container */
+      .content {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem 4rem;
+      }
+
+      .meta-info {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--surface);
+        padding: 0.7rem 1.2rem;
+        border-radius: 8px;
+        border: 1px solid var(--highlight-med);
+      }
+
+      .meta-icon {
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+
+      .tags {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .tag {
+        background: var(--overlay);
+        color: var(--foam);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid var(--pine);
+        transition: all 0.3s ease;
+      }
+
+      .tag:hover {
+        background: var(--pine);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(49, 116, 143, 0.3);
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--iris);
+        color: var(--base);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        border-color: var(--iris);
+        color: var(--iris);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(196, 167, 231, 0.3);
+      }
+
+      .btn-secondary {
+        background: var(--rose);
+        color: var(--base);
+      }
+
+      .btn-secondary:hover {
+        background: transparent;
+        border-color: var(--rose);
+        color: var(--rose);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(235, 188, 186, 0.3);
+      }
+
+      /* Content Sections */
+      .section {
+        background: var(--surface);
+        padding: 2.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--highlight-med);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .section h2 {
+        color: var(--iris);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--pine);
+      }
+
+      .section h3 {
+        color: var(--foam);
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+      }
+
+      .section h4 {
+        color: var(--rose);
+        font-size: 1.2rem;
+        margin: 1rem 0 0.5rem;
+      }
+
+      .section p {
+        color: var(--subtle);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .section ul,
+      .section ol {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+        color: var(--subtle);
+      }
+
+      .section li {
+        margin-bottom: 0.5rem;
+        line-height: 1.8;
+      }
+
+      .section strong {
+        color: var(--gold);
+      }
+
+      .section em {
+        color: var(--love);
+      }
+
+      /* Charts Grid */
+      .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .chart-item {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--highlight-med);
+        transition: all 0.3s ease;
+      }
+
+      .chart-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        border-color: var(--iris);
+      }
+
+      .chart-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .chart-item h4 {
+        color: var(--iris);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Key Findings */
+      .findings-list {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--gold);
+      }
+
+      .findings-list li {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        position: relative;
+      }
+
+      .findings-list li:before {
+        content: "▸";
+        position: absolute;
+        left: -0.5rem;
+        color: var(--gold);
+      }
+
+      /* Ratings Table */
+      .ratings-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+
+      .ratings-table th {
+        background: var(--overlay);
+        color: var(--iris);
+        padding: 1rem;
+        text-align: left;
+        border: 1px solid var(--highlight-med);
+      }
+
+      .ratings-table td {
+        background: var(--highlight-low);
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--highlight-med);
+        color: var(--subtle);
+      }
+
+      .ratings-table tr:hover td {
+        background: var(--overlay);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--surface);
+        padding: 2rem;
+        text-align: center;
+        border-top: 2px solid var(--iris);
+        margin-top: 4rem;
+      }
+
+      .footer p {
+        color: var(--muted);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .project-title {
+          font-size: 1.4rem;
+        }
+
+        .hero-image {
+          height: 300px;
+        }
+
+        .charts-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">Netflix Movie Analysis</h1>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <img
+        src="../../assets/img/project/Data-works/netflix.jpeg"
+        alt="Netflix Movie Analysis"
+        class="hero-image"
+      />
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Meta Info -->
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span>
+          <span>Feb 2024 - March 2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🎬</span>
+          <span>8,807 Movies & TV Shows</span>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Exploratory Analysis</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/Data_Science_Projects/tree/main/netflix_exploratory_analysis"
+          target="_blank"
+          class="btn btn-primary"
+        >
+          📂 View Code on GitHub
+        </a>
+        <a
+          href="https://www.kaggle.com/code/msjahid/exploratory-analysis-of-netflix-movie"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          🚀 View Live on Kaggle
+        </a>
+      </div>
+
+      <!-- Overview -->
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          Embark on a journey through the captivating world of Netflix movies
+          with this comprehensive exploratory analysis. By dissecting a rich
+          dataset encompassing features like show type, country, release year,
+          and more, this project uncovers hidden trends and insights, offering a
+          comprehensive exploration of Netflix's cinematic landscape.
+        </p>
+        <p>
+          This project delves into an exploratory analysis of Netflix TV series
+          and movies, focusing on aspects such as ratings, duration, and yearly
+          trends. By scrutinizing a dataset encompassing diverse attributes,
+          including viewer ratings and time durations, our aim is to uncover
+          insights into viewership patterns and trends over time.
+        </p>
+      </div>
+
+      <!-- Dataset -->
+      <div class="section">
+        <h2>📊 Dataset Exploration</h2>
+
+        <h3>Data Overview</h3>
+        <p>
+          The dataset comprises information about Netflix content, including
+          attributes such as show type, title, director, cast, country, release
+          year, rating, duration, and genre. Exploring and preprocessing this
+          data is the initial step in deriving insights and building effective
+          analysis and recommendation models.
+        </p>
+
+        <ul class="findings-list">
+          <li>
+            <strong>Data Size:</strong> The dataset comprises 8,807 rows and 12
+            columns, offering a substantial amount of information for analysis.
+          </li>
+          <li>
+            <strong>Data Types:</strong> The dataset features a mix of data
+            types, including int64 and object.
+          </li>
+          <li>
+            <strong>Missing Values:</strong> Several columns contain missing
+            values, with "director," "cast," "country," "date_added," "rating,"
+            and "duration" exhibiting varying degrees of missingness.
+          </li>
+          <li>
+            <strong>Unique Values:</strong> The dataset contains 0 duplicate
+            values, indicating that each row represents distinct information.
+          </li>
+          <li>
+            <strong>Content Types:</strong> The dataset contains two distinct
+            types - "Movie" and "TV Show".
+          </li>
+        </ul>
+
+        <h3>Data Preprocessing</h3>
+        <p>
+          In the data preprocessing phase, we first examined the shape of the
+          data to understand its dimensions. Next, we checked for null values in
+          the dataset and removed them if any were found. Additionally, we
+          performed a check for duplicate values and replaced them to ensure
+          data integrity. To gain insights into the relationships between
+          different variables, we visualized the correlation map using a
+          heatmap.
+        </p>
+      </div>
+
+      <!-- Analysis & Visualizations -->
+      <div class="section">
+        <h2>📈 Exploratory Data Analysis</h2>
+        <p>
+          Exploratory Data Analysis involves visualizing and interpreting the
+          dataset to extract meaningful insights. Below are key visualizations
+          that reveal patterns and trends in the Netflix content landscape.
+        </p>
+
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/netflix_exploratory_analysis/movie_charts/Missing%20Value%20Bar%20Graph.png"
+              alt="Missing Values"
+            />
+            <h4>Missing Value Analysis</h4>
+            <p>
+              Visualization of missing values across different features in the
+              dataset.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/netflix_exploratory_analysis/movie_charts/Distribution%20of%20Content%20Types%3A%20Movies%20vs.%20TV%20Shows.png"
+              alt="Content Distribution"
+            />
+            <h4>Content Distribution</h4>
+            <p>
+              Distribution of content types showing the split between Movies and
+              TV Shows.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/netflix_exploratory_analysis/movie_charts/Release%20Year%20vs.%20Duration%20Scatter%20Plot.png"
+              alt="Release Year vs Duration"
+            />
+            <h4>Release Year vs Duration</h4>
+            <p>
+              Temporal trends in content production showing relationship between
+              release year and duration.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/netflix_exploratory_analysis/movie_charts/Count%20of%20Movie%20Genres.png"
+              alt="Genre Count"
+            />
+            <h4>Popular Movie Genres</h4>
+            <p>Analysis of most popular genres on Netflix platform.</p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/netflix_exploratory_analysis/movie_charts/Genre%20vs.%20Movie%20Duration%20Scatter%20Plot.png"
+              alt="Genre vs Duration"
+            />
+            <h4>Genre vs Movie Duration</h4>
+            <p>
+              Relationship between different genres and their typical durations.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/netflix_exploratory_analysis/movie_charts/Distribution%20of%20Movie%20Durations.png"
+              alt="Duration Distribution"
+            />
+            <h4>Distribution of Movie Durations</h4>
+            <p>
+              Statistical distribution of movie lengths across the platform.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ratings Explanation -->
+      <div class="section">
+        <h2>🔍 Content Ratings Explained</h2>
+        <p>Understanding the various content ratings used on Netflix:</p>
+
+        <table class="ratings-table">
+          <thead>
+            <tr>
+              <th>Rating</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TV-MA</strong></td>
+              <td>
+                Intended for mature audiences; may contain strong language,
+                sexual content, violence, and other mature themes.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>TV-14</strong></td>
+              <td>
+                May contain content unsuitable for children under 14, including
+                moderate violence, sexual content, and strong language.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>R</strong></td>
+              <td>
+                Restricted; viewers under 17 require accompanying parent/adult
+                guardian due to mature content.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>PG-13</strong></td>
+              <td>
+                Parental guidance suggested for children under 13; may contain
+                moderate violence, language, and thematic elements.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>TV-PG</strong></td>
+              <td>
+                Parental guidance suggested; may contain material unsuitable for
+                younger children.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>PG</strong></td>
+              <td>
+                Some material may not be suitable for children, including mild
+                language and thematic elements.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>TV-G</strong></td>
+              <td>
+                Suitable for all ages; contains little to no violence, strong
+                language, or potentially offensive content.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>TV-Y / TV-Y7</strong></td>
+              <td>
+                Suitable for children; age 7+ may contain mild fantasy violence
+                or comedic elements.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>G</strong></td>
+              <td>
+                General audiences; suitable for all ages with no offensive
+                content.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>NC-17</strong></td>
+              <td>
+                Not suitable for children under 17; contains explicit content
+                including graphic violence and sexual content.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Key Findings -->
+      <div class="section">
+        <h2>🎉 Key Findings & Conclusions</h2>
+        <p>
+          Through this comprehensive analysis, several key insights emerged
+          about Netflix's content landscape:
+        </p>
+
+        <ul class="findings-list">
+          <li>
+            <strong>Content Distribution:</strong> The platform shows a diverse
+            range of content types, with clear patterns in the distribution
+            between movies and TV shows, revealing Netflix's content strategy
+            and audience preferences.
+          </li>
+          <li>
+            <strong>Genre Preferences:</strong> Analyzing movie genre counts
+            revealed popular genres among Netflix viewers, providing valuable
+            insights for content creators and platform managers in curating
+            compelling content libraries.
+          </li>
+          <li>
+            <strong>Temporal Trends:</strong> The release year vs. duration
+            analysis identified clear temporal trends in content production,
+            informing strategic decisions regarding content acquisition and
+            production strategies.
+          </li>
+          <li>
+            <strong>Viewer Engagement:</strong> Scatter plot analyses revealed
+            relationships between genre, duration, and viewer interest, crucial
+            for optimizing content recommendations and enhancing viewer
+            engagement.
+          </li>
+        </ul>
+
+        <p>
+          This exploratory analysis provides valuable insights into Netflix's
+          content landscape and offers a foundation for further in-depth
+          analysis and modeling. By leveraging these data-driven insights,
+          content creators, platform managers, and stakeholders can make
+          informed decisions to enhance the Netflix viewing experience and drive
+          business success.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>

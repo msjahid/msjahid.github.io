@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Sales Analysis - Hassan Jahid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --base: #191724;
+        --surface: #1f1d2e;
+        --overlay: #26233a;
+        --muted: #6e6a86;
+        --subtle: #908caa;
+        --text: #e0def4;
+        --love: #eb6f92;
+        --gold: #f6c177;
+        --rose: #ebbcba;
+        --pine: #31748f;
+        --foam: #9ccfd8;
+        --iris: #c4a7e7;
+        --highlight-low: #21202e;
+        --highlight-med: #403d52;
+        --highlight-high: #524f67;
+      }
+
+      body {
+        font-family: "Source Code Pro", monospace;
+        background: var(--base);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--surface) 0%,
+          var(--overlay) 100%
+        );
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 2px solid var(--iris);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .back-btn {
+        background: var(--pine);
+        color: var(--text);
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .back-btn:hover {
+        background: var(--foam);
+        color: var(--base);
+        border-color: var(--foam);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(156, 207, 216, 0.3);
+      }
+
+      .project-title {
+        font-size: 1.8rem;
+        color: var(--iris);
+        font-weight: 700;
+      }
+
+      .hero {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 3px solid var(--highlight-med);
+      }
+
+      .content {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem 4rem;
+      }
+
+      .meta-info {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--surface);
+        padding: 0.7rem 1.2rem;
+        border-radius: 8px;
+        border: 1px solid var(--highlight-med);
+      }
+
+      .meta-icon {
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+
+      .tags {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .tag {
+        background: var(--overlay);
+        color: var(--foam);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid var(--pine);
+        transition: all 0.3s ease;
+      }
+
+      .tag:hover {
+        background: var(--pine);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(49, 116, 143, 0.3);
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--iris);
+        color: var(--base);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        border-color: var(--iris);
+        color: var(--iris);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(196, 167, 231, 0.3);
+      }
+
+      .btn-secondary {
+        background: var(--rose);
+        color: var(--base);
+      }
+
+      .btn-secondary:hover {
+        background: transparent;
+        border-color: var(--rose);
+        color: var(--rose);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(235, 188, 186, 0.3);
+      }
+
+      .section {
+        background: var(--surface);
+        padding: 2.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--highlight-med);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .section h2 {
+        color: var(--iris);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--pine);
+      }
+
+      .section h3 {
+        color: var(--foam);
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+      }
+
+      .section p {
+        color: var(--subtle);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .section ul {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+        color: var(--subtle);
+      }
+
+      .section li {
+        margin-bottom: 0.5rem;
+        line-height: 1.8;
+      }
+
+      .section strong {
+        color: var(--gold);
+      }
+
+      .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .chart-item {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--highlight-med);
+        transition: all 0.3s ease;
+      }
+
+      .chart-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        border-color: var(--iris);
+      }
+
+      .chart-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .chart-item h4 {
+        color: var(--iris);
+        margin-bottom: 0.5rem;
+      }
+
+      .findings-list {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--gold);
+      }
+
+      .findings-list li {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        position: relative;
+      }
+
+      .findings-list li:before {
+        content: "▸";
+        position: absolute;
+        left: -0.5rem;
+        color: var(--gold);
+      }
+
+      .footer {
+        background: var(--surface);
+        padding: 2rem;
+        text-align: center;
+        border-top: 2px solid var(--iris);
+        margin-top: 4rem;
+      }
+
+      .footer p {
+        color: var(--muted);
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .project-title {
+          font-size: 1.4rem;
+        }
+
+        .hero-image {
+          height: 300px;
+        }
+
+        .charts-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">Music Sales Analysis</h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="../../assets/img/project/Data-works/music.jpeg"
+        alt="Music Sales Analysis"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span>
+          <span>2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🎵</span>
+          <span>4,850 Music Tracks</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Music Industry</span>
+        <span class="tag">Sales Analysis</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/Data_Science_Projects/tree/main/music_sales_analysis"
+          target="_blank"
+          class="btn btn-primary"
+        >
+          📂 View Code on GitHub
+        </a>
+        <a
+          href="https://www.kaggle.com/code/msjahid/music-sales-analysis"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          🚀 View Live on Kaggle
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          This project delves into the realm of music data analysis, focusing on
+          exploring trends, patterns, and insights hidden within a comprehensive
+          dataset. By leveraging Python and visualization techniques, we aim to
+          unravel the intricate dynamics of the music industry, shedding light
+          on factors such as artist popularity, track performance, and consumer
+          preferences.
+        </p>
+        <p>
+          Understanding the dynamics of music sales is crucial for artists,
+          producers, and industry stakeholders. In this project, we utilize data
+          analysis techniques to uncover trends and patterns in music sales
+          across different genres, time periods, and platforms. By examining
+          factors such as artist popularity, release dates, and sales figures,
+          we aim to provide insights into the music industry and help inform
+          strategic decisions.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📊 Dataset Exploration</h2>
+
+        <h3>Data Overview</h3>
+        <p>
+          The dataset comprises comprehensive information about music tracks,
+          including various attributes that capture the essence of the music
+          industry landscape.
+        </p>
+
+        <ul class="findings-list">
+          <li>
+            <strong>Data Size:</strong> The dataset comprises 4,850 rows and 8
+            columns, offering substantial information for analysis.
+          </li>
+          <li>
+            <strong>Data Types:</strong> Mix of data types including int64,
+            float64, and object types.
+          </li>
+          <li>
+            <strong>Data Quality:</strong> No missing values, simplifying the
+            data cleaning process.
+          </li>
+          <li>
+            <strong>Unique Records:</strong> 0 duplicate values, ensuring each
+            row represents distinct information.
+          </li>
+          <li>
+            <strong>Key Attributes:</strong> Artist, title, year, sales,
+            streams, downloads, radio plays, and ratings.
+          </li>
+        </ul>
+
+        <h3>Data Preprocessing</h3>
+        <p>
+          The preprocessing phase involved examining data dimensions, checking
+          for null and duplicate values, and visualizing correlations using
+          heatmaps to understand relationships between features.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📈 Exploratory Data Analysis</h2>
+        <p>
+          Through comprehensive visualizations, we extracted meaningful insights
+          about music sales patterns, artist performance, and industry trends.
+        </p>
+
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/music_sales_analysis/music_charts/Correlation%20Heatmap%20(Numeric%20Columns%20Only).png"
+              alt="Correlation Heatmap"
+            />
+            <h4>Correlation Analysis</h4>
+            <p>
+              Relationship patterns between different numeric features in the
+              music dataset.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/music_sales_analysis/music_charts/Sales%2C%20Streams%2C%20Downloads%2C%20Radio%20Plays.png"
+              alt="Sales Metrics"
+            />
+            <h4>Sales, Streams, Downloads & Radio Plays</h4>
+            <p>
+              Temporal analysis of different consumption metrics throughout the
+              year.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/music_sales_analysis/music_charts/Top%20ten%20artists%20based%20on%20sales%20and%20rating.png"
+              alt="Top Artists"
+            />
+            <h4>Top 10 Artists by Sales & Rating</h4>
+            <p>
+              Performance analysis of leading artists based on commercial
+              success and ratings.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/music_sales_analysis/music_charts/Histogram%20of%20Ratings.png"
+              alt="Ratings Distribution"
+            />
+            <h4>Distribution of Ratings</h4>
+            <p>
+              Statistical distribution of music track ratings across the
+              dataset.
+            </p>
+          </div>
+
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/music_sales_analysis/music_charts/Relationship%20between%20Sales%2C%20Downloads%2C%20and%20Radio%20Plays%20over%20Time.png"
+              alt="Temporal Relationships"
+            />
+            <h4>Sales, Downloads & Radio Plays Over Time</h4>
+            <p>
+              Temporal trends showing how different metrics evolved and
+              influenced each other.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎉 Key Findings & Conclusions</h2>
+        <p>
+          Through this comprehensive analysis, several important insights
+          emerged about the music sales landscape:
+        </p>
+
+        <ul class="findings-list">
+          <li>
+            <strong>Sales Distribution:</strong> Observed diverse music sales
+            figures highlighting popular tracks and commercial success patterns,
+            providing insights into factors contributing to high sales volumes.
+          </li>
+          <li>
+            <strong>Artist Popularity:</strong> Sales data analysis revealed
+            trends in artist popularity and market impact, helping identify
+            which artists consistently perform well for targeted promotion
+            strategies.
+          </li>
+          <li>
+            <strong>Temporal Trends:</strong> Visualization of sales data over
+            time identified clear trends in music consumption and production,
+            informing release strategies and marketing campaigns.
+          </li>
+          <li>
+            <strong>Engagement Metrics:</strong> Analysis of streams, downloads,
+            and radio plays revealed relationships between different consumption
+            forms and overall popularity, crucial for optimizing distribution
+            strategies.
+          </li>
+        </ul>
+
+        <p>
+          This exploratory analysis provides valuable insights into the music
+          sales landscape and offers a foundation for further in-depth analysis
+          and modeling. By leveraging these data-driven insights, artists,
+          producers, and industry stakeholders can make informed decisions to
+          enhance music promotion and drive business success.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>

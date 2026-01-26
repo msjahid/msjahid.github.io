@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Walmart Sales Analysis - Hassan Jahid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --base: #191724;
+        --surface: #1f1d2e;
+        --overlay: #26233a;
+        --muted: #6e6a86;
+        --subtle: #908caa;
+        --text: #e0def4;
+        --love: #eb6f92;
+        --gold: #f6c177;
+        --rose: #ebbcba;
+        --pine: #31748f;
+        --foam: #9ccfd8;
+        --iris: #c4a7e7;
+        --highlight-med: #403d52;
+      }
+      body {
+        font-family: "Source Code Pro", monospace;
+        background: var(--base);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .header {
+        background: linear-gradient(135deg, var(--surface), var(--overlay));
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 2px solid var(--iris);
+      }
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .back-btn {
+        background: var(--pine);
+        color: var(--text);
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+      }
+      .back-btn:hover {
+        background: var(--foam);
+        color: var(--base);
+        border-color: var(--foam);
+        transform: translateY(-2px);
+      }
+      .project-title {
+        font-size: 1.8rem;
+        color: var(--iris);
+        font-weight: 700;
+      }
+      .hero {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+      }
+      .hero-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 3px solid var(--highlight-med);
+      }
+      .content {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem 4rem;
+      }
+      .meta-info {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--surface);
+        padding: 0.7rem 1.2rem;
+        border-radius: 8px;
+        border: 1px solid var(--highlight-med);
+      }
+      .meta-icon {
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+      .tags {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .tag {
+        background: var(--overlay);
+        color: var(--foam);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid var(--pine);
+        transition: all 0.3s;
+      }
+      .tag:hover {
+        background: var(--pine);
+        transform: translateY(-2px);
+      }
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 2px solid transparent;
+      }
+      .btn-primary {
+        background: var(--iris);
+        color: var(--base);
+      }
+      .btn-primary:hover {
+        background: transparent;
+        border-color: var(--iris);
+        color: var(--iris);
+        transform: translateY(-2px);
+      }
+      .btn-secondary {
+        background: var(--rose);
+        color: var(--base);
+      }
+      .btn-secondary:hover {
+        background: transparent;
+        border-color: var(--rose);
+        color: var(--rose);
+        transform: translateY(-2px);
+      }
+      .section {
+        background: var(--surface);
+        padding: 2.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--highlight-med);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+      .section h2 {
+        color: var(--iris);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--pine);
+      }
+      .section h3 {
+        color: var(--foam);
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+      }
+      .section p {
+        color: var(--subtle);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+      .section ul {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+        color: var(--subtle);
+      }
+      .section li {
+        margin-bottom: 0.5rem;
+        line-height: 1.8;
+      }
+      .section strong {
+        color: var(--gold);
+      }
+      .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .chart-item {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--highlight-med);
+        transition: all 0.3s;
+      }
+      .chart-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        border-color: var(--iris);
+      }
+      .chart-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      .chart-item h4 {
+        color: var(--iris);
+        margin-bottom: 0.5rem;
+      }
+      .findings-list {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--gold);
+      }
+      .findings-list li {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        position: relative;
+      }
+      .findings-list li:before {
+        content: "▸";
+        position: absolute;
+        left: -0.5rem;
+        color: var(--gold);
+      }
+      .footer {
+        background: var(--surface);
+        padding: 2rem;
+        text-align: center;
+        border-top: 2px solid var(--iris);
+        margin-top: 4rem;
+      }
+      .footer p {
+        color: var(--muted);
+      }
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        .project-title {
+          font-size: 1.4rem;
+        }
+        .hero-image {
+          height: 300px;
+        }
+        .charts-grid {
+          grid-template-columns: 1fr;
+        }
+        .section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">Walmart Sales Exploration</h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="../../assets/img/project/Data-works/walmart_sales.jpeg"
+        alt="Walmart Sales"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span><span>Multi-Year Analysis</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🛒</span><span>6,435 Weekly Records</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Retail Analytics</span>
+        <span class="tag">Time Series</span>
+        <span class="tag">Sales Forecasting</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/Data_Science_Projects/tree/main/walmart_sales"
+          target="_blank"
+          class="btn btn-primary"
+          >📂 View Code on GitHub</a
+        >
+        <a
+          href="https://www.kaggle.com/code/msjahid/walmart-sales-analysis"
+          target="_blank"
+          class="btn btn-secondary"
+          >🚀 View Live on Kaggle</a
+        >
+      </div>
+
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          Explore the dynamics of Walmart sales with this comprehensive
+          analysis. This project investigates weekly sales across different
+          stores, examining various factors such as holidays, temperature, fuel
+          prices, CPI, and unemployment rates to reveal trends and insights in
+          Walmart's sales performance.
+        </p>
+        <p>
+          By analyzing 6,435 weekly sales records across multiple stores, this
+          study uncovers patterns and relationships between external economic
+          factors and retail performance.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📊 Dataset Description</h2>
+        <p>
+          The dataset comprises 6,435 rows and 8 columns capturing comprehensive
+          weekly sales data:
+        </p>
+        <ul class="findings-list">
+          <li><strong>Store:</strong> Store identification number</li>
+          <li><strong>Date:</strong> Week of sales recording</li>
+          <li>
+            <strong>Weekly Sales:</strong> Total sales for the given store and
+            week
+          </li>
+          <li>
+            <strong>Holiday Flag:</strong> Binary indicator for special holiday
+            weeks (1) or regular weeks (0)
+          </li>
+          <li>
+            <strong>Temperature:</strong> Average regional temperature during
+            the week
+          </li>
+          <li><strong>Fuel Price:</strong> Cost of fuel in the region</li>
+          <li>
+            <strong>CPI:</strong> Consumer Price Index reflecting inflation
+          </li>
+          <li><strong>Unemployment:</strong> Regional unemployment rate</li>
+        </ul>
+        <h3>Data Quality</h3>
+        <p>
+          Excellent data quality: No missing values, no duplicates. Complete
+          time-series data covering multiple years of weekly sales across
+          various stores.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>🔍 Analysis Focus</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Weekly Sales Trends:</strong> Examining sales patterns over
+            weeks and across different stores
+          </li>
+          <li>
+            <strong>Holiday Impact:</strong> Quantifying the effect of holiday
+            weeks on sales performance
+          </li>
+          <li>
+            <strong>Temperature Analysis:</strong> Exploring correlations
+            between weather and consumer behavior
+          </li>
+          <li>
+            <strong>Fuel Price Effects:</strong> Analyzing how gas prices
+            influence shopping patterns
+          </li>
+          <li>
+            <strong>CPI Correlation:</strong> Understanding the relationship
+            between inflation and sales
+          </li>
+          <li>
+            <strong>Unemployment Impact:</strong> Evaluating how job market
+            conditions affect retail sales
+          </li>
+          <li>
+            <strong>Seasonal Patterns:</strong> Identifying seasonal trends in
+            consumer spending
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>📈 Exploratory Data Analysis</h2>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/walmart_sales/walmart_charts/Distribution%20of%20Numerical%20Information.png"
+              alt="Distribution"
+            />
+            <h4>Numerical Feature Distributions</h4>
+            <p>
+              Statistical distribution of all numerical variables in the
+              dataset.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/walmart_sales/walmart_charts/Correlation%20Heatmap.png"
+              alt="Correlation"
+            />
+            <h4>Correlation Heatmap</h4>
+            <p>Relationships between sales and various economic factors.</p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/walmart_sales/walmart_charts/Yearly%20Season-wise%20Total%20Weekly%20Sales.png"
+              alt="Seasonal"
+            />
+            <h4>Seasonal Sales Patterns</h4>
+            <p>Year-over-year seasonal trends in weekly sales performance.</p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/walmart_sales/walmart_charts/Holiday%20Distribution%20Over%20the%20Years.png"
+              alt="Holidays"
+            />
+            <h4>Holiday Impact Distribution</h4>
+            <p>
+              Distribution and impact of holiday weeks on sales across years.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/walmart_sales/walmart_charts/Distribution%20of%20Years.png"
+              alt="Years"
+            />
+            <h4>Yearly Data Coverage</h4>
+            <p>Distribution of sales data across different years.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎉 Key Insights</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Holiday Premium:</strong> Holiday weeks show significantly
+            higher sales, with clear spikes during major shopping periods
+          </li>
+          <li>
+            <strong>Seasonal Trends:</strong> Strong Q4 performance driven by
+            Thanksgiving and Christmas shopping seasons
+          </li>
+          <li>
+            <strong>Temperature Effects:</strong> Moderate correlation between
+            temperature and sales, with extreme weather impacting shopping
+            behavior
+          </li>
+          <li>
+            <strong>Economic Sensitivity:</strong> Weekly sales show moderate
+            inverse correlation with unemployment rates
+          </li>
+          <li>
+            <strong>Fuel Price Impact:</strong> Higher fuel prices correlate
+            with reduced sales, suggesting decreased consumer mobility and
+            spending
+          </li>
+          <li>
+            <strong>CPI Relationship:</strong> Consumer Price Index shows
+            complex relationship with sales, reflecting purchasing power
+            dynamics
+          </li>
+          <li>
+            <strong>Store Variation:</strong> Significant variation in sales
+            patterns across different store locations, indicating regional
+            economic differences
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>

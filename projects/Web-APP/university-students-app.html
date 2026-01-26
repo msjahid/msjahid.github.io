@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Students Information System - Hassan Jahid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --base: #191724;
+        --surface: #1f1d2e;
+        --overlay: #26233a;
+        --muted: #6e6a86;
+        --subtle: #908caa;
+        --text: #e0def4;
+        --love: #eb6f92;
+        --gold: #f6c177;
+        --rose: #ebbcba;
+        --pine: #31748f;
+        --foam: #9ccfd8;
+        --iris: #c4a7e7;
+        --highlight-med: #403d52;
+      }
+      body {
+        font-family: "Source Code Pro", monospace;
+        background: var(--base);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .header {
+        background: linear-gradient(135deg, var(--surface), var(--overlay));
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 2px solid var(--iris);
+      }
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .back-btn {
+        background: var(--pine);
+        color: var(--text);
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+      }
+      .back-btn:hover {
+        background: var(--foam);
+        color: var(--base);
+        border-color: var(--foam);
+        transform: translateY(-2px);
+      }
+      .project-title {
+        font-size: 1.8rem;
+        color: var(--iris);
+        font-weight: 700;
+      }
+      .hero {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+      }
+      .hero-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 3px solid var(--highlight-med);
+      }
+      .content {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem 4rem;
+      }
+      .meta-info {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--surface);
+        padding: 0.7rem 1.2rem;
+        border-radius: 8px;
+        border: 1px solid var(--highlight-med);
+      }
+      .meta-icon {
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+      .tags {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .tag {
+        background: var(--overlay);
+        color: var(--foam);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid var(--pine);
+        transition: all 0.3s;
+      }
+      .tag:hover {
+        background: var(--pine);
+        transform: translateY(-2px);
+      }
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 2px solid transparent;
+      }
+      .btn-primary {
+        background: var(--iris);
+        color: var(--base);
+      }
+      .btn-primary:hover {
+        background: transparent;
+        border-color: var(--iris);
+        color: var(--iris);
+        transform: translateY(-2px);
+      }
+      .btn-secondary {
+        background: var(--rose);
+        color: var(--base);
+      }
+      .btn-secondary:hover {
+        background: transparent;
+        border-color: var(--rose);
+        color: var(--rose);
+        transform: translateY(-2px);
+      }
+      .section {
+        background: var(--surface);
+        padding: 2.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--highlight-med);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+      .section h2 {
+        color: var(--iris);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--pine);
+      }
+      .section h3 {
+        color: var(--foam);
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+      }
+      .section p {
+        color: var(--subtle);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+      .section ul {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+        color: var(--subtle);
+      }
+      .section li {
+        margin-bottom: 0.5rem;
+        line-height: 1.8;
+      }
+      .section strong {
+        color: var(--gold);
+      }
+      .findings-list {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--gold);
+      }
+      .findings-list li {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        position: relative;
+      }
+      .findings-list li:before {
+        content: "▸";
+        position: absolute;
+        left: -0.5rem;
+        color: var(--gold);
+      }
+      .code-block {
+        background: var(--overlay);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        border: 1px solid var(--highlight-med);
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: var(--foam);
+        font-family: "Source Code Pro", monospace;
+        font-size: 0.9rem;
+      }
+      .footer {
+        background: var(--surface);
+        padding: 2rem;
+        text-align: center;
+        border-top: 2px solid var(--iris);
+        margin-top: 4rem;
+      }
+      .footer p {
+        color: var(--muted);
+      }
+      .screenshot {
+        background: var(--overlay);
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        border: 2px solid var(--highlight-med);
+      }
+      .screenshot img {
+        width: 100%;
+        border-radius: 8px;
+      }
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        .project-title {
+          font-size: 1.4rem;
+        }
+        .hero-image {
+          height: 300px;
+        }
+        .section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">University Students Information System</h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="https://user-images.githubusercontent.com/12425488/89727260-ba82ff80-da44-11ea-9264-610d96267fdd.png"
+        alt="University Students System"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span><span>Aug 2020 - Nov 2020</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🎓</span><span>CRUD Web Application</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Flask</span>
+        <span class="tag">SQLAlchemy</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/University-Students-Information"
+          target="_blank"
+          class="btn btn-primary"
+          >📂 View Code on GitHub</a
+        >
+        <a
+          href="https://github.com/msjahid/University-Students-Information"
+          target="_blank"
+          class="btn btn-secondary"
+          >🚀 View Live Demo</a
+        >
+      </div>
+
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          A comprehensive web-based student information management system built
+          with Flask and SQLAlchemy. This application provides a complete CRUD
+          (Create, Read, Update, Delete) interface for managing university
+          student records with an intuitive and user-friendly design.
+        </p>
+        <p>
+          The system enables university administrators and staff to efficiently
+          manage student information including personal details, enrollment
+          data, academic records, and contact information through a clean,
+          responsive web interface backed by a robust MySQL database.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>✨ Key Features</h2>
+
+        <h3>CRUD Operations</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Create Records:</strong> Add new student entries with
+            comprehensive information fields
+          </li>
+          <li>
+            <strong>Read Data:</strong> View and search through existing student
+            records with filtering capabilities
+          </li>
+          <li>
+            <strong>Update Information:</strong> Modify student details with
+            validation and error handling
+          </li>
+          <li>
+            <strong>Delete Records:</strong> Remove unnecessary or outdated
+            student entries safely
+          </li>
+        </ul>
+
+        <h3>User Interface</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Responsive Design:</strong> Mobile-friendly interface that
+            works across all devices
+          </li>
+          <li>
+            <strong>Intuitive Navigation:</strong> Easy-to-use menu system for
+            accessing different features
+          </li>
+          <li>
+            <strong>Form Validation:</strong> Client-side and server-side
+            validation for data integrity
+          </li>
+          <li>
+            <strong>Visual Feedback:</strong> Success and error messages for
+            user actions
+          </li>
+          <li>
+            <strong>Data Tables:</strong> Sortable, searchable tables for
+            viewing student records
+          </li>
+        </ul>
+
+        <h3>Database Management</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>ORM Integration:</strong> SQLAlchemy for object-relational
+            mapping
+          </li>
+          <li>
+            <strong>MySQL Backend:</strong> Robust database storage for student
+            information
+          </li>
+          <li>
+            <strong>Data Relationships:</strong> Proper foreign key constraints
+            and relationships
+          </li>
+          <li>
+            <strong>Query Optimization:</strong> Efficient database queries for
+            fast data retrieval
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>🔧 Technical Stack</h2>
+
+        <h3>Backend Technologies</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Flask:</strong> Lightweight Python web framework for
+            application logic
+          </li>
+          <li>
+            <strong>SQLAlchemy:</strong> Python SQL toolkit and ORM for database
+            operations
+          </li>
+          <li><strong>MySQL:</strong> Relational database management system</li>
+          <li><strong>Python 3:</strong> Core programming language</li>
+        </ul>
+
+        <h3>Frontend Technologies</h3>
+        <ul class="findings-list">
+          <li><strong>HTML5:</strong> Semantic markup for page structure</li>
+          <li><strong>CSS3:</strong> Styling and responsive design</li>
+          <li>
+            <strong>JavaScript:</strong> Client-side interactivity and
+            validation
+          </li>
+          <li>
+            <strong>Bootstrap (optional):</strong> UI components and grid system
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>📦 Installation & Setup</h2>
+
+        <h3>Prerequisites</h3>
+        <p>Ensure you have the following installed:</p>
+        <ul class="findings-list">
+          <li><strong>Python 3.x:</strong> Latest version recommended</li>
+          <li><strong>MySQL Server:</strong> For database management</li>
+          <li><strong>pip:</strong> Python package installer</li>
+        </ul>
+
+        <h3>Step 1: Clone Repository</h3>
+        <div class="code-block">
+          <code
+            >git clone
+            git@github.com:msjahid/University-Students-Information.git<br />
+            cd University-Students-Information</code
+          >
+        </div>
+
+        <h3>Step 2: Install Dependencies</h3>
+        <div class="code-block">
+          <code
+            >pip install -r requirements.txt<br />
+            # or<br />
+            pip3 install -r requirements.txt</code
+          >
+        </div>
+
+        <h3>Required Packages</h3>
+        <div class="code-block">
+          <code
+            >Flask==1.1.2<br />
+            flask_sqlalchemy==2.4.4</code
+          >
+        </div>
+
+        <h3>Step 3: Run Application</h3>
+        <div class="code-block">
+          <code
+            >python app.py<br />
+            # Application will start on http://localhost:5000</code
+          >
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🖼️ Application Screenshots</h2>
+
+        <div class="screenshot">
+          <img
+            src="https://user-images.githubusercontent.com/12425488/87582060-ad9c1600-c6fb-11ea-81de-844d3946ce24.png"
+            alt="Application Interface"
+          />
+          <p style="text-align: center; margin-top: 1rem; color: var(--subtle)">
+            Main application interface showing student management dashboard
+          </p>
+        </div>
+
+        <div class="screenshot">
+          <img
+            src="https://user-images.githubusercontent.com/12425488/89727260-ba82ff80-da44-11ea-9264-610d96267fdd.png"
+            alt="Student Records"
+          />
+          <p style="text-align: center; margin-top: 1rem; color: var(--subtle)">
+            Student records listing with CRUD operations
+          </p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎓 Skills Demonstrated</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Full-Stack Development:</strong> Complete web application
+            from frontend to backend
+          </li>
+          <li>
+            <strong>Python Web Frameworks:</strong> Proficiency in Flask web
+            development
+          </li>
+          <li>
+            <strong>Database Design:</strong> Proper schema design and ORM
+            implementation
+          </li>
+          <li>
+            <strong>RESTful API Design:</strong> Clean routing and endpoint
+            architecture
+          </li>
+          <li>
+            <strong>Frontend Development:</strong> HTML, CSS, JavaScript
+            integration
+          </li>
+          <li>
+            <strong>Version Control:</strong> Git workflow and GitHub repository
+            management
+          </li>
+          <li>
+            <strong>Software Architecture:</strong> MVC pattern implementation
+          </li>
+          <li>
+            <strong>Testing & Debugging:</strong> Application testing and error
+            handling
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>💡 Future Enhancements</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Authentication System:</strong> User login and role-based
+            access control
+          </li>
+          <li>
+            <strong>Advanced Search:</strong> Multi-field search with filters
+            and sorting
+          </li>
+          <li>
+            <strong>Data Export:</strong> Export student records to CSV/Excel
+            formats
+          </li>
+          <li>
+            <strong>Email Notifications:</strong> Automated email alerts for
+            important updates
+          </li>
+          <li>
+            <strong>File Uploads:</strong> Student photo and document management
+          </li>
+          <li>
+            <strong>Reporting:</strong> Generate statistical reports and
+            analytics
+          </li>
+          <li>
+            <strong>API Integration:</strong> RESTful API for external system
+            integration
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>📄 License</h2>
+        <p>
+          This project is licensed under the MIT License. See the
+          <a
+            href="https://github.com/msjahid/University-Students-Information/blob/master/LICENSE"
+            style="color: var(--iris); text-decoration: none"
+            >LICENSE</a
+          >
+          file for details.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>👨‍💻 Author</h2>
+        <p>
+          <strong style="color: var(--gold)">Jahid Hasan</strong> -
+          <a
+            href="https://github.com/msjahid"
+            target="_blank"
+            style="color: var(--iris); text-decoration: none"
+            >@msjahid</a
+          >
+        </p>
+        <p>
+          For any inquiries or issues, feel free to open an issue on GitHub.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Full-Stack Development Portfolio</p>
+    </div>
+  </body>
+</html>
