@@ -1,9 +1,6 @@
 // main.js
 
 // ============================================
-// NAVBAR SCROLL & ACTIVE SECTION HIGHLIGHTING
-// ============================================
-// ============================================
 // RESPONSIVE NAVBAR TOGGLE
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
@@ -57,6 +54,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// ============================================
+// NAVBAR SCROLL & ACTIVE SECTION HIGHLIGHTING
+// ============================================
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section, header');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        // Adjust offset for fixed navbar height
+        if (window.pageYOffset >= (sectionTop - 100)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Set initial active state on page load
+window.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentHash = window.location.hash || '#home';
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentHash) {
+            link.classList.add('active');
+        }
+    });
+});
 
 // ============================================
 // NEURAL NETWORK ANIMATION
