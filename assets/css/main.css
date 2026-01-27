@@ -36,14 +36,14 @@ html {
 /* Header Styles */
 .header {
   background: linear-gradient(135deg, var(--bg-dark) 0%, #211f2e 100%);
-  min-height: 100vh;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;
-  padding: 120px 20px 80px 20px;
+  padding: 80px 20px 40px 20px;
   overflow: hidden;
 }
 
@@ -137,36 +137,7 @@ html {
 }
 
 /* Navigation */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(25, 23, 36, 0.95);
-  padding: 15px 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.nav a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-  font-size: 0.95rem;
-}
-
-.nav a:hover {
-  color: var(--primary-color);
-}
+/* Navigation styles moved to style.css to avoid conflicts */
 
 /* Social Links */
 .social-links {
@@ -1085,8 +1056,8 @@ section {
 /* MOBILE RESPONSIVE STYLES */
 @media (max-width: 1024px) {
   .header {
-    min-height: 90vh;
-    padding: 100px 20px 60px 20px;
+    min-height: 36vh;
+    padding: 70px 20px 40px 20px;
   }
 
   .header h1 {
@@ -1100,8 +1071,8 @@ section {
 
 @media (max-width: 768px) {
   .header {
-    min-height: 100vh;
-    padding: 100px 15px 50px 15px;
+    min-height: 40vh;
+    padding: 70px 15px 35px 15px;
   }
 
   .header h1 {
