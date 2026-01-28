@@ -221,7 +221,7 @@ document.head.appendChild(style);
 // ============================================
 // TYPING EFFECT
 // ============================================
-const texts = ['Data Scientist', 'Machine Learning Engineer', 'Software Engineer', 'AI Researcher', 'Kaggle Grandmaster'];
+const texts = ["Kaggle 2x Grandmaster", "Data Science Enthusiast", "Passionate about Machine Learning", "Curious about Big Data", "Data-Driven Decision Maker", "Statistical Insights Seeker", "Problem Solver"];
 let count = 0;
 let index = 0;
 let currentText = '';

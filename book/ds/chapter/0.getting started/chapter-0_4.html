@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Types of Data Problems - Data Science Book</title>
+    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
+    <link rel="stylesheet" href="/book/assets/css/book.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">JAHID HASAN</a>
+        <div class="nav-links">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
+          <a href="book.html" class="active"
+            ><i class="fas fa-book"></i> Book</a
+          >
+          <a href="index.html#contact"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- BOOK CONTAINER -->
+    <div class="book-container">
+      <!-- LEFT SIDEBAR - Navigation -->
+      <aside class="book-sidebar">
+        <div class="book-brand">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Data Science Mastery</span>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-header">
+            <span>Your Progress</span>
+            <span class="progress-percentage">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <nav class="book-nav">
+          <!-- Getting Started -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part0">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Getting Started</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="0.1"><a href="index.html">What Is Data Science?</a></li>
+              <li data-chapter="0.2"><a href="chapter-0.4.html">Types of Data Problems</a></li>
+              <li data-chapter="0.3"><a href="chapter-0-3.html">How Data Scientists Think</a></li>
+              <li data-chapter="0.4" class="active"><a href="chapter-0-4.html">Types of Data Problems</a></li>
+              <li data-chapter="0.5"><a href="chapter-0-5.html">Data Science Workflow</a></li>
+              <li data-chapter="0.6"><a href="chapter-0-6.html">Tools & Skills Overview</a></li>
+            </ul>
+          </div>
+
+          <!-- Foundation -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part1">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Data & Statistics Basics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="1.1">What Is Data?</li>
+              <li data-chapter="1.2">Types of Data</li>
+              <li data-chapter="1.3">Features & Labels</li>
+              <li data-chapter="1.4">Population vs Sample</li>
+              <li data-chapter="1.5">Central Tendency</li>
+              <li data-chapter="1.6">Measures of Dispersion</li>
+              <li data-chapter="1.7">Data Distribution</li>
+              <li data-chapter="1.8">Outliers & Anomalies</li>
+            </ul>
+          </div>
+
+          <!-- Probability -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part2">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Probability Fundamentals</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="2.1">What Is Probability?</li>
+              <li data-chapter="2.2">Sample Space & Events</li>
+              <li data-chapter="2.3">Probability Rules</li>
+              <li data-chapter="2.4">Conditional Probability</li>
+              <li data-chapter="2.5">Bayes' Theorem</li>
+              <li data-chapter="2.6">Random Variables</li>
+              <li data-chapter="2.7">Common Distributions</li>
+            </ul>
+          </div>
+
+          <!-- Sampling -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part3">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Sampling & Data Generation</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="3.1">Why Sampling Matters</li>
+              <li data-chapter="3.2">Sampling Techniques</li>
+              <li data-chapter="3.3">Central Limit Theorem</li>
+              <li data-chapter="3.4">Bootstrap Sampling</li>
+            </ul>
+          </div>
+
+          <!-- Inferential Statistics -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part4">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Inferential Statistics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="4.1">Descriptive vs Inferential</li>
+              <li data-chapter="4.2">Confidence Intervals</li>
+              <li data-chapter="4.3">Hypothesis Testing</li>
+              <li data-chapter="4.4">p-Values Explained</li>
+              <li data-chapter="4.5">Common Statistical Tests</li>
+            </ul>
+          </div>
+
+          <!-- Regression -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part5">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Regression & Models</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="5.1">Linear Regression</li>
+              <li data-chapter="5.2">Multiple Regression</li>
+              <li data-chapter="5.3">Regularization</li>
+              <li data-chapter="5.4">Model Evaluation</li>
+            </ul>
+          </div>
+
+          <!-- Advanced Topics -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part6">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Advanced Topics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="6.1">Linear Algebra</li>
+              <li data-chapter="6.2">Calculus & Optimization</li>
+              <li data-chapter="6.3">Bayesian Statistics</li>
+              <li data-chapter="6.4">Time Series Analysis</li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT AREA -->
+      <main class="book-content">
+        <article class="chapter-content">
+          <div class="chapter-header">
+            <span class="chapter-label">Chapter 0.4</span>
+            <h1>Types of Data Problems</h1>
+            <div class="chapter-meta">
+              <span><i class="fas fa-clock"></i> 10 min read</span>
+              <span><i class="fas fa-signal"></i> Beginner</span>
+              <span><i class="fas fa-tag"></i> Foundation</span>
+            </div>
+          </div>
+
+          <div class="chapter-intro">
+            <p class="lead">
+              Not all data problems are created equal. Understanding the type of problem you're facing determines which tools and techniques to use.
+            </p>
+          </div>
+
+          <section class="content-section">
+            <h2 id="venn-diagram">The Relationship</h2>
+            <p>
+              These three terms are often used interchangeably, but they represent different concepts with significant overlap. Think of them as nested circles in a Venn diagram.
+            </p>
+
+            <div class="key-point">
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <strong>Simple Rule:</strong> AI is the broadest concept, ML is a subset of AI, and Data Science uses both ML and AI as tools while adding statistical analysis and domain expertise.
+              </div>
+            </div>
+
+            <h2 id="artificial-intelligence">Artificial Intelligence (AI)</h2>
+            <p>
+              AI is the broadest term, referring to any system that can perform tasks that typically require human intelligence. This includes reasoning, learning, perception, language understanding, and problem-solving.
+            </p>
+
+            <div class="pillar-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <h3>What is AI?</h3>
+                <p>
+                  Systems that can perceive their environment, reason about it, and take actions to achieve specific goals.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <i class="fas fa-brain"></i>
+                </div>
+                <h3>Types of AI</h3>
+                <p>
+                  Includes rule-based systems, expert systems, neural networks, and everything in between.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <i class="fas fa-tasks"></i>
+                </div>
+                <h3>Examples</h3>
+                <p>
+                  Chess engines, virtual assistants, recommendation systems, autonomous vehicles.
+                </p>
+              </div>
+            </div>
+
+            <h2 id="machine-learning">Machine Learning (ML)</h2>
+            <p>
+              Machine Learning is a subset of AI focused on systems that learn from data. Instead of being explicitly programmed with rules, ML algorithms identify patterns and make decisions based on examples.
+            </p>
+
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Supervised Learning</h4>
+                  <p>
+                    Learning from labeled examples (e.g., spam detection, house price prediction).
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Unsupervised Learning</h4>
+                  <p>
+                    Finding patterns in unlabeled data (e.g., customer segmentation, anomaly detection).
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Reinforcement Learning</h4>
+                  <p>
+                    Learning through trial and error with rewards (e.g., game AI, robotics).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2 id="data-science">Data Science</h2>
+            <p>
+              Data Science is an interdisciplinary field that uses scientific methods, processes, and systems to extract knowledge from structured and unstructured data. It encompasses statistics, ML, domain expertise, and communication.
+            </p>
+
+            <blockquote class="chapter-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "A data scientist is someone who is better at statistics than any software engineer and better at software engineering than any statistician."
+              </p>
+              <cite>— Josh Wills</cite>
+            </blockquote>
+
+            <h2 id="key-differences">Key Differences</h2>
+            
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4><i class="fas fa-robot"></i> AI Focus</h4>
+                <ul>
+                  <li>Building intelligent systems</li>
+                  <li>Mimicking human cognition</li>
+                  <li>Automation of complex tasks</li>
+                  <li>May or may not use data-driven approaches</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4><i class="fas fa-brain"></i> ML Focus</h4>
+                <ul>
+                  <li>Pattern recognition from data</li>
+                  <li>Prediction and classification</li>
+                  <li>Improving with experience</li>
+                  <li>Always data-driven</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="skill-category" style="margin-top: 20px;">
+              <h4><i class="fas fa-chart-bar"></i> Data Science Focus</h4>
+              <ul>
+                <li>Extracting insights from data</li>
+                <li>Answering business questions</li>
+                <li>Statistical analysis and experimentation</li>
+                <li>Communication and storytelling</li>
+                <li>Uses ML as one of many tools</li>
+              </ul>
+            </div>
+
+            <h2 id="practical-example">A Practical Example</h2>
+            <p>
+              Consider a company wanting to reduce customer churn:
+            </p>
+
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="step-number">AI</div>
+                <div class="step-content">
+                  <h4>The Vision</h4>
+                  <p>
+                    Create an intelligent system that automatically identifies at-risk customers and takes action to retain them.
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">ML</div>
+                <div class="step-content">
+                  <h4>The Engine</h4>
+                  <p>
+                    Build a model that predicts which customers are likely to churn based on their behavior patterns.
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">DS</div>
+                <div class="step-content">
+                  <h4>The Process</h4>
+                  <p>
+                    Analyze customer data, understand why they leave, test retention strategies, measure impact, and communicate findings to stakeholders.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-point">
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <strong>Bottom Line:</strong> AI is the goal, ML is the technique, and Data Science is the comprehensive approach that includes both plus statistics, domain knowledge, and communication.
+              </div>
+            </div>
+          </section>
+
+          <!-- Navigation Footer -->
+          <div class="chapter-navigation">
+            <button class="nav-button prev" onclick="window.location.href='chapter-0-5.html'">
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="nav-button next" onclick="window.location.href='chapter-0-5.html'">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+      </main>
+
+      <!-- RIGHT SIDEBAR - Table of Contents -->
+      <aside class="book-right-panel">
+        <div class="panel-block">
+          <h4>On This Page</h4>
+          <ul class="page-toc">
+                        <li><a href="#problem-types">Four Main Categories</a></li>
+            <li><a href="#descriptive-analytics">Descriptive Analytics</a></li>
+            <li><a href="#diagnostic-analytics">Diagnostic Analytics</a></li>
+            <li><a href="#predictive-analytics">Predictive Analytics</a></li>
+            <li><a href="#prescriptive-analytics">Prescriptive Analytics</a></li>
+            <li><a href="#choosing-approach">Choosing the Right Approach</a></li>
+          </ul>
+        </div>
+
+        <div class="panel-block">
+          <h4>Chapter Info</h4>
+          <ul class="chapter-info">
+            <li><i class="fas fa-layer-group"></i> Level: Beginner</li>
+            <li><i class="fas fa-book-open"></i> Part: 0 - Getting Started</li>
+            <li><i class="fas fa-calendar"></i> Updated: Jan 2026</li>
+          </ul>
+        </div>
+
+        <div class="panel-block resources">
+          <h4>Resources</h4>
+          <a href="#" class="resource-link">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+          <a href="#" class="resource-link">
+            <i class="fab fa-github"></i> Code Examples
+          </a>
+          <a href="#" class="resource-link">
+            <i class="fas fa-comments"></i> Discussion Forum
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="blog-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>About This Book</h4>
+          <p>
+            A comprehensive guide to mastering data science from fundamentals to
+            professional practice.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="book.html">Data Science Book</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Stay Updated</h4>
+          <p>Get notified about new chapters and updates.</p>
+          <form
+            class="newsletter-form"
+            onsubmit="return submitNewsletter(this);"
+          >
+            <input
+              type="email"
+              id="newsletterEmail"
+              placeholder="Your email"
+              required
+            />
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+          <div id="emailFeedback" class="email-feedback"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-container">
+          <p>
+            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
+            learners worldwide.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../blog/assets/js/blog.js"></script>
+    <script src="/book/assets/js/book.js"></script>
+  </body>
+</html>

@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Science Book - Jahid Hasan</title>
+    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
+    <link rel="stylesheet" href="/book/assets/css/book.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">JAHID HASAN</a>
+        <div class="nav-links">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
+          <a href="book.html" class="active"
+            ><i class="fas fa-book"></i> Book</a
+          >
+          <a href="index.html#contact"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- BOOK CONTAINER -->
+    <div class="book-container">
+      <!-- LEFT SIDEBAR - Navigation -->
+      <aside class="book-sidebar">
+        <div class="book-brand">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Data Science Mastery</span>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-header">
+            <span>Your Progress</span>
+            <span class="progress-percentage">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <nav class="book-nav">
+          <!-- Getting Started -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part0">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Getting Started</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="0.1" class="active"><a href="chapter-0-1.html">What Is Data Science?</a></li>
+              <li data-chapter="0.2"><a href="chapter-0-2.html">DS vs ML vs AI</a></li>
+              <li data-chapter="0.3"><a href="chapter-0-3.html">How Data Scientists Think</a></li>
+              <li data-chapter="0.4"><a href="chapter-0-4.html">Types of Data Problems</a></li>
+              <li data-chapter="0.5"><a href="chapter-0-5.html">Data Science Workflow</a></li>
+              <li data-chapter="0.6"><a href="chapter-0-6.html">Tools & Skills Overview</a></li>
+            </ul>
+          </div>
+
+          <!-- Foundation -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part1">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Data & Statistics Basics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="1.1">What Is Data?</li>
+              <li data-chapter="1.2">Types of Data</li>
+              <li data-chapter="1.3">Features & Labels</li>
+              <li data-chapter="1.4">Population vs Sample</li>
+              <li data-chapter="1.5">Central Tendency</li>
+              <li data-chapter="1.6">Measures of Dispersion</li>
+              <li data-chapter="1.7">Data Distribution</li>
+              <li data-chapter="1.8">Outliers & Anomalies</li>
+            </ul>
+          </div>
+
+          <!-- Probability -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part2">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Probability Fundamentals</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="2.1">What Is Probability?</li>
+              <li data-chapter="2.2">Sample Space & Events</li>
+              <li data-chapter="2.3">Probability Rules</li>
+              <li data-chapter="2.4">Conditional Probability</li>
+              <li data-chapter="2.5">Bayes' Theorem</li>
+              <li data-chapter="2.6">Random Variables</li>
+              <li data-chapter="2.7">Common Distributions</li>
+            </ul>
+          </div>
+
+          <!-- Sampling -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part3">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Sampling & Data Generation</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="3.1">Why Sampling Matters</li>
+              <li data-chapter="3.2">Sampling Techniques</li>
+              <li data-chapter="3.3">Central Limit Theorem</li>
+              <li data-chapter="3.4">Bootstrap Sampling</li>
+            </ul>
+          </div>
+
+          <!-- Inferential Statistics -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part4">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Inferential Statistics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="4.1">Descriptive vs Inferential</li>
+              <li data-chapter="4.2">Confidence Intervals</li>
+              <li data-chapter="4.3">Hypothesis Testing</li>
+              <li data-chapter="4.4">p-Values Explained</li>
+              <li data-chapter="4.5">Common Statistical Tests</li>
+            </ul>
+          </div>
+
+          <!-- Regression -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part5">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Regression & Models</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="5.1">Linear Regression</li>
+              <li data-chapter="5.2">Multiple Regression</li>
+              <li data-chapter="5.3">Regularization</li>
+              <li data-chapter="5.4">Model Evaluation</li>
+            </ul>
+          </div>
+
+          <!-- Advanced Topics -->
+          <div class="nav-section">
+            <div class="section-header" data-section="part6">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Advanced Topics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="6.1">Linear Algebra</li>
+              <li data-chapter="6.2">Calculus & Optimization</li>
+              <li data-chapter="6.3">Bayesian Statistics</li>
+              <li data-chapter="6.4">Time Series Analysis</li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT AREA -->
+      <main class="book-content">
+        <article class="chapter-content">
+          <div class="chapter-header">
+            <span class="chapter-label">Chapter 0.1</span>
+            <h1>What Is Data Science?</h1>
+            <div class="chapter-meta">
+              <span><i class="fas fa-clock"></i> 8 min read</span>
+              <span><i class="fas fa-signal"></i> Beginner</span>
+              <span><i class="fas fa-tag"></i> Foundation</span>
+            </div>
+          </div>
+
+          <div class="chapter-intro">
+            <p class="lead">
+              Data Science is the art and science of extracting meaningful
+              insights from data. It combines statistics, programming, domain
+              expertise, and storytelling to solve real-world problems.
+            </p>
+          </div>
+
+          <section class="content-section">
+            <h2 id="definition">The Core Definition</h2>
+            <p>
+              At its heart, data science is about asking the right questions and
+              finding answers hidden in data. Unlike traditional statistics,
+              which focuses on mathematical rigor, data science emphasizes
+              practical problem-solving and actionable insights.
+            </p>
+
+            <div class="key-point">
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <strong>Key Insight:</strong> Data science is not just about
+                algorithms—it's about understanding business problems, cleaning
+                messy data, and communicating findings effectively.
+              </div>
+            </div>
+
+            <h2 id="components">Three Pillars of Data Science</h2>
+
+            <div class="pillar-grid">
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(235, 111, 146, 0.1)"
+                >
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Statistics & Math</h3>
+                <p>
+                  The foundation for understanding patterns, relationships, and
+                  uncertainty in data.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(156, 207, 216, 0.1)"
+                >
+                  <i class="fas fa-code"></i>
+                </div>
+                <h3>Programming & Tools</h3>
+                <p>
+                  Python, R, SQL, and frameworks that turn theory into working
+                  solutions.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(246, 193, 119, 0.1)"
+                >
+                  <i class="fas fa-brain"></i>
+                </div>
+                <h3>Domain Expertise</h3>
+                <p>
+                  Understanding the business context and knowing which questions
+                  matter.
+                </p>
+              </div>
+            </div>
+
+            <h2 id="workflow">The Data Science Workflow</h2>
+            <p>
+              Every data science project follows a similar pattern, though the
+              specifics vary by domain and problem type.
+            </p>
+
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Define the Problem</h4>
+                  <p>
+                    What question are we trying to answer? What does success
+                    look like?
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Collect & Clean Data</h4>
+                  <p>
+                    Gather relevant data and handle missing values, outliers,
+                    and errors.
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Explore & Visualize</h4>
+                  <p>
+                    Understand patterns, distributions, and relationships in the
+                    data.
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h4>Model & Analyze</h4>
+                  <p>
+                    Apply statistical methods or machine learning algorithms.
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <h4>Communicate Results</h4>
+                  <p>
+                    Present findings in a clear, actionable way to stakeholders.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote class="chapter-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "Data science is 90% cleaning data and 10% complaining about
+                cleaning data."
+              </p>
+              <cite>— Popular Data Science Saying</cite>
+            </blockquote>
+
+            <h2 id="skills">Essential Skills</h2>
+            <p>
+              To succeed in data science, you'll need a balanced mix of
+              technical and soft skills:
+            </p>
+
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4><i class="fas fa-laptop-code"></i> Technical Skills</h4>
+                <ul>
+                  <li>Python or R programming</li>
+                  <li>SQL for data manipulation</li>
+                  <li>Statistics and probability</li>
+                  <li>Machine learning fundamentals</li>
+                  <li>Data visualization</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4><i class="fas fa-users"></i> Soft Skills</h4>
+                <ul>
+                  <li>Critical thinking</li>
+                  <li>Communication</li>
+                  <li>Business acumen</li>
+                  <li>Curiosity and creativity</li>
+                  <li>Ethical judgment</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Navigation Footer -->
+          <div class="chapter-navigation">
+            <button class="nav-button prev" disabled>
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="nav-button next" onclick="window.location.href='chapter-0-2.html'">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+      </main>
+
+      <!-- RIGHT SIDEBAR - Table of Contents -->
+      <aside class="book-right-panel">
+        <div class="panel-block">
+          <h4>On This Page</h4>
+          <ul class="page-toc">
+            <li><a href="#definition">The Core Definition</a></li>
+            <li><a href="#components">Three Pillars</a></li>
+            <li><a href="#workflow">The Workflow</a></li>
+            <li><a href="#skills">Essential Skills</a></li>
+          </ul>
+        </div>
+
+        <div class="panel-block">
+          <h4>Chapter Info</h4>
+          <ul class="chapter-info">
+            <li><i class="fas fa-layer-group"></i> Level: Beginner</li>
+            <li><i class="fas fa-book-open"></i> Part: 0 - Getting Started</li>
+            <li><i class="fas fa-calendar"></i> Updated: Jan 2026</li>
+          </ul>
+        </div>
+
+        <div class="panel-block resources">
+          <h4>Resources</h4>
+          <a href="#" class="resource-link">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+          <a href="#" class="resource-link">
+            <i class="fab fa-github"></i> Code Examples
+          </a>
+          <a href="#" class="resource-link">
+            <i class="fas fa-comments"></i> Discussion Forum
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="blog-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>About This Book</h4>
+          <p>
+            A comprehensive guide to mastering data science from fundamentals to
+            professional practice.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="book.html">Data Science Book</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Stay Updated</h4>
+          <p>Get notified about new chapters and updates.</p>
+          <form
+            class="newsletter-form"
+            onsubmit="return submitNewsletter(this);"
+          >
+            <input
+              type="email"
+              id="newsletterEmail"
+              placeholder="Your email"
+              required
+            />
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+          <div id="emailFeedback" class="email-feedback"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-container">
+          <p>
+            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
+            learners worldwide.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../blog/assets/js/blog.js"></script>
+    <script src="/book/assets/js/book.js"></script>
+  </body>
+</html>

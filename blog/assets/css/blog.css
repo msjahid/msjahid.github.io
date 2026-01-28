@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
   line-height: 1.6;
@@ -483,12 +483,24 @@ body {
   animation: fadeIn 0.5s ease-out;
 }
 
-.post-card:nth-child(1) { animation-delay: 0.1s; }
-.post-card:nth-child(2) { animation-delay: 0.2s; }
-.post-card:nth-child(3) { animation-delay: 0.3s; }
-.post-card:nth-child(4) { animation-delay: 0.4s; }
-.post-card:nth-child(5) { animation-delay: 0.5s; }
-.post-card:nth-child(6) { animation-delay: 0.6s; }
+.post-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.post-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.post-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.post-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.post-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.post-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
 /* ============================================
    FOOTER STYLES - ROSÉ PINE THEME
    Add this to blog.css
@@ -643,8 +655,13 @@ body {
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 /* Responsive Footer */
@@ -674,91 +691,98 @@ body {
    ============================================ */
 
 .newsletter-form .form-group {
-    position: relative;
+  position: relative;
 }
 
 .newsletter-form input[type="email"] {
-    width: 100%;
-    transition: all 0.3s ease;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
 /* Valid state */
 .newsletter-form input.valid {
-    border-color: var(--accent2);
+  border-color: var(--accent2);
 }
 
 /* Invalid state */
 .newsletter-form input.invalid {
-    border-color: var(--accent1);
+  border-color: var(--accent1);
 }
 
 /* Shake animation for errors */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
 }
 
 .newsletter-form input.shake {
-    animation: shake 0.5s ease;
+  animation: shake 0.5s ease;
 }
 
 /* Email feedback */
 .email-feedback {
-    display: block;
-    font-size: 0.85rem;
-    margin-top: 8px;
-    min-height: 20px;
-    transition: all 0.3s ease;
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  min-height: 20px;
+  transition: all 0.3s ease;
 }
 
 .email-feedback.error {
-    color: var(--accent1);
+  color: var(--accent1);
 }
 
 .email-feedback.success {
-    color: var(--accent2);
+  color: var(--accent2);
 }
 
 /* Success message */
 .newsletter-success {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 20px;
-    background: rgba(156, 207, 216, 0.2);
-    border: 1px solid var(--accent2);
-    border-left: 4px solid var(--accent2);
-    border-radius: 8px;
-    margin-top: 15px;
-    animation: slideIn 0.3s ease;
-    transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: rgba(156, 207, 216, 0.2);
+  border: 1px solid var(--accent2);
+  border-left: 4px solid var(--accent2);
+  border-radius: 8px;
+  margin-top: 15px;
+  animation: slideIn 0.3s ease;
+  transition: opacity 0.3s;
 }
 
 .newsletter-success i {
-    color: var(--accent2);
-    font-size: 1.3rem;
+  color: var(--accent2);
+  font-size: 1.3rem;
 }
 
 .newsletter-success span {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    font-weight: 500;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 @keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Button loading state */
 .newsletter-form button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+  opacity: 0.7;
+  cursor: not-allowed;
 }

@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Jahid Hasan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/blog.css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="https://msjahid.github.io/" class="nav-logo">JH</a>
+        <div class="nav-links">
+          <a href="https://msjahid.github.io/"
+            ><i class="fas fa-home"></i> Home</a
+          >
+          <a href="https://msjahid.github.io/blog" class="active"
+            ><i class="fas fa-blog"></i> Blog</a
+          >
+          <a href="https://msjahid.github.io/book"
+            ><i class="fas fa-book"></i> Book</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="blog-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Search -->
+        <div class="sidebar-section search-section">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search posts..." />
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-section">
+          <h3><i class="fas fa-folder"></i> Categories</h3>
+          <div class="category-list">
+            <div class="category-item" data-category="all">
+              <i class="fas fa-layer-group"></i>
+              <span>All Posts</span>
+              <span class="count">12</span>
+            </div>
+            <div class="category-item" data-category="data-science">
+              <i class="fas fa-chart-line"></i>
+              <span>Data Science</span>
+              <span class="count">3</span>
+            </div>
+            <div class="category-item" data-category="machine-learning">
+              <i class="fas fa-brain"></i>
+              <span>Machine Learning</span>
+              <span class="count">4</span>
+            </div>
+            <div class="category-item" data-category="deep-learning">
+              <i class="fas fa-network-wired"></i>
+              <span>Deep Learning</span>
+              <span class="count">2</span>
+            </div>
+            <div class="category-item" data-category="nlp">
+              <i class="fas fa-language"></i>
+              <span>NLP</span>
+              <span class="count">2</span>
+            </div>
+            <div class="category-item" data-category="devops">
+              <i class="fas fa-server"></i>
+              <span>DevOps</span>
+              <span class="count">1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recently Updated -->
+        <div class="sidebar-section">
+          <h3><i class="fas fa-clock"></i> Recently Updated</h3>
+          <div class="recent-list">
+            <a href="posts/transformer-architecture.html" class="recent-item">
+              <span class="recent-title"
+                >Understanding Transformer Architecture</span
+              >
+              <span class="recent-date">Jan 25, 2026</span>
+            </a>
+            <a href="posts/docker-optimization.html" class="recent-item">
+              <span class="recent-title">Docker Container Optimization</span>
+              <span class="recent-date">Jan 20, 2026</span>
+            </a>
+            <a href="posts/feature-engineering.html" class="recent-item">
+              <span class="recent-title"
+                >Feature Engineering Best Practices</span
+              >
+              <span class="recent-date">Jan 15, 2026</span>
+            </a>
+            <a href="posts/bert-fine-tuning.html" class="recent-item">
+              <span class="recent-title">Fine-tuning BERT Models</span>
+              <span class="recent-date">Jan 10, 2026</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Trending Tags -->
+        <div class="sidebar-section">
+          <h3><i class="fas fa-fire"></i> Trending Tags</h3>
+          <div class="tags-cloud">
+            <span class="tag">python</span>
+            <span class="tag">tensorflow</span>
+            <span class="tag">pytorch</span>
+            <span class="tag">nlp</span>
+            <span class="tag">transformers</span>
+            <span class="tag">docker</span>
+            <span class="tag">kubernetes</span>
+            <span class="tag">pandas</span>
+            <span class="tag">scikit-learn</span>
+            <span class="tag">aws</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="blog-header">
+          <h1>Technical Blog</h1>
+          <p>Exploring AI, Machine Learning, and Software Engineering</p>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="posts-grid" id="postsGrid">
+          <!-- Post 1 -->
+          <article class="post-card" data-category="nlp">
+            <div class="post-image">
+              <img
+                src="https://via.placeholder.com/400x250/eb6f92/191724?text=Transformer+Architecture"
+                alt="Transformer"
+              />
+              <span class="post-category">NLP</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="posts/transformer-architecture.html"
+                  >Understanding Transformer Architecture</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Jan 25, 2026</span>
+                <span><i class="fas fa-clock"></i> 8 min read</span>
+              </div>
+              <p class="post-excerpt">
+                Deep dive into the revolutionary transformer architecture that
+                powers modern NLP models like GPT and BERT.
+              </p>
+              <div class="post-tags">
+                <span class="tag">transformers</span>
+                <span class="tag">nlp</span>
+                <span class="tag">attention</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="post-card" data-category="machine-learning">
+            <div class="post-image">
+              <img
+                src="https://via.placeholder.com/400x250/9ccfd8/191724?text=Feature+Engineering"
+                alt="Feature Engineering"
+              />
+              <span class="post-category">Machine Learning</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="posts/feature-engineering.html"
+                  >Feature Engineering Best Practices</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Jan 20, 2026</span>
+                <span><i class="fas fa-clock"></i> 6 min read</span>
+              </div>
+              <p class="post-excerpt">
+                Learn essential techniques for creating powerful features that
+                improve your machine learning models.
+              </p>
+              <div class="post-tags">
+                <span class="tag">feature-engineering</span>
+                <span class="tag">pandas</span>
+                <span class="tag">scikit-learn</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="post-card" data-category="devops">
+            <div class="post-image">
+              <img
+                src="https://via.placeholder.com/400x250/f6c177/191724?text=Docker+Optimization"
+                alt="Docker"
+              />
+              <span class="post-category">DevOps</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="posts/docker-optimization.html"
+                  >Docker Container Optimization</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Jan 15, 2026</span>
+                <span><i class="fas fa-clock"></i> 5 min read</span>
+              </div>
+              <p class="post-excerpt">
+                Tips and tricks to reduce Docker image sizes and improve
+                container performance in production.
+              </p>
+              <div class="post-tags">
+                <span class="tag">docker</span>
+                <span class="tag">devops</span>
+                <span class="tag">optimization</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="post-card" data-category="deep-learning">
+            <div class="post-image">
+              <img
+                src="https://via.placeholder.com/400x250/c4a7e7/191724?text=Neural+Networks"
+                alt="Neural Networks"
+              />
+              <span class="post-category">Deep Learning</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="posts/neural-networks-basics.html"
+                  >Neural Networks from Scratch</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Jan 10, 2026</span>
+                <span><i class="fas fa-clock"></i> 10 min read</span>
+              </div>
+              <p class="post-excerpt">
+                Build a neural network from scratch using NumPy to understand
+                the fundamentals of deep learning.
+              </p>
+              <div class="post-tags">
+                <span class="tag">neural-networks</span>
+                <span class="tag">python</span>
+                <span class="tag">numpy</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 5 -->
+          <article class="post-card" data-category="data-science">
+            <div class="post-image">
+              <img
+                src="https://via.placeholder.com/400x250/31748f/e0def4?text=Data+Visualization"
+                alt="Visualization"
+              />
+              <span class="post-category">Data Science</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="posts/data-visualization.html"
+                  >Effective Data Visualization with Python</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Jan 5, 2026</span>
+                <span><i class="fas fa-clock"></i> 7 min read</span>
+              </div>
+              <p class="post-excerpt">
+                Master the art of creating insightful visualizations using
+                Matplotlib, Seaborn, and Plotly.
+              </p>
+              <div class="post-tags">
+                <span class="tag">visualization</span>
+                <span class="tag">matplotlib</span>
+                <span class="tag">seaborn</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="post-card" data-category="nlp">
+            <div class="post-image">
+              <img
+                src="https://via.placeholder.com/400x250/eb6f92/191724?text=BERT+Fine-tuning"
+                alt="BERT"
+              />
+              <span class="post-category">NLP</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="posts/bert-fine-tuning.html"
+                  >Fine-tuning BERT for Text Classification</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Dec 28, 2025</span>
+                <span><i class="fas fa-clock"></i> 9 min read</span>
+              </div>
+              <p class="post-excerpt">
+                Step-by-step guide to fine-tune BERT models for custom text
+                classification tasks using Hugging Face.
+              </p>
+              <div class="post-tags">
+                <span class="tag">bert</span>
+                <span class="tag">transformers</span>
+                <span class="tag">huggingface</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+      <div class="footer-container">
+        <!-- About -->
+        <div class="footer-section">
+          <h4>About</h4>
+          <p>
+            Technical blog featuring tutorials on AI, Machine Learning, Data
+            Science, and Software Engineering.
+          </p>
+          <div class="footer-social">
+            <a href="https://github.com/msjahid" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/msjahid" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/msjahids" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://kaggle.com/msjahid" target="_blank">
+              <i class="fab fa-kaggle"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="https://msjahid.github.io/">Home</a></li>
+            <li><a href="https://msjahid.github.io/#about">About</a></li>
+            <li><a href="https://msjahid.github.io/#projects">Projects</a></li>
+            <li>
+              <a href="https://msjahid.github.io/#publications">Publications</a>
+            </li>
+            <li><a href="https://msjahid.github.io/#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#">Data Science</a></li>
+            <li><a href="#">Machine Learning</a></li>
+            <li><a href="#">Deep Learning</a></li>
+            <li><a href="#">NLP</a></li>
+            <li><a href="#">DevOps</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-section">
+          <h4>Newsletter</h4>
+          <p>Subscribe to get latest posts delivered to your inbox.</p>
+          <form
+            class="newsletter-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSeDOXpthzTbdk9EKEUx6P1fZ_au_7mU4Jc7ne3CzUt_zmXqdw/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="return submitNewsletter(this);"
+          >
+            <input
+              type="email"
+              name="entry.YOUR_ENTRY_ID"
+              placeholder="Your email"
+              id="newsletterEmail"
+              required
+            />
+
+            <button type="submit" id="newsletterBtn">
+              <i class="fas fa-paper-plane"></i>
+              <span>Subscribe</span>
+            </button>
+          </form>
+
+          <!-- Feedback span OUTSIDE form -->
+          <span class="email-feedback" id="emailFeedback"></span>
+
+          <iframe
+            name="hidden_iframe"
+            id="hidden_iframe"
+            style="display: none"
+            onload="
+              if (submitted) {
+                showSuccessMessage();
+              }
+            "
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-container">
+          <p>&copy; 2026 Jahid Hasan. All rights reserved.</p>
+          <p>Built with <i class="fas fa-heart"></i> using Rosé Pine Theme</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/blog.js"></script>
+  </body>
+</html>
