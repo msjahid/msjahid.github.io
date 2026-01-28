@@ -3,12 +3,384 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>List of Book</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <title>Book Collection - Data Science Library</title>
+    <link rel="stylesheet" href="assets/css/book-list.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <h1>List of Book</h1>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Crimson+Pro:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
+  <body>
+    <!-- Decorative Background Elements -->
+    <div class="bg-decoration"></div>
+    <div class="grain-overlay"></div>
+
+    <!-- Header Section -->
+    <header class="page-header">
+      <div class="header-content">
+        <div class="logo-section">
+          <i class="fas fa-book-open logo-icon"></i>
+          <div class="logo-text">
+            <span class="logo-subtitle">Jahid Hasan's</span>
+            <h1 class="logo-title">Literary Collection</h1>
+          </div>
+        </div>
+        <p class="header-description">
+          A curated selection of comprehensive guides exploring the depths of
+          data science, programming, and analytical methodologies.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Filter Tabs -->
+      <div class="filter-section">
+        <button class="filter-btn active" data-filter="all">
+          <span>All Books</span>
+          <span class="count">4</span>
+        </button>
+        <button class="filter-btn" data-filter="published">
+          <span>Published</span>
+          <span class="count">1</span>
+        </button>
+        <button class="filter-btn" data-filter="upcoming">
+          <span>Upcoming</span>
+          <span class="count">3</span>
+        </button>
+      </div>
+
+      <!-- Books Grid -->
+      <div class="books-grid">
+        <!-- Book 1 - Data Science (Published) -->
+        <article class="book-card" data-status="published" data-aos="fade-up">
+          <div class="book-ribbon">Published</div>
+          <div class="book-spine"></div>
+          <div class="book-content">
+            <div class="book-number">01</div>
+            <div class="book-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h2 class="book-title">Data Science Mastery</h2>
+            <p class="book-subtitle">
+              From Fundamentals to Professional Practice
+            </p>
+            <p class="book-description">
+              A comprehensive journey through the world of data science,
+              covering statistics, probability, machine learning fundamentals,
+              and real-world applications.
+            </p>
+            <div class="book-meta">
+              <span class="meta-item">
+                <i class="fas fa-bookmark"></i>
+                <span>45 Chapters</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>~60 Hours</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Beginner to Advanced</span>
+              </span>
+            </div>
+            <div class="book-topics">
+              <span class="topic-tag">Statistics</span>
+              <span class="topic-tag">Probability</span>
+              <span class="topic-tag">ML Basics</span>
+              <span class="topic-tag">Visualization</span>
+            </div>
+            <div class="book-actions">
+              <a
+                href="https://msjahid.github.io/book/ds/content"
+                class="btn btn-primary"
+              >
+                <i class="fas fa-book-reader"></i>
+                Read Now
+              </a>
+              <button class="btn btn-secondary">
+                <i class="fas fa-download"></i>
+                Download
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 2 - Python for Data Science (Upcoming) -->
+        <article
+          class="book-card"
+          data-status="upcoming"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div class="book-ribbon upcoming">Coming Soon</div>
+          <div class="book-spine"></div>
+          <div class="book-content">
+            <div class="book-number">02</div>
+            <div class="book-icon">
+              <i class="fab fa-python"></i>
+            </div>
+            <h2 class="book-title">Python for Data Science</h2>
+            <p class="book-subtitle">NumPy, Pandas, and Scientific Computing</p>
+            <p class="book-description">
+              Master Python's data science ecosystem with hands-on examples
+              covering data manipulation, analysis, and visualization using
+              industry-standard libraries.
+            </p>
+            <div class="book-meta">
+              <span class="meta-item">
+                <i class="fas fa-bookmark"></i>
+                <span>40 Chapters</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>~50 Hours</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Intermediate</span>
+              </span>
+            </div>
+            <div class="book-topics">
+              <span class="topic-tag">Python</span>
+              <span class="topic-tag">NumPy</span>
+              <span class="topic-tag">Pandas</span>
+              <span class="topic-tag">Matplotlib</span>
+            </div>
+            <div class="book-actions">
+              <button class="btn btn-primary" disabled>
+                <i class="fas fa-hourglass-half"></i>
+                In Progress
+              </button>
+              <button class="btn btn-secondary">
+                <i class="fas fa-bell"></i>
+                Notify Me
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 3 - R for Data Analysis (Upcoming) -->
+        <article
+          class="book-card"
+          data-status="upcoming"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="book-ribbon upcoming">Coming Soon</div>
+          <div class="book-spine"></div>
+          <div class="book-content">
+            <div class="book-number">03</div>
+            <div class="book-icon">
+              <i class="fab fa-r-project"></i>
+            </div>
+            <h2 class="book-title">R for Data Analysis</h2>
+            <p class="book-subtitle">Statistical Computing and Graphics</p>
+            <p class="book-description">
+              Explore R's powerful statistical capabilities, from data wrangling
+              with tidyverse to advanced statistical modeling and beautiful
+              visualizations with ggplot2.
+            </p>
+            <div class="book-meta">
+              <span class="meta-item">
+                <i class="fas fa-bookmark"></i>
+                <span>35 Chapters</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>~45 Hours</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Intermediate</span>
+              </span>
+            </div>
+            <div class="book-topics">
+              <span class="topic-tag">R Programming</span>
+              <span class="topic-tag">Tidyverse</span>
+              <span class="topic-tag">ggplot2</span>
+              <span class="topic-tag">Statistics</span>
+            </div>
+            <div class="book-actions">
+              <button class="btn btn-primary" disabled>
+                <i class="fas fa-hourglass-half"></i>
+                In Progress
+              </button>
+              <button class="btn btn-secondary">
+                <i class="fas fa-bell"></i>
+                Notify Me
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 4 - Machine Learning Approaches (Upcoming) -->
+        <article
+          class="book-card"
+          data-status="upcoming"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <div class="book-ribbon upcoming">Coming Soon</div>
+          <div class="book-spine"></div>
+          <div class="book-content">
+            <div class="book-number">04</div>
+            <div class="book-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h2 class="book-title">Machine Learning Approaches</h2>
+            <p class="book-subtitle">From Theory to Production</p>
+            <p class="book-description">
+              Deep dive into machine learning algorithms, neural networks, and
+              deployment strategies. Build production-ready models with
+              real-world datasets and best practices.
+            </p>
+            <div class="book-meta">
+              <span class="meta-item">
+                <i class="fas fa-bookmark"></i>
+                <span>50 Chapters</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>~70 Hours</span>
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Advanced</span>
+              </span>
+            </div>
+            <div class="book-topics">
+              <span class="topic-tag">Deep Learning</span>
+              <span class="topic-tag">Neural Networks</span>
+              <span class="topic-tag">TensorFlow</span>
+              <span class="topic-tag">Deployment</span>
+            </div>
+            <div class="book-actions">
+              <button class="btn btn-primary" disabled>
+                <i class="fas fa-hourglass-half"></i>
+                In Progress
+              </button>
+              <button class="btn btn-secondary">
+                <i class="fas fa-bell"></i>
+                Notify Me
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Newsletter Section -->
+      <section class="newsletter-section">
+        <div class="newsletter-content">
+          <div class="newsletter-icon">
+            <i class="fas fa-envelope-open-text"></i>
+          </div>
+          <h3 class="newsletter-title">Stay Updated</h3>
+          <p class="newsletter-description">
+            Subscribe to receive notifications when new books are published or
+            when upcoming titles become available.
+          </p>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              class="newsletter-input"
+              required
+            />
+            <button type="submit" class="newsletter-btn">
+              <span>Subscribe</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About the Author</h4>
+          <p>
+            Jahid Hasan is a data scientist and educator passionate about making
+            complex topics accessible through comprehensive writing.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a
+              href="https://scholar.google.com/citations?user=hWECAEcAAAAJ"
+              target="_blank"
+              title="Google Scholar"
+            >
+              <i class="fas fa-graduation-cap"></i>
+            </a>
+            <a
+              href="https://orcid.org/0009-0001-1902-6142"
+              target="_blank"
+              title="ORCID"
+            >
+              <i class="fab fa-orcid"></i>
+            </a>
+            <a href="https://www.x.com/msjahids" target="_blank"
+              ><i class="fab fa-x-twitter"></i
+            ></a>
+            <a href="https://www.medium.com/@msjahid" target="_blank"
+              ><i class="fab fa-medium"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/msjahid" target="_blank"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="https://www.kaggle.com/msjahid" target="_blank"
+              ><i class="fab fa-kaggle"></i
+            ></a>
+            <a href="https://www.github.com/msjahid" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="mailto:msjahid.ai@gmail.com" target="_blank" class="google"
+              ><i class="fa-brands fa-google"></i
+            ></a>
+            <a href="https://discord.gg/eawXvwjy" target="_blank"
+              ><i class="fab fa-discord"></i
+            ></a>
+            <a href="https://t.me/msjahid" target="_blank"
+              ><i class="fab fa-telegram"></i
+            ></a>
+            <a href="https://msjahid.slack.com/" target="_blank"
+              ><i class="fab fa-slack"></i
+            ></a>
+            <a href="https://dev.to/msjahid" target="_blank"
+              ><i class="fab fa-dev"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Jahid Hasan. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/book-list.js"></script>
+  </body>
 </html>
