@@ -57,110 +57,24 @@
               <i class="fas fa-chevron-down toggle-icon"></i>
             </div>
             <ul class="section-items">
-              <li data-chapter="0.1"><a href="index.html">What Is Data Science?</a></li>
-              <li data-chapter="0.2"><a href="chapter-0.3.html">How Data Scientists Think</a></li>
-              <li data-chapter="0.3" class="active"><a href="chapter-0-3.html">How Data Scientists Think</a></li>
-              <li data-chapter="0.4"><a href="chapter-0-4.html">Types of Data Problems</a></li>
-              <li data-chapter="0.5"><a href="chapter-0-5.html">Data Science Workflow</a></li>
-              <li data-chapter="0.6"><a href="chapter-0-6.html">Tools & Skills Overview</a></li>
-            </ul>
-          </div>
-
-          <!-- Foundation -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part1">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Data & Statistics Basics</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="1.1">What Is Data?</li>
-              <li data-chapter="1.2">Types of Data</li>
-              <li data-chapter="1.3">Features & Labels</li>
-              <li data-chapter="1.4">Population vs Sample</li>
-              <li data-chapter="1.5">Central Tendency</li>
-              <li data-chapter="1.6">Measures of Dispersion</li>
-              <li data-chapter="1.7">Data Distribution</li>
-              <li data-chapter="1.8">Outliers & Anomalies</li>
-            </ul>
-          </div>
-
-          <!-- Probability -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part2">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Probability Fundamentals</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="2.1">What Is Probability?</li>
-              <li data-chapter="2.2">Sample Space & Events</li>
-              <li data-chapter="2.3">Probability Rules</li>
-              <li data-chapter="2.4">Conditional Probability</li>
-              <li data-chapter="2.5">Bayes' Theorem</li>
-              <li data-chapter="2.6">Random Variables</li>
-              <li data-chapter="2.7">Common Distributions</li>
-            </ul>
-          </div>
-
-          <!-- Sampling -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part3">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Sampling & Data Generation</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="3.1">Why Sampling Matters</li>
-              <li data-chapter="3.2">Sampling Techniques</li>
-              <li data-chapter="3.3">Central Limit Theorem</li>
-              <li data-chapter="3.4">Bootstrap Sampling</li>
-            </ul>
-          </div>
-
-          <!-- Inferential Statistics -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part4">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Inferential Statistics</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="4.1">Descriptive vs Inferential</li>
-              <li data-chapter="4.2">Confidence Intervals</li>
-              <li data-chapter="4.3">Hypothesis Testing</li>
-              <li data-chapter="4.4">p-Values Explained</li>
-              <li data-chapter="4.5">Common Statistical Tests</li>
-            </ul>
-          </div>
-
-          <!-- Regression -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part5">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Regression & Models</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="5.1">Linear Regression</li>
-              <li data-chapter="5.2">Multiple Regression</li>
-              <li data-chapter="5.3">Regularization</li>
-              <li data-chapter="5.4">Model Evaluation</li>
-            </ul>
-          </div>
-
-          <!-- Advanced Topics -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part6">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Advanced Topics</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="6.1">Linear Algebra</li>
-              <li data-chapter="6.2">Calculus & Optimization</li>
-              <li data-chapter="6.3">Bayesian Statistics</li>
-              <li data-chapter="6.4">Time Series Analysis</li>
+              <li data-chapter="0.1">
+                <a href="chapter-0_1.html">What Is Data Science?</a>
+              </li>
+              <li data-chapter="0.2">
+                <a href="chapter-0_2.html">DS vs ML vs AI</a>
+              </li>
+              <li data-chapter="0.3" class="active">
+                <a href="chapter-0_3.html">How Data Scientists Think</a>
+              </li>
+              <li data-chapter="0.4">
+                <a href="chapter-0_4.html">Types of Data Problems</a>
+              </li>
+              <li data-chapter="0.5">
+                <a href="chapter-0_5.html">Data Science Workflow</a>
+              </li>
+              <li data-chapter="0.6">
+                <a href="chapter-0_6.html">Tools & Skills Overview</a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -181,196 +95,287 @@
 
           <div class="chapter-intro">
             <p class="lead">
-              Data scientists approach problems differently than other professionals. Understanding this mindset is key to developing your own data science intuition.
+              Data scientists approach problems differently than other
+              professionals. Understanding this mindset is key to developing
+              your own data science intuition.
             </p>
           </div>
 
           <section class="content-section">
-            <h2 id="venn-diagram">The Relationship</h2>
+            <h2 id="question-first">Start with Questions, Not Data</h2>
             <p>
-              These three terms are often used interchangeably, but they represent different concepts with significant overlap. Think of them as nested circles in a Venn diagram.
+              The biggest mistake beginners make is diving straight into data
+              analysis. Great data scientists start by asking: "What problem are
+              we trying to solve?" and "What decision will this analysis
+              inform?"
             </p>
 
             <div class="key-point">
               <i class="fas fa-lightbulb"></i>
               <div>
-                <strong>Simple Rule:</strong> AI is the broadest concept, ML is a subset of AI, and Data Science uses both ML and AI as tools while adding statistical analysis and domain expertise.
+                <strong>Key Insight:</strong> Data without a question is just
+                noise. Always define your problem before touching the data.
               </div>
             </div>
 
-            <h2 id="artificial-intelligence">Artificial Intelligence (AI)</h2>
+            <h2 id="skepticism">Healthy Skepticism</h2>
             <p>
-              AI is the broadest term, referring to any system that can perform tasks that typically require human intelligence. This includes reasoning, learning, perception, language understanding, and problem-solving.
+              Data scientists are professional skeptics. They question
+              everything: the data quality, the assumptions, the results, and
+              even their own conclusions. This isn't pessimism—it's intellectual
+              rigor.
             </p>
 
             <div class="pillar-grid">
               <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-robot"></i>
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(235, 111, 146, 0.1)"
+                >
+                  <i class="fas fa-search"></i>
                 </div>
-                <h3>What is AI?</h3>
+                <h3>Question the Data</h3>
                 <p>
-                  Systems that can perceive their environment, reason about it, and take actions to achieve specific goals.
+                  Where did this data come from? Who collected it? What's
+                  missing? What biases might exist?
                 </p>
               </div>
 
               <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-brain"></i>
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(156, 207, 216, 0.1)"
+                >
+                  <i class="fas fa-exclamation-triangle"></i>
                 </div>
-                <h3>Types of AI</h3>
+                <h3>Question Assumptions</h3>
                 <p>
-                  Includes rule-based systems, expert systems, neural networks, and everything in between.
+                  Are we assuming correlation means causation? Are we ignoring
+                  confounding variables?
                 </p>
               </div>
 
               <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-tasks"></i>
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(246, 193, 119, 0.1)"
+                >
+                  <i class="fas fa-check-double"></i>
                 </div>
-                <h3>Examples</h3>
+                <h3>Question Results</h3>
                 <p>
-                  Chess engines, virtual assistants, recommendation systems, autonomous vehicles.
+                  Does this make sense? Can we validate it? What could we be
+                  missing?
                 </p>
               </div>
             </div>
 
-            <h2 id="machine-learning">Machine Learning (ML)</h2>
+            <h2 id="iterative-thinking">Iterative Thinking</h2>
             <p>
-              Machine Learning is a subset of AI focused on systems that learn from data. Instead of being explicitly programmed with rules, ML algorithms identify patterns and make decisions based on examples.
+              Data science is never a straight line from question to answer.
+              It's a cycle of exploration, hypothesis, testing, and refinement.
+              Each discovery leads to new questions.
             </p>
 
             <div class="workflow-steps">
               <div class="workflow-step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                  <h4>Supervised Learning</h4>
-                  <p>
-                    Learning from labeled examples (e.g., spam detection, house price prediction).
-                  </p>
+                  <h4>Explore</h4>
+                  <p>Look at the data, find patterns, notice anomalies.</p>
                 </div>
               </div>
 
               <div class="workflow-step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                  <h4>Unsupervised Learning</h4>
-                  <p>
-                    Finding patterns in unlabeled data (e.g., customer segmentation, anomaly detection).
-                  </p>
+                  <h4>Hypothesize</h4>
+                  <p>Form theories about what you're seeing and why.</p>
                 </div>
               </div>
 
               <div class="workflow-step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                  <h4>Reinforcement Learning</h4>
-                  <p>
-                    Learning through trial and error with rewards (e.g., game AI, robotics).
-                  </p>
+                  <h4>Test</h4>
+                  <p>Validate your hypothesis with analysis or experiments.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h4>Refine</h4>
+                  <p>Adjust your understanding and repeat the cycle.</p>
                 </div>
               </div>
             </div>
-
-            <h2 id="data-science">Data Science</h2>
-            <p>
-              Data Science is an interdisciplinary field that uses scientific methods, processes, and systems to extract knowledge from structured and unstructured data. It encompasses statistics, ML, domain expertise, and communication.
-            </p>
 
             <blockquote class="chapter-quote">
               <i class="fas fa-quote-left"></i>
               <p>
-                "A data scientist is someone who is better at statistics than any software engineer and better at software engineering than any statistician."
+                "In data science, you're not finding the answer—you're finding
+                better questions."
               </p>
-              <cite>— Josh Wills</cite>
+              <cite>— Anonymous Data Scientist</cite>
             </blockquote>
 
-            <h2 id="key-differences">Key Differences</h2>
-            
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-robot"></i> AI Focus</h4>
-                <ul>
-                  <li>Building intelligent systems</li>
-                  <li>Mimicking human cognition</li>
-                  <li>Automation of complex tasks</li>
-                  <li>May or may not use data-driven approaches</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-brain"></i> ML Focus</h4>
-                <ul>
-                  <li>Pattern recognition from data</li>
-                  <li>Prediction and classification</li>
-                  <li>Improving with experience</li>
-                  <li>Always data-driven</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="skill-category" style="margin-top: 20px;">
-              <h4><i class="fas fa-chart-bar"></i> Data Science Focus</h4>
-              <ul>
-                <li>Extracting insights from data</li>
-                <li>Answering business questions</li>
-                <li>Statistical analysis and experimentation</li>
-                <li>Communication and storytelling</li>
-                <li>Uses ML as one of many tools</li>
-              </ul>
-            </div>
-
-            <h2 id="practical-example">A Practical Example</h2>
+            <h2 id="systems-thinking">Systems Thinking</h2>
             <p>
-              Consider a company wanting to reduce customer churn:
+              Data scientists see the world as interconnected systems. A change
+              in one variable ripples through others. They think in terms of
+              relationships, dependencies, and feedback loops rather than
+              isolated events.
             </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">AI</div>
-                <div class="step-content">
-                  <h4>The Vision</h4>
-                  <p>
-                    Create an intelligent system that automatically identifies at-risk customers and takes action to retain them.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">ML</div>
-                <div class="step-content">
-                  <h4>The Engine</h4>
-                  <p>
-                    Build a model that predicts which customers are likely to churn based on their behavior patterns.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">DS</div>
-                <div class="step-content">
-                  <h4>The Process</h4>
-                  <p>
-                    Analyze customer data, understand why they leave, test retention strategies, measure impact, and communicate findings to stakeholders.
-                  </p>
-                </div>
-              </div>
-            </div>
 
             <div class="key-point">
               <i class="fas fa-lightbulb"></i>
               <div>
-                <strong>Bottom Line:</strong> AI is the goal, ML is the technique, and Data Science is the comprehensive approach that includes both plus statistics, domain knowledge, and communication.
+                <strong>Example:</strong> When analyzing customer churn, a data
+                scientist doesn't just look at who left—they examine product
+                usage, customer support interactions, pricing changes,
+                competitor actions, and seasonal patterns as an interconnected
+                system.
+              </div>
+            </div>
+
+            <h2 id="probabilistic-thinking">Probabilistic Thinking</h2>
+            <p>
+              Unlike traditional analysts who seek certainty, data scientists
+              think in probabilities. They're comfortable saying "there's a 70%
+              chance" instead of claiming absolute truth.
+            </p>
+
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4><i class="fas fa-percent"></i> Embracing Uncertainty</h4>
+                <ul>
+                  <li>Understanding confidence intervals</li>
+                  <li>Quantifying risk and uncertainty</li>
+                  <li>Making decisions with incomplete information</li>
+                  <li>Communicating probability to stakeholders</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>
+                  <i class="fas fa-balance-scale"></i> Weighing Trade-offs
+                </h4>
+                <ul>
+                  <li>Precision vs. recall</li>
+                  <li>Complexity vs. interpretability</li>
+                  <li>Speed vs. accuracy</li>
+                  <li>Cost vs. value</li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 id="storytelling">Data Storytelling</h2>
+            <p>
+              The best data scientists are also great storytellers. They
+              translate complex analyses into narratives that business
+              stakeholders can understand and act upon.
+            </p>
+
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Context</h4>
+                  <p>Set up the problem and why it matters.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Discovery</h4>
+                  <p>Share what the data revealed—the "aha" moment.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Action</h4>
+                  <p>Provide clear, actionable recommendations.</p>
+                </div>
+              </div>
+            </div>
+
+            <h2 id="curiosity">Relentless Curiosity</h2>
+            <p>
+              Data scientists are driven by curiosity. When they see an
+              unexpected pattern, they don't ignore it—they dig deeper. "Why?"
+              is their favorite question.
+            </p>
+
+            <div class="key-point">
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <strong>Cultivate This Mindset:</strong> Train yourself to
+                notice anomalies, ask "what if" questions, and never accept
+                "that's just how it is" as an answer. The best insights come
+                from investigating the things that don't quite fit.
+              </div>
+            </div>
+
+            <h2 id="practical-mindset">Putting It All Together</h2>
+            <p>
+              The data science mindset combines scientific rigor with creative
+              problem-solving. It's about being analytical yet imaginative,
+              skeptical yet open-minded, detail-oriented yet able to see the big
+              picture.
+            </p>
+
+            <div class="pillar-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Scientific Method</h3>
+                <p>
+                  Form hypotheses, design experiments, test rigorously, draw
+                  conclusions carefully.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Creative Problem-Solving</h3>
+                <p>
+                  Find novel approaches, combine unexpected data sources, think
+                  outside the box.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3>Business Impact</h3>
+                <p>
+                  Focus on solving real problems that create value for
+                  organizations and people.
+                </p>
               </div>
             </div>
           </section>
 
           <!-- Navigation Footer -->
           <div class="chapter-navigation">
-            <button class="nav-button prev" onclick="window.location.href='chapter-0-2.html'">
+            <button
+              class="nav-button prev"
+              onclick="window.location.href = 'chapter-0_2.html'"
+            >
               <i class="fas fa-arrow-left"></i> Previous
             </button>
-            <button class="nav-button next" onclick="window.location.href='chapter-0-4.html'">
+            <button
+              class="nav-button next"
+              onclick="window.location.href = 'chapter-0_4.html'"
+            >
               Next <i class="fas fa-arrow-right"></i>
             </button>
           </div>
@@ -382,13 +387,16 @@
         <div class="panel-block">
           <h4>On This Page</h4>
           <ul class="page-toc">
-                        <li><a href="#question-first">Start with Questions</a></li>
+            <li><a href="#question-first">Start with Questions</a></li>
             <li><a href="#skepticism">Healthy Skepticism</a></li>
             <li><a href="#iterative-thinking">Iterative Thinking</a></li>
             <li><a href="#systems-thinking">Systems Thinking</a></li>
-            <li><a href="#probabilistic-thinking">Probabilistic Thinking</a></li>
+            <li>
+              <a href="#probabilistic-thinking">Probabilistic Thinking</a>
+            </li>
             <li><a href="#storytelling">Data Storytelling</a></li>
             <li><a href="#curiosity">Relentless Curiosity</a></li>
+            <li><a href="#practical-mindset">Putting It All Together</a></li>
           </ul>
         </div>
 
