@@ -1,487 +1,281 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How Data Scientists Think - Data Science Book</title>
-    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
-    <link rel="stylesheet" href="/book/assets/css/book.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-logo">JAHID HASAN</a>
-        <div class="nav-links">
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
-          <a href="book.html" class="active"
-            ><i class="fas fa-book"></i> Book</a
-          >
-          <a href="index.html#contact"
-            ><i class="fas fa-envelope"></i> Contact</a
-          >
-        </div>
+<article class="chapter-content">
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter 0.3</span>
+    <h1>How Data Scientists Think</h1>
+    <div class="chapter-meta">
+      <span><i class="fas fa-clock"></i> 9 min read</span>
+      <span><i class="fas fa-signal"></i> Beginner</span>
+      <span><i class="fas fa-tag"></i> Foundation</span>
+    </div>
+  </div>
+
+  <div class="chapter-intro">
+    <p class="lead">
+      Data scientists approach problems differently than other professionals.
+      Understanding this mindset is key to developing your own data science
+      intuition.
+    </p>
+  </div>
+
+  <section class="content-section">
+    <h2 id="question-first">Start with Questions, Not Data</h2>
+    <p>
+      The biggest mistake beginners make is diving straight into data analysis.
+      Great data scientists start by asking: "What problem are we trying to
+      solve?" and "What decision will this analysis inform?"
+    </p>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Key Insight:</strong> Data without a question is just noise.
+        Always define your problem before touching the data.
       </div>
-    </nav>
-
-    <!-- BOOK CONTAINER -->
-    <div class="book-container">
-      <!-- LEFT SIDEBAR - Navigation -->
-      <aside class="book-sidebar">
-        <div class="book-brand">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Data Science Mastery</span>
-        </div>
-
-        <div class="progress-section">
-          <div class="progress-header">
-            <span>Your Progress</span>
-            <span class="progress-percentage">0%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
-          </div>
-        </div>
-
-        <nav class="book-nav">
-          <!-- Getting Started -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part0">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Getting Started</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="0.1">
-                <a href="chapter-0_1.html">What Is Data Science?</a>
-              </li>
-              <li data-chapter="0.2">
-                <a href="chapter-0_2.html">DS vs ML vs AI</a>
-              </li>
-              <li data-chapter="0.3" class="active">
-                <a href="chapter-0_3.html">How Data Scientists Think</a>
-              </li>
-              <li data-chapter="0.4">
-                <a href="chapter-0_4.html">Types of Data Problems</a>
-              </li>
-              <li data-chapter="0.5">
-                <a href="chapter-0_5.html">Data Science Workflow</a>
-              </li>
-              <li data-chapter="0.6">
-                <a href="chapter-0_6.html">Tools & Skills Overview</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </aside>
-
-      <!-- MAIN CONTENT AREA -->
-      <main class="book-content">
-        <article class="chapter-content">
-          <div class="chapter-header">
-            <span class="chapter-label">Chapter 0.3</span>
-            <h1>How Data Scientists Think</h1>
-            <div class="chapter-meta">
-              <span><i class="fas fa-clock"></i> 9 min read</span>
-              <span><i class="fas fa-signal"></i> Beginner</span>
-              <span><i class="fas fa-tag"></i> Foundation</span>
-            </div>
-          </div>
-
-          <div class="chapter-intro">
-            <p class="lead">
-              Data scientists approach problems differently than other
-              professionals. Understanding this mindset is key to developing
-              your own data science intuition.
-            </p>
-          </div>
-
-          <section class="content-section">
-            <h2 id="question-first">Start with Questions, Not Data</h2>
-            <p>
-              The biggest mistake beginners make is diving straight into data
-              analysis. Great data scientists start by asking: "What problem are
-              we trying to solve?" and "What decision will this analysis
-              inform?"
-            </p>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Key Insight:</strong> Data without a question is just
-                noise. Always define your problem before touching the data.
-              </div>
-            </div>
-
-            <h2 id="skepticism">Healthy Skepticism</h2>
-            <p>
-              Data scientists are professional skeptics. They question
-              everything: the data quality, the assumptions, the results, and
-              even their own conclusions. This isn't pessimism—it's intellectual
-              rigor.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(235, 111, 146, 0.1)"
-                >
-                  <i class="fas fa-search"></i>
-                </div>
-                <h3>Question the Data</h3>
-                <p>
-                  Where did this data come from? Who collected it? What's
-                  missing? What biases might exist?
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(156, 207, 216, 0.1)"
-                >
-                  <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <h3>Question Assumptions</h3>
-                <p>
-                  Are we assuming correlation means causation? Are we ignoring
-                  confounding variables?
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(246, 193, 119, 0.1)"
-                >
-                  <i class="fas fa-check-double"></i>
-                </div>
-                <h3>Question Results</h3>
-                <p>
-                  Does this make sense? Can we validate it? What could we be
-                  missing?
-                </p>
-              </div>
-            </div>
-
-            <h2 id="iterative-thinking">Iterative Thinking</h2>
-            <p>
-              Data science is never a straight line from question to answer.
-              It's a cycle of exploration, hypothesis, testing, and refinement.
-              Each discovery leads to new questions.
-            </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Explore</h4>
-                  <p>Look at the data, find patterns, notice anomalies.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>Hypothesize</h4>
-                  <p>Form theories about what you're seeing and why.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Test</h4>
-                  <p>Validate your hypothesis with analysis or experiments.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Refine</h4>
-                  <p>Adjust your understanding and repeat the cycle.</p>
-                </div>
-              </div>
-            </div>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "In data science, you're not finding the answer—you're finding
-                better questions."
-              </p>
-              <cite>— Anonymous Data Scientist</cite>
-            </blockquote>
-
-            <h2 id="systems-thinking">Systems Thinking</h2>
-            <p>
-              Data scientists see the world as interconnected systems. A change
-              in one variable ripples through others. They think in terms of
-              relationships, dependencies, and feedback loops rather than
-              isolated events.
-            </p>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Example:</strong> When analyzing customer churn, a data
-                scientist doesn't just look at who left—they examine product
-                usage, customer support interactions, pricing changes,
-                competitor actions, and seasonal patterns as an interconnected
-                system.
-              </div>
-            </div>
-
-            <h2 id="probabilistic-thinking">Probabilistic Thinking</h2>
-            <p>
-              Unlike traditional analysts who seek certainty, data scientists
-              think in probabilities. They're comfortable saying "there's a 70%
-              chance" instead of claiming absolute truth.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-percent"></i> Embracing Uncertainty</h4>
-                <ul>
-                  <li>Understanding confidence intervals</li>
-                  <li>Quantifying risk and uncertainty</li>
-                  <li>Making decisions with incomplete information</li>
-                  <li>Communicating probability to stakeholders</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4>
-                  <i class="fas fa-balance-scale"></i> Weighing Trade-offs
-                </h4>
-                <ul>
-                  <li>Precision vs. recall</li>
-                  <li>Complexity vs. interpretability</li>
-                  <li>Speed vs. accuracy</li>
-                  <li>Cost vs. value</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 id="storytelling">Data Storytelling</h2>
-            <p>
-              The best data scientists are also great storytellers. They
-              translate complex analyses into narratives that business
-              stakeholders can understand and act upon.
-            </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Context</h4>
-                  <p>Set up the problem and why it matters.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>Discovery</h4>
-                  <p>Share what the data revealed—the "aha" moment.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Action</h4>
-                  <p>Provide clear, actionable recommendations.</p>
-                </div>
-              </div>
-            </div>
-
-            <h2 id="curiosity">Relentless Curiosity</h2>
-            <p>
-              Data scientists are driven by curiosity. When they see an
-              unexpected pattern, they don't ignore it—they dig deeper. "Why?"
-              is their favorite question.
-            </p>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Cultivate This Mindset:</strong> Train yourself to
-                notice anomalies, ask "what if" questions, and never accept
-                "that's just how it is" as an answer. The best insights come
-                from investigating the things that don't quite fit.
-              </div>
-            </div>
-
-            <h2 id="practical-mindset">Putting It All Together</h2>
-            <p>
-              The data science mindset combines scientific rigor with creative
-              problem-solving. It's about being analytical yet imaginative,
-              skeptical yet open-minded, detail-oriented yet able to see the big
-              picture.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-microscope"></i>
-                </div>
-                <h3>Scientific Method</h3>
-                <p>
-                  Form hypotheses, design experiments, test rigorously, draw
-                  conclusions carefully.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3>Creative Problem-Solving</h3>
-                <p>
-                  Find novel approaches, combine unexpected data sources, think
-                  outside the box.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-users"></i>
-                </div>
-                <h3>Business Impact</h3>
-                <p>
-                  Focus on solving real problems that create value for
-                  organizations and people.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Navigation Footer -->
-          <div class="chapter-navigation">
-            <button
-              class="nav-button prev"
-              onclick="window.location.href = 'chapter-0_2.html'"
-            >
-              <i class="fas fa-arrow-left"></i> Previous
-            </button>
-            <button
-              class="nav-button next"
-              onclick="window.location.href = 'chapter-0_4.html'"
-            >
-              Next <i class="fas fa-arrow-right"></i>
-            </button>
-          </div>
-        </article>
-      </main>
-
-      <!-- RIGHT SIDEBAR - Table of Contents -->
-      <aside class="book-right-panel">
-        <div class="panel-block">
-          <h4>On This Page</h4>
-          <ul class="page-toc">
-            <li><a href="#question-first">Start with Questions</a></li>
-            <li><a href="#skepticism">Healthy Skepticism</a></li>
-            <li><a href="#iterative-thinking">Iterative Thinking</a></li>
-            <li><a href="#systems-thinking">Systems Thinking</a></li>
-            <li>
-              <a href="#probabilistic-thinking">Probabilistic Thinking</a>
-            </li>
-            <li><a href="#storytelling">Data Storytelling</a></li>
-            <li><a href="#curiosity">Relentless Curiosity</a></li>
-            <li><a href="#practical-mindset">Putting It All Together</a></li>
-          </ul>
-        </div>
-
-        <div class="panel-block">
-          <h4>Chapter Info</h4>
-          <ul class="chapter-info">
-            <li><i class="fas fa-layer-group"></i> Level: Beginner</li>
-            <li><i class="fas fa-book-open"></i> Part: 0 - Getting Started</li>
-            <li><i class="fas fa-calendar"></i> Updated: Jan 2026</li>
-          </ul>
-        </div>
-
-        <div class="panel-block resources">
-          <h4>Resources</h4>
-          <a href="#" class="resource-link">
-            <i class="fas fa-download"></i> Download PDF
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fab fa-github"></i> Code Examples
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fas fa-comments"></i> Discussion Forum
-          </a>
-        </div>
-      </aside>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="blog-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>About This Book</h4>
-          <p>
-            A comprehensive guide to mastering data science from fundamentals to
-            professional practice.
-          </p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
+    <h2 id="skepticism">Healthy Skepticism</h2>
+    <p>
+      Data scientists are professional skeptics. They question everything: the
+      data quality, the assumptions, the results, and even their own
+      conclusions. This isn't pessimism—it's intellectual rigor.
+    </p>
 
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#blog">Blog</a></li>
-            <li><a href="book.html">Data Science Book</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(235, 111, 146, 0.1)">
+          <i class="fas fa-search"></i>
         </div>
+        <h3>Question the Data</h3>
+        <p>
+          Where did this data come from? Who collected it? What's missing? What
+          biases might exist?
+        </p>
+      </div>
 
-        <div class="footer-section">
-          <h4>Stay Updated</h4>
-          <p>Get notified about new chapters and updates.</p>
-          <form
-            class="newsletter-form"
-            onsubmit="return submitNewsletter(this);"
-          >
-            <input
-              type="email"
-              id="newsletterEmail"
-              placeholder="Your email"
-              required
-            />
-            <button type="submit">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-          <div id="emailFeedback" class="email-feedback"></div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 207, 216, 0.1)">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h3>Question Assumptions</h3>
+        <p>
+          Are we assuming correlation means causation? Are we ignoring
+          confounding variables?
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(246, 193, 119, 0.1)">
+          <i class="fas fa-check-double"></i>
+        </div>
+        <h3>Question Results</h3>
+        <p>
+          Does this make sense? Can we validate it? What could we be missing?
+        </p>
+      </div>
+    </div>
+
+    <h2 id="iterative-thinking">Iterative Thinking</h2>
+    <p>
+      Data science is never a straight line from question to answer. It's a
+      cycle of exploration, hypothesis, testing, and refinement. Each discovery
+      leads to new questions.
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Explore</h4>
+          <p>Look at the data, find patterns, notice anomalies.</p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-container">
-          <p>
-            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
-            learners worldwide.
-          </p>
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Hypothesize</h4>
+          <p>Form theories about what you're seeing and why.</p>
         </div>
       </div>
-    </footer>
 
-    <script src="../blog/assets/js/blog.js"></script>
-    <script src="/book/assets/js/book.js"></script>
-  </body>
-</html>
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Test</h4>
+          <p>Validate your hypothesis with analysis or experiments.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Refine</h4>
+          <p>Adjust your understanding and repeat the cycle.</p>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "In data science, you're not finding the answer—you're finding better
+        questions."
+      </p>
+      <cite>— Anonymous Data Scientist</cite>
+    </blockquote>
+
+    <h2 id="systems-thinking">Systems Thinking</h2>
+    <p>
+      Data scientists see the world as interconnected systems. A change in one
+      variable ripples through others. They think in terms of relationships,
+      dependencies, and feedback loops rather than isolated events.
+    </p>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Example:</strong> When analyzing customer churn, a data
+        scientist doesn't just look at who left—they examine product usage,
+        customer support interactions, pricing changes, competitor actions, and
+        seasonal patterns as an interconnected system.
+      </div>
+    </div>
+
+    <h2 id="probabilistic-thinking">Probabilistic Thinking</h2>
+    <p>
+      Unlike traditional analysts who seek certainty, data scientists think in
+      probabilities. They're comfortable saying "there's a 70% chance" instead
+      of claiming absolute truth.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-percent"></i> Embracing Uncertainty</h4>
+        <ul>
+          <li>Understanding confidence intervals</li>
+          <li>Quantifying risk and uncertainty</li>
+          <li>Making decisions with incomplete information</li>
+          <li>Communicating probability to stakeholders</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-balance-scale"></i> Weighing Trade-offs</h4>
+        <ul>
+          <li>Precision vs. recall</li>
+          <li>Complexity vs. interpretability</li>
+          <li>Speed vs. accuracy</li>
+          <li>Cost vs. value</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="storytelling">Data Storytelling</h2>
+    <p>
+      The best data scientists are also great storytellers. They translate
+      complex analyses into narratives that business stakeholders can understand
+      and act upon.
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Context</h4>
+          <p>Set up the problem and why it matters.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Discovery</h4>
+          <p>Share what the data revealed—the "aha" moment.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Action</h4>
+          <p>Provide clear, actionable recommendations.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="curiosity">Relentless Curiosity</h2>
+    <p>
+      Data scientists are driven by curiosity. When they see an unexpected
+      pattern, they don't ignore it—they dig deeper. "Why?" is their favorite
+      question.
+    </p>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Cultivate This Mindset:</strong> Train yourself to notice
+        anomalies, ask "what if" questions, and never accept "that's just how it
+        is" as an answer. The best insights come from investigating the things
+        that don't quite fit.
+      </div>
+    </div>
+
+    <h2 id="practical-mindset">Putting It All Together</h2>
+    <p>
+      The data science mindset combines scientific rigor with creative
+      problem-solving. It's about being analytical yet imaginative, skeptical
+      yet open-minded, detail-oriented yet able to see the big picture.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-microscope"></i>
+        </div>
+        <h3>Scientific Method</h3>
+        <p>
+          Form hypotheses, design experiments, test rigorously, draw conclusions
+          carefully.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3>Creative Problem-Solving</h3>
+        <p>
+          Find novel approaches, combine unexpected data sources, think outside
+          the box.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Business Impact</h3>
+        <p>
+          Focus on solving real problems that create value for organizations and
+          people.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Footer -->
+  <div class="chapter-navigation">
+    <button
+      class="nav-button prev"
+      onclick="window.location.href = 'chapter-0_2.html'"
+    >
+      <i class="fas fa-arrow-left"></i> Previous
+    </button>
+    <button
+      class="nav-button next"
+      onclick="window.location.href = 'chapter-0_4.html'"
+    >
+      Next <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</article>

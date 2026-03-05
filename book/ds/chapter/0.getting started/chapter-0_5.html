@@ -1,651 +1,437 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Science Workflow - Data Science Book</title>
-    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
-    <link rel="stylesheet" href="/book/assets/css/book.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-logo">JAHID HASAN</a>
-        <div class="nav-links">
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
-          <a href="book.html" class="active"
-            ><i class="fas fa-book"></i> Book</a
-          >
-          <a href="index.html#contact"
-            ><i class="fas fa-envelope"></i> Contact</a
-          >
-        </div>
+<article class="chapter-content">
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter 0.5</span>
+    <h1>Data Science Workflow</h1>
+    <div class="chapter-meta">
+      <span><i class="fas fa-clock"></i> 11 min read</span>
+      <span><i class="fas fa-signal"></i> Beginner</span>
+      <span><i class="fas fa-tag"></i> Foundation</span>
+    </div>
+  </div>
+
+  <div class="chapter-intro">
+    <p class="lead">
+      Every successful data science project follows a structured workflow.
+      Understanding this process helps you navigate from raw data to actionable
+      insights efficiently.
+    </p>
+  </div>
+
+  <section class="content-section">
+    <h2 id="overview">The Complete Workflow</h2>
+    <p>
+      Data science isn't a linear process—it's iterative and cyclical. However,
+      there's a general framework that most projects follow. Think of it as a
+      roadmap rather than a rigid set of rules.
+    </p>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Key Insight:</strong> You'll often loop back to earlier steps as
+        you learn more about your data and problem. This is normal and expected
+        in data science.
       </div>
-    </nav>
-
-    <!-- BOOK CONTAINER -->
-    <div class="book-container">
-      <!-- LEFT SIDEBAR - Navigation -->
-      <aside class="book-sidebar">
-        <div class="book-brand">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Data Science Mastery</span>
-        </div>
-
-        <div class="progress-section">
-          <div class="progress-header">
-            <span>Your Progress</span>
-            <span class="progress-percentage">0%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
-          </div>
-        </div>
-
-        <nav class="book-nav">
-          <!-- Getting Started -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part0">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Getting Started</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="0.1">
-                <a href="chapter-0_1.html">What Is Data Science?</a>
-              </li>
-              <li data-chapter="0.2">
-                <a href="chapter-0_2.html">DS vs ML vs AI</a>
-              </li>
-              <li data-chapter="0.3">
-                <a href="chapter-0_3.html">How Data Scientists Think</a>
-              </li>
-              <li data-chapter="0.4">
-                <a href="chapter-0_4.html">Types of Data Problems</a>
-              </li>
-              <li data-chapter="0.5" class="active">
-                <a href="chapter-0_5.html">Data Science Workflow</a>
-              </li>
-              <li data-chapter="0.6">
-                <a href="chapter-0_6.html">Tools & Skills Overview</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </aside>
-
-      <!-- MAIN CONTENT AREA -->
-      <main class="book-content">
-        <article class="chapter-content">
-          <div class="chapter-header">
-            <span class="chapter-label">Chapter 0.5</span>
-            <h1>Data Science Workflow</h1>
-            <div class="chapter-meta">
-              <span><i class="fas fa-clock"></i> 11 min read</span>
-              <span><i class="fas fa-signal"></i> Beginner</span>
-              <span><i class="fas fa-tag"></i> Foundation</span>
-            </div>
-          </div>
-
-          <div class="chapter-intro">
-            <p class="lead">
-              Every successful data science project follows a structured
-              workflow. Understanding this process helps you navigate from raw
-              data to actionable insights efficiently.
-            </p>
-          </div>
-
-          <section class="content-section">
-            <h2 id="overview">The Complete Workflow</h2>
-            <p>
-              Data science isn't a linear process—it's iterative and cyclical.
-              However, there's a general framework that most projects follow.
-              Think of it as a roadmap rather than a rigid set of rules.
-            </p>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Key Insight:</strong> You'll often loop back to earlier
-                steps as you learn more about your data and problem. This is
-                normal and expected in data science.
-              </div>
-            </div>
-
-            <h2 id="step1">Step 1: Business Understanding</h2>
-            <p>
-              Before touching any data, you need to understand the business
-              problem you're solving. This is the most critical step—solve the
-              wrong problem perfectly, and you've wasted everyone's time.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(235, 111, 146, 0.1)"
-                >
-                  <i class="fas fa-question-circle"></i>
-                </div>
-                <h3>Key Questions</h3>
-                <p>
-                  What problem are we solving? Why does it matter? What does
-                  success look like? Who will use the results?
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(156, 207, 216, 0.1)"
-                >
-                  <i class="fas fa-users"></i>
-                </div>
-                <h3>Stakeholder Alignment</h3>
-                <p>
-                  Meet with business owners, understand constraints, define
-                  metrics, set expectations.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(246, 193, 119, 0.1)"
-                >
-                  <i class="fas fa-bullseye"></i>
-                </div>
-                <h3>Define Success</h3>
-                <p>
-                  Establish clear, measurable objectives. What accuracy do we
-                  need? What's the timeline?
-                </p>
-              </div>
-            </div>
-
-            <h2 id="step2">Step 2: Data Collection</h2>
-            <p>
-              Once you understand the problem, identify and gather the data you
-              need. This might come from databases, APIs, files, web scraping,
-              or external sources.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-database"></i> Common Data Sources</h4>
-                <ul>
-                  <li>Internal databases (SQL, NoSQL)</li>
-                  <li>APIs and web services</li>
-                  <li>CSV/Excel files</li>
-                  <li>Web scraping</li>
-                  <li>Third-party data providers</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4>
-                  <i class="fas fa-exclamation-triangle"></i> Key Considerations
-                </h4>
-                <ul>
-                  <li>Data availability and access</li>
-                  <li>Data quality and completeness</li>
-                  <li>Privacy and compliance (GDPR, etc.)</li>
-                  <li>Volume and storage requirements</li>
-                  <li>Cost of data acquisition</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 id="step3">Step 3: Data Cleaning</h2>
-            <p>
-              Real-world data is messy. This step often takes 50-80% of project
-              time. You'll handle missing values, fix errors, remove duplicates,
-              and standardize formats.
-            </p>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "Data cleaning is the unglamorous but essential foundation of
-                any successful data science project."
-              </p>
-              <cite>— Data Science Reality</cite>
-            </blockquote>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Handle Missing Data</h4>
-                  <p>
-                    Decide whether to remove, impute, or flag missing values.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>Remove Duplicates</h4>
-                  <p>Identify and eliminate redundant records.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Fix Errors</h4>
-                  <p>
-                    Correct typos, standardize formats, validate data types.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Handle Outliers</h4>
-                  <p>
-                    Investigate anomalies—are they errors or valuable insights?
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h2 id="step4">Step 4: Exploratory Data Analysis (EDA)</h2>
-            <p>
-              Now you explore your clean data to understand patterns,
-              distributions, and relationships. This is where you develop
-              intuition about what the data is telling you.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-chart-bar"></i>
-                </div>
-                <h3>Visualize</h3>
-                <p>
-                  Create histograms, scatter plots, box plots, and correlation
-                  matrices to see patterns.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-calculator"></i>
-                </div>
-                <h3>Summarize</h3>
-                <p>
-                  Calculate statistics: means, medians, standard deviations,
-                  percentiles.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-search"></i>
-                </div>
-                <h3>Investigate</h3>
-                <p>
-                  Look for trends, seasonality, correlations, and unexpected
-                  patterns.
-                </p>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>EDA Goals:</strong> Understand your data's shape, spot
-                quality issues, identify relevant features, and form hypotheses
-                to test.
-              </div>
-            </div>
-
-            <h2 id="step5">Step 5: Feature Engineering</h2>
-            <p>
-              Transform raw data into features that better represent the
-              underlying problem. This is often the difference between a
-              mediocre model and a great one.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-magic"></i> Common Techniques</h4>
-                <ul>
-                  <li>Creating new features from existing ones</li>
-                  <li>Encoding categorical variables</li>
-                  <li>Scaling and normalization</li>
-                  <li>Binning continuous variables</li>
-                  <li>Feature extraction (PCA, embeddings)</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-lightbulb"></i> Examples</h4>
-                <ul>
-                  <li>Extract day of week from timestamp</li>
-                  <li>Calculate customer lifetime value</li>
-                  <li>Create interaction terms</li>
-                  <li>Aggregate transaction history</li>
-                  <li>Text features from descriptions</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 id="step6">Step 6: Modeling</h2>
-            <p>
-              Select and train machine learning models (or statistical methods)
-              that fit your problem type. Start simple, then increase complexity
-              if needed.
-            </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Choose Algorithm</h4>
-                  <p>
-                    Select based on problem type: regression, classification,
-                    clustering, etc.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>Split Data</h4>
-                  <p>Divide into training, validation, and test sets.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Train Model</h4>
-                  <p>
-                    Fit the model to training data and tune hyperparameters.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Validate</h4>
-                  <p>Test on validation set to prevent overfitting.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-exclamation-triangle"></i>
-              <div>
-                <strong>Important:</strong> Start with simple models (linear
-                regression, logistic regression) before trying complex ones
-                (deep learning). Simple often wins.
-              </div>
-            </div>
-
-            <h2 id="step7">Step 7: Evaluation</h2>
-            <p>
-              Assess your model's performance using appropriate metrics. Does it
-              meet the business requirements defined in Step 1?
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Choose Metrics</h3>
-                <p>
-                  Accuracy, precision, recall, F1-score, RMSE, R-squared—pick
-                  what matters for your problem.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-balance-scale"></i>
-                </div>
-                <h3>Test on Holdout</h3>
-                <p>
-                  Use the untouched test set to get unbiased performance
-                  estimates.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-flask"></i>
-                </div>
-                <h3>A/B Testing</h3>
-                <p>
-                  For production systems, test your model against the current
-                  solution in real conditions.
-                </p>
-              </div>
-            </div>
-
-            <h2 id="step8">Step 8: Communication & Deployment</h2>
-            <p>
-              The final step is sharing your findings and putting your solution
-              into production. Even the best model is worthless if stakeholders
-              don't understand or can't use it.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-comments"></i> Communication</h4>
-                <ul>
-                  <li>Create clear visualizations</li>
-                  <li>Write executive summaries</li>
-                  <li>Present findings to stakeholders</li>
-                  <li>Document methodology</li>
-                  <li>Explain limitations and assumptions</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-rocket"></i> Deployment</h4>
-                <ul>
-                  <li>Package model for production</li>
-                  <li>Set up monitoring and alerts</li>
-                  <li>Plan for model retraining</li>
-                  <li>Document maintenance procedures</li>
-                  <li>Ensure scalability and reliability</li>
-                </ul>
-              </div>
-            </div>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "A model in a Jupyter notebook has zero business value. Only
-                deployed, monitored, and maintained models create impact."
-              </p>
-              <cite>— Production ML Wisdom</cite>
-            </blockquote>
-
-            <h2 id="iteration">The Iterative Nature of Data Science</h2>
-            <p>
-              Remember: this workflow isn't a one-way street. You'll constantly
-              loop back to earlier steps based on what you learn.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-sync-alt"></i>
-                </div>
-                <h3>Common Loops</h3>
-                <p>
-                  Poor model performance? Go back to feature engineering or data
-                  collection. New insights during EDA? Refine your business
-                  understanding.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-tasks"></i>
-                </div>
-                <h3>Continuous Improvement</h3>
-                <p>
-                  Even after deployment, monitor performance and retrain models
-                  as data changes and business needs evolve.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3>Learning Process</h3>
-                <p>
-                  Each iteration teaches you more about the problem, the data,
-                  and the domain. Embrace the learning.
-                </p>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Final Wisdom:</strong> Perfect is the enemy of good.
-                Ship a working solution, gather feedback, and improve
-                iteratively rather than seeking perfection upfront.
-              </div>
-            </div>
-          </section>
-
-          <!-- Navigation Footer -->
-          <div class="chapter-navigation">
-            <button
-              class="nav-button prev"
-              onclick="window.location.href = 'chapter-0_4.html'"
-            >
-              <i class="fas fa-arrow-left"></i> Previous
-            </button>
-            <button
-              class="nav-button next"
-              onclick="window.location.href = 'chapter-0_6.html'"
-            >
-              Next <i class="fas fa-arrow-right"></i>
-            </button>
-          </div>
-        </article>
-      </main>
-
-      <!-- RIGHT SIDEBAR - Table of Contents -->
-      <aside class="book-right-panel">
-        <div class="panel-block">
-          <h4>On This Page</h4>
-          <ul class="page-toc">
-            <li><a href="#overview">The Complete Workflow</a></li>
-            <li><a href="#step1">1. Business Understanding</a></li>
-            <li><a href="#step2">2. Data Collection</a></li>
-            <li><a href="#step3">3. Data Cleaning</a></li>
-            <li><a href="#step4">4. Exploratory Analysis</a></li>
-            <li><a href="#step5">5. Feature Engineering</a></li>
-            <li><a href="#step6">6. Modeling</a></li>
-            <li><a href="#step7">7. Evaluation</a></li>
-            <li><a href="#step8">8. Communication & Deployment</a></li>
-            <li><a href="#iteration">The Iterative Nature</a></li>
-          </ul>
-        </div>
-
-        <div class="panel-block">
-          <h4>Chapter Info</h4>
-          <ul class="chapter-info">
-            <li><i class="fas fa-layer-group"></i> Level: Beginner</li>
-            <li><i class="fas fa-book-open"></i> Part: 0 - Getting Started</li>
-            <li><i class="fas fa-calendar"></i> Updated: Jan 2026</li>
-          </ul>
-        </div>
-
-        <div class="panel-block resources">
-          <h4>Resources</h4>
-          <a href="#" class="resource-link">
-            <i class="fas fa-download"></i> Download PDF
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fab fa-github"></i> Code Examples
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fas fa-comments"></i> Discussion Forum
-          </a>
-        </div>
-      </aside>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="blog-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>About This Book</h4>
-          <p>
-            A comprehensive guide to mastering data science from fundamentals to
-            professional practice.
-          </p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
+    <h2 id="step1">Step 1: Business Understanding</h2>
+    <p>
+      Before touching any data, you need to understand the business problem
+      you're solving. This is the most critical step—solve the wrong problem
+      perfectly, and you've wasted everyone's time.
+    </p>
 
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#blog">Blog</a></li>
-            <li><a href="book.html">Data Science Book</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(235, 111, 146, 0.1)">
+          <i class="fas fa-question-circle"></i>
         </div>
+        <h3>Key Questions</h3>
+        <p>
+          What problem are we solving? Why does it matter? What does success
+          look like? Who will use the results?
+        </p>
+      </div>
 
-        <div class="footer-section">
-          <h4>Stay Updated</h4>
-          <p>Get notified about new chapters and updates.</p>
-          <form
-            class="newsletter-form"
-            onsubmit="return submitNewsletter(this);"
-          >
-            <input
-              type="email"
-              id="newsletterEmail"
-              placeholder="Your email"
-              required
-            />
-            <button type="submit">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-          <div id="emailFeedback" class="email-feedback"></div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 207, 216, 0.1)">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Stakeholder Alignment</h3>
+        <p>
+          Meet with business owners, understand constraints, define metrics, set
+          expectations.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(246, 193, 119, 0.1)">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <h3>Define Success</h3>
+        <p>
+          Establish clear, measurable objectives. What accuracy do we need?
+          What's the timeline?
+        </p>
+      </div>
+    </div>
+
+    <h2 id="step2">Step 2: Data Collection</h2>
+    <p>
+      Once you understand the problem, identify and gather the data you need.
+      This might come from databases, APIs, files, web scraping, or external
+      sources.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-database"></i> Common Data Sources</h4>
+        <ul>
+          <li>Internal databases (SQL, NoSQL)</li>
+          <li>APIs and web services</li>
+          <li>CSV/Excel files</li>
+          <li>Web scraping</li>
+          <li>Third-party data providers</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-exclamation-triangle"></i> Key Considerations</h4>
+        <ul>
+          <li>Data availability and access</li>
+          <li>Data quality and completeness</li>
+          <li>Privacy and compliance (GDPR, etc.)</li>
+          <li>Volume and storage requirements</li>
+          <li>Cost of data acquisition</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="step3">Step 3: Data Cleaning</h2>
+    <p>
+      Real-world data is messy. This step often takes 50-80% of project time.
+      You'll handle missing values, fix errors, remove duplicates, and
+      standardize formats.
+    </p>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "Data cleaning is the unglamorous but essential foundation of any
+        successful data science project."
+      </p>
+      <cite>— Data Science Reality</cite>
+    </blockquote>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Handle Missing Data</h4>
+          <p>Decide whether to remove, impute, or flag missing values.</p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-container">
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Remove Duplicates</h4>
+          <p>Identify and eliminate redundant records.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Fix Errors</h4>
+          <p>Correct typos, standardize formats, validate data types.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Handle Outliers</h4>
+          <p>Investigate anomalies—are they errors or valuable insights?</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="step4">Step 4: Exploratory Data Analysis (EDA)</h2>
+    <p>
+      Now you explore your clean data to understand patterns, distributions, and
+      relationships. This is where you develop intuition about what the data is
+      telling you.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3>Visualize</h3>
+        <p>
+          Create histograms, scatter plots, box plots, and correlation matrices
+          to see patterns.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <h3>Summarize</h3>
+        <p>
+          Calculate statistics: means, medians, standard deviations,
+          percentiles.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>Investigate</h3>
+        <p>
+          Look for trends, seasonality, correlations, and unexpected patterns.
+        </p>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>EDA Goals:</strong> Understand your data's shape, spot quality
+        issues, identify relevant features, and form hypotheses to test.
+      </div>
+    </div>
+
+    <h2 id="step5">Step 5: Feature Engineering</h2>
+    <p>
+      Transform raw data into features that better represent the underlying
+      problem. This is often the difference between a mediocre model and a great
+      one.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-magic"></i> Common Techniques</h4>
+        <ul>
+          <li>Creating new features from existing ones</li>
+          <li>Encoding categorical variables</li>
+          <li>Scaling and normalization</li>
+          <li>Binning continuous variables</li>
+          <li>Feature extraction (PCA, embeddings)</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-lightbulb"></i> Examples</h4>
+        <ul>
+          <li>Extract day of week from timestamp</li>
+          <li>Calculate customer lifetime value</li>
+          <li>Create interaction terms</li>
+          <li>Aggregate transaction history</li>
+          <li>Text features from descriptions</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="step6">Step 6: Modeling</h2>
+    <p>
+      Select and train machine learning models (or statistical methods) that fit
+      your problem type. Start simple, then increase complexity if needed.
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Choose Algorithm</h4>
           <p>
-            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
-            learners worldwide.
+            Select based on problem type: regression, classification,
+            clustering, etc.
           </p>
         </div>
       </div>
-    </footer>
 
-    <script src="../blog/assets/js/blog.js"></script>
-    <script src="/book/assets/js/book.js"></script>
-  </body>
-</html>
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Split Data</h4>
+          <p>Divide into training, validation, and test sets.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Train Model</h4>
+          <p>Fit the model to training data and tune hyperparameters.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Validate</h4>
+          <p>Test on validation set to prevent overfitting.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-exclamation-triangle"></i>
+      <div>
+        <strong>Important:</strong> Start with simple models (linear regression,
+        logistic regression) before trying complex ones (deep learning). Simple
+        often wins.
+      </div>
+    </div>
+
+    <h2 id="step7">Step 7: Evaluation</h2>
+    <p>
+      Assess your model's performance using appropriate metrics. Does it meet
+      the business requirements defined in Step 1?
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Choose Metrics</h3>
+        <p>
+          Accuracy, precision, recall, F1-score, RMSE, R-squared—pick what
+          matters for your problem.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <h3>Test on Holdout</h3>
+        <p>Use the untouched test set to get unbiased performance estimates.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-flask"></i>
+        </div>
+        <h3>A/B Testing</h3>
+        <p>
+          For production systems, test your model against the current solution
+          in real conditions.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="step8">Step 8: Communication & Deployment</h2>
+    <p>
+      The final step is sharing your findings and putting your solution into
+      production. Even the best model is worthless if stakeholders don't
+      understand or can't use it.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-comments"></i> Communication</h4>
+        <ul>
+          <li>Create clear visualizations</li>
+          <li>Write executive summaries</li>
+          <li>Present findings to stakeholders</li>
+          <li>Document methodology</li>
+          <li>Explain limitations and assumptions</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-rocket"></i> Deployment</h4>
+        <ul>
+          <li>Package model for production</li>
+          <li>Set up monitoring and alerts</li>
+          <li>Plan for model retraining</li>
+          <li>Document maintenance procedures</li>
+          <li>Ensure scalability and reliability</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "A model in a Jupyter notebook has zero business value. Only deployed,
+        monitored, and maintained models create impact."
+      </p>
+      <cite>— Production ML Wisdom</cite>
+    </blockquote>
+
+    <h2 id="iteration">The Iterative Nature of Data Science</h2>
+    <p>
+      Remember: this workflow isn't a one-way street. You'll constantly loop
+      back to earlier steps based on what you learn.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <h3>Common Loops</h3>
+        <p>
+          Poor model performance? Go back to feature engineering or data
+          collection. New insights during EDA? Refine your business
+          understanding.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <h3>Continuous Improvement</h3>
+        <p>
+          Even after deployment, monitor performance and retrain models as data
+          changes and business needs evolve.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Learning Process</h3>
+        <p>
+          Each iteration teaches you more about the problem, the data, and the
+          domain. Embrace the learning.
+        </p>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Final Wisdom:</strong> Perfect is the enemy of good. Ship a
+        working solution, gather feedback, and improve iteratively rather than
+        seeking perfection upfront.
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Footer -->
+  <div class="chapter-navigation">
+    <button
+      class="nav-button prev"
+      onclick="window.location.href = 'chapter-0_4.html'"
+    >
+      <i class="fas fa-arrow-left"></i> Previous
+    </button>
+    <button
+      class="nav-button next"
+      onclick="window.location.href = 'chapter-0_6.html'"
+    >
+      Next <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</article>

@@ -1,579 +1,364 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Types of Data Problems - Data Science Book</title>
-    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
-    <link rel="stylesheet" href="/book/assets/css/book.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-logo">JAHID HASAN</a>
-        <div class="nav-links">
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
-          <a href="book.html" class="active"
-            ><i class="fas fa-book"></i> Book</a
-          >
-          <a href="index.html#contact"
-            ><i class="fas fa-envelope"></i> Contact</a
-          >
-        </div>
+<article class="chapter-content">
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter 0.4</span>
+    <h1>Types of Data Problems</h1>
+    <div class="chapter-meta">
+      <span><i class="fas fa-clock"></i> 10 min read</span>
+      <span><i class="fas fa-signal"></i> Beginner</span>
+      <span><i class="fas fa-tag"></i> Foundation</span>
+    </div>
+  </div>
+
+  <div class="chapter-intro">
+    <p class="lead">
+      Not all data problems are created equal. Understanding the type of problem
+      you're facing determines which tools and techniques to use.
+    </p>
+  </div>
+
+  <section class="content-section">
+    <h2 id="problem-types">Four Main Categories</h2>
+    <p>
+      Data science problems generally fall into four categories, often called
+      the "analytics maturity model." Each builds on the previous one,
+      increasing in complexity and business value.
+    </p>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Key Insight:</strong> Most organizations start with descriptive
+        analytics ("What happened?") and gradually progress toward prescriptive
+        analytics ("What should we do?").
       </div>
-    </nav>
-
-    <!-- BOOK CONTAINER -->
-    <div class="book-container">
-      <!-- LEFT SIDEBAR - Navigation -->
-      <aside class="book-sidebar">
-        <div class="book-brand">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Data Science Mastery</span>
-        </div>
-
-        <div class="progress-section">
-          <div class="progress-header">
-            <span>Your Progress</span>
-            <span class="progress-percentage">0%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
-          </div>
-        </div>
-
-        <nav class="book-nav">
-          <!-- Getting Started -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part0">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Getting Started</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="0.1">
-                <a href="chapter-0_1.html">What Is Data Science?</a>
-              </li>
-              <li data-chapter="0.2">
-                <a href="chapter-0_2.html">DS vs ML vs AI</a>
-              </li>
-              <li data-chapter="0.3">
-                <a href="chapter-0_3.html">How Data Scientists Think</a>
-              </li>
-              <li data-chapter="0.4" class="active">
-                <a href="chapter-0_4.html">Types of Data Problems</a>
-              </li>
-              <li data-chapter="0.5">
-                <a href="chapter-0_5.html">Data Science Workflow</a>
-              </li>
-              <li data-chapter="0.6">
-                <a href="chapter-0_6.html">Tools & Skills Overview</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </aside>
-
-      <!-- MAIN CONTENT AREA -->
-      <main class="book-content">
-        <article class="chapter-content">
-          <div class="chapter-header">
-            <span class="chapter-label">Chapter 0.4</span>
-            <h1>Types of Data Problems</h1>
-            <div class="chapter-meta">
-              <span><i class="fas fa-clock"></i> 10 min read</span>
-              <span><i class="fas fa-signal"></i> Beginner</span>
-              <span><i class="fas fa-tag"></i> Foundation</span>
-            </div>
-          </div>
-
-          <div class="chapter-intro">
-            <p class="lead">
-              Not all data problems are created equal. Understanding the type of
-              problem you're facing determines which tools and techniques to
-              use.
-            </p>
-          </div>
-
-          <section class="content-section">
-            <h2 id="problem-types">Four Main Categories</h2>
-            <p>
-              Data science problems generally fall into four categories, often
-              called the "analytics maturity model." Each builds on the previous
-              one, increasing in complexity and business value.
-            </p>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Key Insight:</strong> Most organizations start with
-                descriptive analytics ("What happened?") and gradually progress
-                toward prescriptive analytics ("What should we do?").
-              </div>
-            </div>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Descriptive Analytics</h4>
-                  <p>
-                    What happened? Understanding historical data and current
-                    state.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>Diagnostic Analytics</h4>
-                  <p>
-                    Why did it happen? Finding root causes and relationships.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Predictive Analytics</h4>
-                  <p>What will happen? Forecasting future outcomes.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Prescriptive Analytics</h4>
-                  <p>What should we do? Recommending optimal actions.</p>
-                </div>
-              </div>
-            </div>
-
-            <h2 id="descriptive-analytics">
-              Descriptive Analytics: What Happened?
-            </h2>
-            <p>
-              Descriptive analytics summarizes raw data into something
-              understandable. It answers "what happened" by looking at
-              historical data and creating reports, dashboards, and
-              visualizations.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(235, 111, 146, 0.1)"
-                >
-                  <i class="fas fa-chart-bar"></i>
-                </div>
-                <h3>Common Techniques</h3>
-                <p>
-                  Aggregations, averages, counts, percentages, data
-                  visualization, dashboards.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(156, 207, 216, 0.1)"
-                >
-                  <i class="fas fa-question-circle"></i>
-                </div>
-                <h3>Questions Answered</h3>
-                <p>
-                  How many sales did we make? What was our revenue? Who are our
-                  top customers?
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(246, 193, 119, 0.1)"
-                >
-                  <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Business Examples</h3>
-                <p>
-                  Monthly sales reports, website traffic analytics, customer
-                  demographics analysis.
-                </p>
-              </div>
-            </div>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "Without descriptive analytics, you're flying blind. It's the
-                foundation that everything else builds on."
-              </p>
-              <cite>— Data Analytics Principle</cite>
-            </blockquote>
-
-            <h2 id="diagnostic-analytics">
-              Diagnostic Analytics: Why Did It Happen?
-            </h2>
-            <p>
-              Diagnostic analytics goes deeper to understand the causes behind
-              what happened. It identifies patterns, correlations, and
-              relationships in the data.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-microscope"></i> Common Techniques</h4>
-                <ul>
-                  <li>Correlation analysis</li>
-                  <li>Drill-down analysis</li>
-                  <li>Root cause analysis</li>
-                  <li>Cohort analysis</li>
-                  <li>A/B testing</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-lightbulb"></i> Business Examples</h4>
-                <ul>
-                  <li>Why did sales drop last quarter?</li>
-                  <li>Which marketing channels drive conversions?</li>
-                  <li>What factors lead to customer churn?</li>
-                  <li>Why do certain products sell together?</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-exclamation-triangle"></i>
-              <div>
-                <strong>Important:</strong> Correlation doesn't equal causation.
-                Diagnostic analytics can identify relationships, but
-                establishing true causality often requires controlled
-                experiments.
-              </div>
-            </div>
-
-            <h2 id="predictive-analytics">
-              Predictive Analytics: What Will Happen?
-            </h2>
-            <p>
-              Predictive analytics uses historical data and statistical models
-              to forecast future outcomes. This is where machine learning often
-              comes into play.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Common Techniques</h3>
-                <p>
-                  Regression models, classification algorithms, time series
-                  forecasting, neural networks.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-crystal-ball"></i>
-                </div>
-                <h3>Questions Answered</h3>
-                <p>
-                  How many units will we sell? Which customers will churn?
-                  What's the risk of default?
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-money-bill-trend-up"></i>
-                </div>
-                <h3>Business Examples</h3>
-                <p>
-                  Customer lifetime value prediction, demand forecasting, credit
-                  risk scoring.
-                </p>
-              </div>
-            </div>
-
-            <h2 id="prescriptive-analytics">
-              Prescriptive Analytics: What Should We Do?
-            </h2>
-            <p>
-              Prescriptive analytics is the most advanced type, recommending
-              specific actions to achieve desired outcomes. It combines
-              predictions with optimization and decision science.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-cogs"></i> Common Techniques</h4>
-                <ul>
-                  <li>Optimization algorithms</li>
-                  <li>Simulation modeling</li>
-                  <li>Decision trees</li>
-                  <li>Reinforcement learning</li>
-                  <li>Recommendation systems</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-rocket"></i> Business Examples</h4>
-                <ul>
-                  <li>Dynamic pricing strategies</li>
-                  <li>Inventory optimization</li>
-                  <li>Personalized product recommendations</li>
-                  <li>Route optimization for delivery</li>
-                  <li>Resource allocation</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 id="choosing-approach">Choosing the Right Approach</h2>
-            <p>
-              The type of problem you're solving should drive your analytical
-              approach. Here's how to decide:
-            </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Assess Your Question</h4>
-                  <p>
-                    Does it ask what, why, what will, or what should? This
-                    points to the analytics type.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>Check Data Availability</h4>
-                  <p>
-                    Predictive and prescriptive analytics require substantial
-                    historical data.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Consider Business Value</h4>
-                  <p>
-                    Sometimes a simple descriptive answer is enough—don't
-                    overcomplicate.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Build Progressively</h4>
-                  <p>
-                    Master descriptive before diagnostic, diagnostic before
-                    predictive.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Practical Tip:</strong> Many organizations jump straight
-                to machine learning without solid descriptive and diagnostic
-                foundations. Start simple, prove value, then advance.
-              </div>
-            </div>
-
-            <h2 id="problem-examples">Real-World Problem Classification</h2>
-            <p>Let's classify some common business scenarios:</p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-store"></i>
-                </div>
-                <h3>Retail Example</h3>
-                <p>
-                  <strong>Descriptive:</strong> Weekly sales summary<br />
-                  <strong>Diagnostic:</strong> Why sales dropped in region X<br />
-                  <strong>Predictive:</strong> Next month's demand forecast<br />
-                  <strong>Prescriptive:</strong> Optimal inventory levels per
-                  store
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-heart"></i>
-                </div>
-                <h3>Healthcare Example</h3>
-                <p>
-                  <strong>Descriptive:</strong> Patient admission trends<br />
-                  <strong>Diagnostic:</strong> Factors in readmission rates<br />
-                  <strong>Predictive:</strong> Disease risk prediction<br />
-                  <strong>Prescriptive:</strong> Personalized treatment plans
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-building"></i>
-                </div>
-                <h3>Marketing Example</h3>
-                <p>
-                  <strong>Descriptive:</strong> Campaign performance report<br />
-                  <strong>Diagnostic:</strong> Which channels drive ROI<br />
-                  <strong>Predictive:</strong> Customer lifetime value<br />
-                  <strong>Prescriptive:</strong> Optimal budget allocation
-                </p>
-              </div>
-            </div>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "The goal isn't to do the most advanced analytics—it's to solve
-                the right problem with the appropriate level of sophistication."
-              </p>
-              <cite>— Data Science Best Practice</cite>
-            </blockquote>
-          </section>
-
-          <!-- Navigation Footer -->
-          <div class="chapter-navigation">
-            <button
-              class="nav-button prev"
-              onclick="window.location.href = 'chapter-0_3.html'"
-            >
-              <i class="fas fa-arrow-left"></i> Previous
-            </button>
-            <button
-              class="nav-button next"
-              onclick="window.location.href = 'chapter-0_5.html'"
-            >
-              Next <i class="fas fa-arrow-right"></i>
-            </button>
-          </div>
-        </article>
-      </main>
-
-      <!-- RIGHT SIDEBAR - Table of Contents -->
-      <aside class="book-right-panel">
-        <div class="panel-block">
-          <h4>On This Page</h4>
-          <ul class="page-toc">
-            <li><a href="#problem-types">Four Main Categories</a></li>
-            <li><a href="#descriptive-analytics">Descriptive Analytics</a></li>
-            <li><a href="#diagnostic-analytics">Diagnostic Analytics</a></li>
-            <li><a href="#predictive-analytics">Predictive Analytics</a></li>
-            <li>
-              <a href="#prescriptive-analytics">Prescriptive Analytics</a>
-            </li>
-            <li>
-              <a href="#choosing-approach">Choosing the Right Approach</a>
-            </li>
-            <li><a href="#problem-examples">Real-World Examples</a></li>
-          </ul>
-        </div>
-
-        <div class="panel-block">
-          <h4>Chapter Info</h4>
-          <ul class="chapter-info">
-            <li><i class="fas fa-layer-group"></i> Level: Beginner</li>
-            <li><i class="fas fa-book-open"></i> Part: 0 - Getting Started</li>
-            <li><i class="fas fa-calendar"></i> Updated: Jan 2026</li>
-          </ul>
-        </div>
-
-        <div class="panel-block resources">
-          <h4>Resources</h4>
-          <a href="#" class="resource-link">
-            <i class="fas fa-download"></i> Download PDF
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fab fa-github"></i> Code Examples
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fas fa-comments"></i> Discussion Forum
-          </a>
-        </div>
-      </aside>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="blog-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>About This Book</h4>
-          <p>
-            A comprehensive guide to mastering data science from fundamentals to
-            professional practice.
-          </p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#blog">Blog</a></li>
-            <li><a href="book.html">Data Science Book</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Stay Updated</h4>
-          <p>Get notified about new chapters and updates.</p>
-          <form
-            class="newsletter-form"
-            onsubmit="return submitNewsletter(this);"
-          >
-            <input
-              type="email"
-              id="newsletterEmail"
-              placeholder="Your email"
-              required
-            />
-            <button type="submit">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-          <div id="emailFeedback" class="email-feedback"></div>
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Descriptive Analytics</h4>
+          <p>What happened? Understanding historical data and current state.</p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-container">
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Diagnostic Analytics</h4>
+          <p>Why did it happen? Finding root causes and relationships.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Predictive Analytics</h4>
+          <p>What will happen? Forecasting future outcomes.</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Prescriptive Analytics</h4>
+          <p>What should we do? Recommending optimal actions.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="descriptive-analytics">Descriptive Analytics: What Happened?</h2>
+    <p>
+      Descriptive analytics summarizes raw data into something understandable.
+      It answers "what happened" by looking at historical data and creating
+      reports, dashboards, and visualizations.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(235, 111, 146, 0.1)">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3>Common Techniques</h3>
+        <p>
+          Aggregations, averages, counts, percentages, data visualization,
+          dashboards.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 207, 216, 0.1)">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <h3>Questions Answered</h3>
+        <p>
+          How many sales did we make? What was our revenue? Who are our top
+          customers?
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(246, 193, 119, 0.1)">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h3>Business Examples</h3>
+        <p>
+          Monthly sales reports, website traffic analytics, customer
+          demographics analysis.
+        </p>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "Without descriptive analytics, you're flying blind. It's the foundation
+        that everything else builds on."
+      </p>
+      <cite>— Data Analytics Principle</cite>
+    </blockquote>
+
+    <h2 id="diagnostic-analytics">Diagnostic Analytics: Why Did It Happen?</h2>
+    <p>
+      Diagnostic analytics goes deeper to understand the causes behind what
+      happened. It identifies patterns, correlations, and relationships in the
+      data.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-microscope"></i> Common Techniques</h4>
+        <ul>
+          <li>Correlation analysis</li>
+          <li>Drill-down analysis</li>
+          <li>Root cause analysis</li>
+          <li>Cohort analysis</li>
+          <li>A/B testing</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-lightbulb"></i> Business Examples</h4>
+        <ul>
+          <li>Why did sales drop last quarter?</li>
+          <li>Which marketing channels drive conversions?</li>
+          <li>What factors lead to customer churn?</li>
+          <li>Why do certain products sell together?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-exclamation-triangle"></i>
+      <div>
+        <strong>Important:</strong> Correlation doesn't equal causation.
+        Diagnostic analytics can identify relationships, but establishing true
+        causality often requires controlled experiments.
+      </div>
+    </div>
+
+    <h2 id="predictive-analytics">Predictive Analytics: What Will Happen?</h2>
+    <p>
+      Predictive analytics uses historical data and statistical models to
+      forecast future outcomes. This is where machine learning often comes into
+      play.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Common Techniques</h3>
+        <p>
+          Regression models, classification algorithms, time series forecasting,
+          neural networks.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-crystal-ball"></i>
+        </div>
+        <h3>Questions Answered</h3>
+        <p>
+          How many units will we sell? Which customers will churn? What's the
+          risk of default?
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-money-bill-trend-up"></i>
+        </div>
+        <h3>Business Examples</h3>
+        <p>
+          Customer lifetime value prediction, demand forecasting, credit risk
+          scoring.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="prescriptive-analytics">
+      Prescriptive Analytics: What Should We Do?
+    </h2>
+    <p>
+      Prescriptive analytics is the most advanced type, recommending specific
+      actions to achieve desired outcomes. It combines predictions with
+      optimization and decision science.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-cogs"></i> Common Techniques</h4>
+        <ul>
+          <li>Optimization algorithms</li>
+          <li>Simulation modeling</li>
+          <li>Decision trees</li>
+          <li>Reinforcement learning</li>
+          <li>Recommendation systems</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-rocket"></i> Business Examples</h4>
+        <ul>
+          <li>Dynamic pricing strategies</li>
+          <li>Inventory optimization</li>
+          <li>Personalized product recommendations</li>
+          <li>Route optimization for delivery</li>
+          <li>Resource allocation</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="choosing-approach">Choosing the Right Approach</h2>
+    <p>
+      The type of problem you're solving should drive your analytical approach.
+      Here's how to decide:
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Assess Your Question</h4>
           <p>
-            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
-            learners worldwide.
+            Does it ask what, why, what will, or what should? This points to the
+            analytics type.
           </p>
         </div>
       </div>
-    </footer>
 
-    <script src="../blog/assets/js/blog.js"></script>
-    <script src="/book/assets/js/book.js"></script>
-  </body>
-</html>
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Check Data Availability</h4>
+          <p>
+            Predictive and prescriptive analytics require substantial historical
+            data.
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Consider Business Value</h4>
+          <p>
+            Sometimes a simple descriptive answer is enough—don't
+            overcomplicate.
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Build Progressively</h4>
+          <p>
+            Master descriptive before diagnostic, diagnostic before predictive.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Practical Tip:</strong> Many organizations jump straight to
+        machine learning without solid descriptive and diagnostic foundations.
+        Start simple, prove value, then advance.
+      </div>
+    </div>
+
+    <h2 id="problem-examples">Real-World Problem Classification</h2>
+    <p>Let's classify some common business scenarios:</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-store"></i>
+        </div>
+        <h3>Retail Example</h3>
+        <p>
+          <strong>Descriptive:</strong> Weekly sales summary<br />
+          <strong>Diagnostic:</strong> Why sales dropped in region X<br />
+          <strong>Predictive:</strong> Next month's demand forecast<br />
+          <strong>Prescriptive:</strong> Optimal inventory levels per store
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3>Healthcare Example</h3>
+        <p>
+          <strong>Descriptive:</strong> Patient admission trends<br />
+          <strong>Diagnostic:</strong> Factors in readmission rates<br />
+          <strong>Predictive:</strong> Disease risk prediction<br />
+          <strong>Prescriptive:</strong> Personalized treatment plans
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-building"></i>
+        </div>
+        <h3>Marketing Example</h3>
+        <p>
+          <strong>Descriptive:</strong> Campaign performance report<br />
+          <strong>Diagnostic:</strong> Which channels drive ROI<br />
+          <strong>Predictive:</strong> Customer lifetime value<br />
+          <strong>Prescriptive:</strong> Optimal budget allocation
+        </p>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "The goal isn't to do the most advanced analytics—it's to solve the
+        right problem with the appropriate level of sophistication."
+      </p>
+      <cite>— Data Science Best Practice</cite>
+    </blockquote>
+  </section>
+
+  <!-- Navigation Footer -->
+  <div class="chapter-navigation">
+    <button
+      class="nav-button prev"
+      onclick="window.location.href = 'chapter-0_3.html'"
+    >
+      <i class="fas fa-arrow-left"></i> Previous
+    </button>
+    <button
+      class="nav-button next"
+      onclick="window.location.href = 'chapter-0_5.html'"
+    >
+      Next <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</article>

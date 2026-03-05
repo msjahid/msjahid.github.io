@@ -1,0 +1,452 @@
+<article class="chapter-content">
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter 1.7</span>
+    <h1>Z-Score & Standardization</h1>
+    <div class="chapter-meta">
+      <span><i class="fas fa-clock"></i> 15 min read</span>
+      <span><i class="fas fa-signal"></i> Intermediate</span>
+      <span><i class="fas fa-tag"></i> Statistical Methods</span>
+    </div>
+  </div>
+
+  <div class="chapter-intro">
+    <p class="lead">
+      The Z-score is a powerful statistical tool that tells us how many standard
+      deviations a data point is from the mean. It's essential for comparing
+      values from different distributions and detecting outliers.
+    </p>
+  </div>
+
+  <section class="content-section">
+    <h2 id="what-is-zscore">What is a Z-Score?</h2>
+    <p>
+      The Z-score, also known as the <strong>standard score</strong>, is a
+      statistical measure that indicates how many standard deviations a specific
+      data point is away from the mean of the population.
+    </p>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Key Insight:</strong> A Z-score standardizes values, allowing us
+        to compare data from different scales or distributions on a common
+        scale.
+      </div>
+    </div>
+
+    <h2 id="formula">The Z-Score Formula</h2>
+    <p>The Z-score is calculated using the following formula:</p>
+
+    <div
+      style="
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        margin: 20px 0;
+        text-align: center;
+        border-left: 4px solid #eb6f92;
+      "
+    >
+      $$z = \frac{x - \mu}{\sigma}$$
+    </div>
+
+    <p><strong>Where:</strong></p>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-x"></i> $z$ (Z-score)</h4>
+        <p>
+          The standardized value (number of standard deviations from the mean)
+        </p>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-line"></i> $x$ (Data Point)</h4>
+        <p>The individual value you're examining</p>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-balance-scale"></i> $\mu$ (Mean)</h4>
+        <p>The population mean (average of all values)</p>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-arrows-alt-h"></i> $\sigma$ (Std Dev)</h4>
+        <p>The population standard deviation (measure of spread)</p>
+      </div>
+    </div>
+
+    <h2 id="interpretation">Interpreting Z-Scores</h2>
+    <p>Understanding what Z-scores tell us:</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(235, 111, 146, 0.1)">
+          <i class="fas fa-equals"></i>
+        </div>
+        <h3>Z = 0</h3>
+        <p>
+          The data point is <strong>exactly at the mean</strong>. No deviation
+          from the average.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(246, 193, 119, 0.1)">
+          <i class="fas fa-plus"></i>
+        </div>
+        <h3>Z > 0 (Positive)</h3>
+        <p>
+          The data point is <strong>above the mean</strong>. Higher than average
+          value.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 207, 216, 0.1)">
+          <i class="fas fa-minus"></i>
+        </div>
+        <h3>Z < 0 (Negative)</h3>
+        <p>
+          The data point is <strong>below the mean</strong>. Lower than average
+          value.
+        </p>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "The absolute value of the Z-score tells you how unusual the data point
+        is. A Z-score beyond ±3 is considered extremely rare in a normal
+        distribution."
+      </p>
+      <cite>— Statistical Principle</cite>
+    </blockquote>
+
+    <h2 id="example">Worked Example: Computing Z-Scores</h2>
+    <p>
+      Let's calculate Z-scores for the dataset:
+      <strong>[1, 3, 5, 7, 9]</strong>
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Calculate the Mean</h4>
+          <p>$$\mu = \frac{1 + 3 + 5 + 7 + 9}{5} = \frac{25}{5} = 5$$</p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Calculate the Standard Deviation</h4>
+          <p>
+            $$\sigma = \sqrt{\frac{(1-5)^2 + (3-5)^2 + (5-5)^2 + (7-5)^2 +
+            (9-5)^2}{5}} \approx 2.83$$
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Calculate Z-scores for Each Value</h4>
+          <p>For $x = 1$: $z = \frac{1-5}{2.83} = -1.41$</p>
+          <p>For $x = 3$: $z = \frac{3-5}{2.83} = -0.71$</p>
+          <p>For $x = 5$: $z = \frac{5-5}{2.83} = 0.00$</p>
+          <p>For $x = 7$: $z = \frac{7-5}{2.83} = 0.71$</p>
+          <p>For $x = 9$: $z = \frac{9-5}{2.83} = 1.41$</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        background: #f0f9ff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 4px solid #9ccfd8;
+      "
+    >
+      <h4 style="margin-top: 0">
+        <i class="fas fa-table"></i> Results Summary
+      </h4>
+      <table style="width: 100%; border-collapse: collapse">
+        <thead>
+          <tr style="background: #e0f2fe">
+            <th style="padding: 10px; border: 1px solid #bae6fd">
+              Value ($x$)
+            </th>
+            <th style="padding: 10px; border: 1px solid #bae6fd">
+              Deviation ($x - \mu$)
+            </th>
+            <th style="padding: 10px; border: 1px solid #bae6fd">Z-Score</th>
+            <th style="padding: 10px; border: 1px solid #bae6fd">
+              Interpretation
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #bae6fd">1</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">-4</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">-1.41</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">
+              1.41 SD below mean
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #bae6fd">3</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">-2</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">-0.71</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">
+              0.71 SD below mean
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #bae6fd">5</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">0</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">0.00</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">
+              Exactly at mean
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #bae6fd">7</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">+2</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">+0.71</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">
+              0.71 SD above mean
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #bae6fd">9</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">+4</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">+1.41</td>
+            <td style="padding: 10px; border: 1px solid #bae6fd">
+              1.41 SD above mean
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="applications">Applications of Z-Scores</h2>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(235, 111, 146, 0.1)">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>1. Outlier Detection</h3>
+        <p>
+          Values with $|z| > 3$ are typically considered outliers. The empirical
+          rule states that 99.7% of data falls within ±3 standard deviations in
+          a normal distribution.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(246, 193, 119, 0.1)">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <h3>2. Comparing Different Scales</h3>
+        <p>
+          Compare test scores from different exams, heights and weights, or any
+          variables measured on different scales by converting to Z-scores.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 207, 216, 0.1)">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>3. Standardization for ML</h3>
+        <p>
+          Many machine learning algorithms perform better when features are
+          standardized (transformed to have mean=0 and std=1).
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(103, 58, 183, 0.1)">
+          <i class="fas fa-percentage"></i>
+        </div>
+        <h3>4. Probability Calculations</h3>
+        <p>
+          Use Z-scores with the standard normal distribution table to calculate
+          probabilities and percentiles.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="python-example">Python Implementation</h2>
+    <p>Here's how to calculate Z-scores in Python:</p>
+
+    <div
+      style="
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 20px 0;
+      "
+    >
+      <pre
+        style="margin: 0; font-family: &quot;Courier New&quot;, monospace"
+      ><code><span style="color: #c586c0;">import</span> <span style="color: #4ec9b0;">numpy</span> <span style="color: #c586c0;">as</span> <span style="color: #4ec9b0;">np</span>
+<span style="color: #c586c0;">from</span> <span style="color: #4ec9b0;">scipy.stats</span> <span style="color: #c586c0;">import</span> <span style="color: #4ec9b0;">zscore</span>
+
+<span style="color: #6a9955;"># Method 1: Manual calculation</span>
+data = [<span style="color: #b5cea8;">1</span>, <span style="color: #b5cea8;">3</span>, <span style="color: #b5cea8;">5</span>, <span style="color: #b5cea8;">7</span>, <span style="color: #b5cea8;">9</span>]
+mean = <span style="color: #4ec9b0;">np</span>.mean(data)
+std = <span style="color: #4ec9b0;">np</span>.std(data, ddof=<span style="color: #b5cea8;">0</span>)  <span style="color: #6a9955;"># Population std</span>
+
+z_scores_manual = [(x - mean) / std <span style="color: #c586c0;">for</span> x <span style="color: #c586c0;">in</span> data]
+<span style="color: #dcdcaa;">print</span>(<span style="color: #ce9178;">"Manual Z-scores:"</span>, z_scores_manual)
+
+<span style="color: #6a9955;"># Method 2: Using scipy</span>
+z_scores_scipy = <span style="color: #4ec9b0;">zscore</span>(data, ddof=<span style="color: #b5cea8;">0</span>)
+<span style="color: #dcdcaa;">print</span>(<span style="color: #ce9178;">"Scipy Z-scores:"</span>, z_scores_scipy)
+
+<span style="color: #6a9955;"># Output:</span>
+<span style="color: #6a9955;"># Manual Z-scores: [-1.41, -0.71, 0.00, 0.71, 1.41]</span>
+<span style="color: #6a9955;"># Scipy Z-scores:  [-1.41, -0.71, 0.00, 0.71, 1.41]</span></code></pre>
+    </div>
+
+    <h2 id="empirical-rule">The Empirical Rule (68-95-99.7 Rule)</h2>
+    <p>
+      For normally distributed data, Z-scores help us understand the probability
+      of observing certain values:
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-area"></i> Within ±1 SD</h4>
+        <p><strong>68%</strong> of data falls within $-1 < z < 1$</p>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-area"></i> Within ±2 SD</h4>
+        <p><strong>95%</strong> of data falls within $-2 < z < 2$</p>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-area"></i> Within ±3 SD</h4>
+        <p><strong>99.7%</strong> of data falls within $-3 < z < 3$</p>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-exclamation-triangle"></i>
+      <div>
+        <strong>Outlier Detection Rule:</strong> Any data point with $|z| > 3$
+        is typically considered an outlier, as only 0.3% of data should fall
+        beyond ±3 SD.
+      </div>
+    </div>
+
+    <h2 id="standardization">Standardization (Z-Score Normalization)</h2>
+    <p>
+      Standardization transforms data to have a mean of 0 and standard deviation
+      of 1. This is crucial for many machine learning algorithms.
+    </p>
+
+    <div
+      style="
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 4px solid #eb6f92;
+      "
+    >
+      <h4><i class="fas fa-code"></i> Standardization Formula</h4>
+      <p>For each value in the dataset:</p>
+      $$x_{standardized} = \frac{x - \mu}{\sigma}$$
+      <p>After standardization:</p>
+      <ul>
+        <li>Mean of standardized data = 0</li>
+        <li>Standard deviation of standardized data = 1</li>
+      </ul>
+    </div>
+
+    <h2 id="practice">Practice Problem</h2>
+    <div
+      style="
+        background: #fffbeb;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 4px solid #f6c177;
+      "
+    >
+      <h4><i class="fas fa-pencil-alt"></i> Try It Yourself</h4>
+      <p>
+        <strong>Problem:</strong> A student scored 85 on a test where the class
+        average was 75 with a standard deviation of 8. What is the student's
+        Z-score?
+      </p>
+
+      <details style="margin-top: 15px">
+        <summary style="cursor: pointer; font-weight: bold; color: #d97706">
+          Click to see solution
+        </summary>
+        <div
+          style="
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 4px;
+          "
+        >
+          <p><strong>Solution:</strong></p>
+          <p>Given: $x = 85$, $\mu = 75$, $\sigma = 8$</p>
+          $$z = \frac{85 - 75}{8} = \frac{10}{8} = 1.25$$
+          <p>
+            <strong>Interpretation:</strong> The student scored 1.25 standard
+            deviations above the class average, which is better than
+            approximately 89% of the class.
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <h2 id="key-takeaways">Key Takeaways</h2>
+    <div class="key-point">
+      <i class="fas fa-check-circle"></i>
+      <div>
+        <ul style="margin: 0; padding-left: 20px">
+          <li>Z-scores standardize data to a common scale</li>
+          <li>$|z| > 3$ typically indicates an outlier</li>
+          <li>
+            Positive Z = above mean, Negative Z = below mean, Z = 0 is at mean
+          </li>
+          <li>
+            Essential for comparing different datasets and outlier detection
+          </li>
+          <li>Foundation for many machine learning preprocessing techniques</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Footer -->
+  <div class="chapter-navigation">
+    <button
+      class="nav-button prev"
+      onclick="window.location.href = 'chapter-1_6.html'"
+    >
+      <i class="fas fa-arrow-left"></i> Previous: Measures of Dispersion
+    </button>
+    <button
+      class="nav-button next"
+      onclick="window.location.href = 'chapter-1_8.html'"
+    >
+      Next: Skewness & Kurtosis <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</article>

@@ -54,57 +54,78 @@ document.addEventListener('DOMContentLoaded', function() {
     // LOAD CHAPTER CONTENT DYNAMICALLY
     // ============================================
     function loadChapter(chapterFile) {
-        fetch(chapterFile)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Chapter not found');
+    fetch(chapterFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Chapter not found');
+            }
+            return response.text();
+        })
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const article = doc.querySelector('article.chapter-content');
+            
+            if (!article) {
+                console.error('Article content not found in chapter file');
+                return;
+            }
+
+            // Update main content area
+            const bookContent = document.querySelector('.book-content');
+            bookContent.innerHTML = article.outerHTML;
+
+            // Update the Table of Contents (TOC)
+            updateRightSidebar(article, chapterFile);
+
+            // Attach TOC click handlers
+            attachTocClickHandlers(chapterFile);
+            attachScrollListener();
+
+            // Attach navigation buttons
+            attachNavigationButtons();
+
+            // Scroll to the top
+            bookContent.scrollTop = 0;
+
+            // Handle the URL hash after content load
+            const hash = window.location.hash;
+            if (hash) {
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    // Scroll to the target element (smooth scroll)
+                    const offsetTop = targetElement.offsetTop - 100; // Adjust this value to your needs
+                    bookContent.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
                 }
-                return response.text();
-            })
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const article = doc.querySelector('article.chapter-content');
-                
-                if (!article) {
-                    console.error('Article content not found in chapter file');
-                    return;
-                }
-                
-                // Update main content area
-                const bookContent = document.querySelector('.book-content');
-                bookContent.innerHTML = article.outerHTML;
-                
-                // Update right sidebar TOC
-                updateRightSidebar(article);
-                
-                // Scroll to top
-                bookContent.scrollTop = 0;
-                
-                // Re-attach navigation button handlers
-                attachNavigationButtons();
-                
-                // Re-attach TOC handlers
-                attachTocClickHandlers();
-                attachScrollListener();
-                
-            })
-            .catch(error => {
-                console.error('Error loading chapter:', error);
-                const bookContent = document.querySelector('.book-content');
-                bookContent.innerHTML = `
-                    <div style="padding: 60px; text-align: center;">
-                        <h2 style="color: var(--text-light);">Chapter Not Found</h2>
-                        <p style="color: var(--text-gray);">The requested chapter file could not be loaded.</p>
-                    </div>
-                `;
-            });
-    }
+            }
+
+            // Optional: Re-typeset MathJax if needed
+            if (window.MathJax) {
+                MathJax.typesetPromise()
+                    .then(() => console.log('✅ MathJax re-typeset new chapter content'))
+                    .catch(err => console.error('❌ MathJax error:', err));
+            }
+        })
+        .catch(error => {
+            console.error('Error loading chapter:', error);
+            const bookContent = document.querySelector('.book-content');
+            bookContent.innerHTML = `
+                <div style="padding: 60px; text-align: center;">
+                    <h2 style="color: var(--text-light);">Chapter Not Found</h2>
+                    <p style="color: var(--text-gray);">The requested chapter file could not be loaded.</p>
+                </div>
+            `;
+        });
+}
+
 
     // ============================================
     // UPDATE RIGHT SIDEBAR
     // ============================================
-    function updateRightSidebar(article) {
+    function updateRightSidebar(article, chapterFile) {
         // Update TOC
         const pageToc = document.querySelector('.page-toc');
         if (pageToc) {
@@ -113,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             headings.forEach(heading => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.href = '#' + heading.id;
+                a.href = chapterFile + '#' + heading.id;
                 a.textContent = heading.textContent;
                 li.appendChild(a);
                 pageToc.appendChild(li);
@@ -135,29 +156,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ============================================
-    // TABLE OF CONTENTS - SMOOTH SCROLL & ACTIVE TRACKING
-    // ============================================
-    function attachTocClickHandlers() {
-        const tocLinks = document.querySelectorAll('.page-toc a');
-        const bookContent = document.querySelector('.book-content');
-        
-        tocLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.querySelector(`#${targetId}`);
-                
-                if (targetElement && bookContent) {
-                    const offsetTop = targetElement.offsetTop - 100;
-                    bookContent.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+// ============================================
+// TABLE OF CONTENTS - SMOOTH SCROLL & ACTIVE TRACKING
+// ============================================
+// ============================================
+// TABLE OF CONTENTS - SMOOTH SCROLL & ACTIVE TRACKING
+// ============================================
+function attachTocClickHandlers() {
+    const tocLinks = document.querySelectorAll('.page-toc a');
+    const bookContent = document.querySelector('.book-content');
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const href = this.getAttribute('href');
+            
+            // Extract the ID after the #
+            const parts = href.split('#');
+            const targetId = parts[1]; // Get everything after #
+            
+            if (!targetId) return;
+            
+            // Find target element in the currently loaded content
+            const targetElement = bookContent.querySelector('#' + targetId);
+            
+            if (!targetElement) {
+                console.warn('Target not found:', targetId);
+                return;
+            }
+
+            // Scroll to target
+            const offsetTop = targetElement.offsetTop - 100;
+            bookContent.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
             });
+
+            // ✅ FIX: Update URL with just the hash, not the full href
+            history.replaceState(null, '', '#' + targetId);
         });
-    }
+    });
+}
 
     function attachScrollListener() {
         const bookContent = document.querySelector('.book-content');
@@ -187,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial setup for TOC
     attachTocClickHandlers();
+
     attachScrollListener();
 
     // ============================================

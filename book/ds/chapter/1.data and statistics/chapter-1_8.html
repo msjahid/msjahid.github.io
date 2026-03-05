@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skewness & Kurtosis - Data Science Book</title>
+    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
+    <link rel="stylesheet" href="/book/assets/css/book-list.css" />
+    <link rel="stylesheet" href="/book/assets/css/ds.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- MathJax Configuration -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
+        },
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">JH</a>
+        <div class="nav-links">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
+          <a href="book.html" class="active"
+            ><i class="fas fa-book"></i> Book</a
+          >
+          <a href="index.html#contact"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- BOOK CONTAINER -->
+    <div class="book-container">
+      <!-- LEFT SIDEBAR -->
+      <aside class="book-sidebar">
+        <div class="book-brand">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Data Science Mastery</span>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-header">
+            <span>Your Progress</span>
+            <span class="progress-percentage">80%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 80%"></div>
+          </div>
+        </div>
+
+        <nav class="book-nav">
+          <div class="nav-section">
+            <div class="section-header" data-section="part1">
+              <i class="fas fa-circle section-icon"></i>
+              <span class="section-title">Data & Statistics Basics</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <ul class="section-items">
+              <li data-chapter="1.7">
+                <a href="chapter-1_7.html">Z-Score & Standardization</a>
+              </li>
+              <li data-chapter="1.8" class="active">
+                <a href="chapter-1_8.html">Skewness & Kurtosis</a>
+              </li>
+              <li data-chapter="1.9">
+                <a href="chapter-1_9.html">Data Distribution</a>
+              </li>
+              <li data-chapter="1.10">
+                <a href="chapter-1_10.html">Outliers & Anomalies</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="book-content">
+        <article class="chapter-content">
+          <div class="chapter-header">
+            <span class="chapter-label">Chapter 1.8</span>
+            <h1>Skewness & Kurtosis</h1>
+            <div class="chapter-meta">
+              <span><i class="fas fa-clock"></i> 18 min read</span>
+              <span><i class="fas fa-signal"></i> Intermediate</span>
+              <span><i class="fas fa-tag"></i> Distribution Analysis</span>
+            </div>
+          </div>
+
+          <div class="chapter-intro">
+            <p class="lead">
+              Skewness and kurtosis describe the shape of data distributions.
+              While mean and standard deviation tell us about center and spread,
+              these measures reveal asymmetry and tail behavior—critical for
+              understanding data characteristics.
+            </p>
+          </div>
+
+          <section class="content-section">
+            <h2 id="skewness">What is Skewness?</h2>
+            <p>
+              <strong>Skewness</strong> is a measure of the asymmetry or skew of
+              a probability distribution. It tells us whether data is
+              distributed symmetrically around the mean or if it leans more to
+              one side.
+            </p>
+
+            <div class="key-point">
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <strong>Key Insight:</strong> Skewness quantifies how much a
+                distribution deviates from being symmetric. A perfectly
+                symmetric distribution (like the normal distribution) has zero
+                skewness.
+              </div>
+            </div>
+
+            <h2 id="skewness-formula">Skewness Formula</h2>
+            <p>
+              The formula for skewness (using the third moment about the mean):
+            </p>
+
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 30px;
+                border-radius: 8px;
+                margin: 20px 0;
+                text-align: center;
+                border-left: 4px solid #eb6f92;
+              "
+            >
+              $$\gamma_1 = \frac{n}{(n-1)(n-2)} \sum_{i=1}^{n} \left(\frac{X_i -
+              \bar{X}}{s}\right)^3$$
+            </div>
+
+            <p><strong>Where:</strong></p>
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4><i class="fas fa-superscript"></i> $\gamma_1$ (Gamma)</h4>
+                <p>The skewness coefficient</p>
+              </div>
+
+              <div class="skill-category">
+                <h4><i class="fas fa-hashtag"></i> $n$</h4>
+                <p>Number of data points</p>
+              </div>
+
+              <div class="skill-category">
+                <h4><i class="fas fa-chart-line"></i> $X_i$</h4>
+                <p>Individual data points</p>
+              </div>
+
+              <div class="skill-category">
+                <h4><i class="fas fa-balance-scale"></i> $\bar{X}$</h4>
+                <p>Sample mean</p>
+              </div>
+
+              <div class="skill-category">
+                <h4><i class="fas fa-arrows-alt-h"></i> $s$</h4>
+                <p>Sample standard deviation</p>
+              </div>
+            </div>
+
+            <h2 id="types-skewness">Types of Skewness</h2>
+            <div class="pillar-grid">
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(235, 111, 146, 0.1)"
+                >
+                  <i class="fas fa-arrow-left"></i>
+                </div>
+                <h3>Negative Skew (Left-Skewed)</h3>
+                <p><strong>Skewness < 0</strong></p>
+                <ul>
+                  <li>Long tail extends to the left</li>
+                  <li>Mean < Median < Mode</li>
+                  <li>Majority of data on the right</li>
+                  <li>Example: Age at retirement (max ~70)</li>
+                </ul>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(246, 193, 119, 0.1)"
+                >
+                  <i class="fas fa-equals"></i>
+                </div>
+                <h3>Zero Skew (Symmetric)</h3>
+                <p><strong>Skewness ≈ 0</strong></p>
+                <ul>
+                  <li>Perfectly symmetric distribution</li>
+                  <li>Mean = Median = Mode</li>
+                  <li>Equal tails on both sides</li>
+                  <li>Example: Normal distribution</li>
+                </ul>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(156, 207, 216, 0.1)"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+                <h3>Positive Skew (Right-Skewed)</h3>
+                <p><strong>Skewness > 0</strong></p>
+                <ul>
+                  <li>Long tail extends to the right</li>
+                  <li>Mode < Median < Mean</li>
+                  <li>Majority of data on the left</li>
+                  <li>Example: Income distribution</li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 id="skewness-example">Worked Example: Computing Skewness</h2>
+            <p>
+              Let's calculate skewness for the dataset:
+              <strong>[1, 2, 5, 7, 10]</strong>
+            </p>
+
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Calculate Mean and Standard Deviation</h4>
+                  <p>Mean: $\bar{X} = \frac{1+2+5+7+10}{5} = 5$</p>
+                  <p>Sample Std Dev: $s \approx 3.67$</p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Calculate Standardized Deviations (Cubed)</h4>
+                  <p>
+                    For $X_i = 1$: $\left(\frac{1-5}{3.67}\right)^3 = (-1.09)^3
+                    \approx -1.30$
+                  </p>
+                  <p>
+                    For $X_i = 2$: $\left(\frac{2-5}{3.67}\right)^3 = (-0.82)^3
+                    \approx -0.55$
+                  </p>
+                  <p>
+                    For $X_i = 5$: $\left(\frac{5-5}{3.67}\right)^3 = (0)^3 = 0$
+                  </p>
+                  <p>
+                    For $X_i = 7$: $\left(\frac{7-5}{3.67}\right)^3 = (0.55)^3
+                    \approx 0.16$
+                  </p>
+                  <p>
+                    For $X_i = 10$: $\left(\frac{10-5}{3.67}\right)^3 = (1.36)^3
+                    \approx 2.52$
+                  </p>
+                </div>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Apply the Skewness Formula</h4>
+                  <p>
+                    Sum of cubed deviations: $-1.30 - 0.55 + 0 + 0.16 + 2.52 =
+                    0.83$
+                  </p>
+                  <p>
+                    $$\gamma_1 = \frac{5}{(5-1)(5-2)} \times 0.83 = \frac{5}{12}
+                    \times 0.83 \approx 0.35$$
+                  </p>
+                  <p>
+                    <strong>Result:</strong> Skewness ≈ 0.35 (slightly
+                    positive/right-skewed)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #f0f9ff;
+                padding: 20px;
+                border-radius: 8px;
+                margin: 20px 0;
+                border-left: 4px solid #9ccfd8;
+              "
+            >
+              <h4><i class="fas fa-lightbulb"></i> Interpretation</h4>
+              <p>
+                A skewness of 0.35 indicates a
+                <strong>slight positive skew</strong>. The distribution has a
+                longer tail on the right side, meaning there are some higher
+                values pulling the mean upward.
+              </p>
+            </div>
+
+            <h2 id="kurtosis">What is Kurtosis?</h2>
+            <p>
+              <strong>Kurtosis</strong> is a statistical measure that quantifies
+              the shape and peakedness (or flatness) of a probability
+              distribution. It provides information about the tails of the
+              distribution and the presence of outliers.
+            </p>
+
+            <div class="key-point">
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <strong>Remember:</strong> Kurtosis measures the "tailedness" of
+                a distribution—how much probability mass is in the tails versus
+                the center.
+              </div>
+            </div>
+
+            <h2 id="kurtosis-formula">Kurtosis Formula</h2>
+            <p>
+              The formula for excess kurtosis (fourth moment about the mean):
+            </p>
+
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 30px;
+                border-radius: 8px;
+                margin: 20px 0;
+                text-align: center;
+                border-left: 4px solid #eb6f92;
+              "
+            >
+              $$\text{Kurtosis} = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \sum_{i=1}^{n}
+              \left(\frac{X_i - \bar{X}}{s}\right)^4 -
+              \frac{3(n-1)^2}{(n-2)(n-3)}$$
+            </div>
+
+            <p>
+              <strong>Note:</strong> The subtraction of 3 gives us "excess
+              kurtosis," which makes the normal distribution have a kurtosis of
+              0.
+            </p>
+
+            <h2 id="types-kurtosis">Types of Kurtosis</h2>
+            <div class="pillar-grid">
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(235, 111, 146, 0.1)"
+                >
+                  <i class="fas fa-mountain"></i>
+                </div>
+                <h3>Leptokurtic (Kurtosis > 0)</h3>
+                <ul>
+                  <li><strong>Heavy tails</strong>, sharp peak</li>
+                  <li>More outliers than normal</li>
+                  <li>Higher probability in tails</li>
+                  <li>Example: Financial returns during crisis</li>
+                </ul>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(246, 193, 119, 0.1)"
+                >
+                  <i class="fas fa-wave-square"></i>
+                </div>
+                <h3>Mesokurtic (Kurtosis ≈ 0)</h3>
+                <ul>
+                  <li><strong>Normal distribution</strong></li>
+                  <li>Moderate peak and tails</li>
+                  <li>Reference distribution (baseline)</li>
+                  <li>Example: Heights, test scores</li>
+                </ul>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(156, 207, 216, 0.1)"
+                >
+                  <i class="fas fa-water"></i>
+                </div>
+                <h3>Platykurtic (Kurtosis < 0)</h3>
+                <ul>
+                  <li><strong>Light tails</strong>, flat peak</li>
+                  <li>Fewer outliers than normal</li>
+                  <li>Lower probability in tails</li>
+                  <li>Example: Uniform distribution</li>
+                </ul>
+              </div>
+            </div>
+
+            <blockquote class="chapter-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "Kurtosis is not about the peak—it's about the tails. High
+                kurtosis means you should expect more extreme values."
+              </p>
+              <cite>— Statistical Insight</cite>
+            </blockquote>
+
+            <h2 id="python-implementation">Python Implementation</h2>
+            <p>Here's how to calculate skewness and kurtosis in Python:</p>
+
+            <div
+              style="
+                background: #1e1e1e;
+                color: #d4d4d4;
+                padding: 20px;
+                border-radius: 8px;
+                overflow-x: auto;
+                margin: 20px 0;
+              "
+            >
+              <pre
+                style="
+                  margin: 0;
+                  font-family: &quot;Courier New&quot;, monospace;
+                "
+              ><code><span style="color: #c586c0;">import</span> <span style="color: #4ec9b0;">pandas</span> <span style="color: #c586c0;">as</span> <span style="color: #4ec9b0;">pd</span>
+<span style="color: #c586c0;">from</span> <span style="color: #4ec9b0;">scipy</span> <span style="color: #c586c0;">import</span> <span style="color: #4ec9b0;">stats</span>
+
+<span style="color: #6a9955;"># Sample data</span>
+data = [<span style="color: #b5cea8;">1</span>, <span style="color: #b5cea8;">2</span>, <span style="color: #b5cea8;">5</span>, <span style="color: #b5cea8;">7</span>, <span style="color: #b5cea8;">10</span>]
+
+<span style="color: #6a9955;"># Method 1: Using pandas</span>
+df = <span style="color: #4ec9b0;">pd</span>.Series(data)
+skewness = df.skew()
+kurtosis = df.kurt()  <span style="color: #6a9955;"># Returns excess kurtosis</span>
+
+<span style="color: #dcdcaa;">print</span>(<span style="color: #ce9178;">f"Skewness (pandas): </span><span style="color: #569cd6;">{</span>skewness<span style="color: #569cd6;">:</span>.3f<span style="color: #569cd6;">}</span><span style="color: #ce9178;">"</span>)
+<span style="color: #dcdcaa;">print</span>(<span style="color: #ce9178;">f"Kurtosis (pandas): </span><span style="color: #569cd6;">{</span>kurtosis<span style="color: #569cd6;">:</span>.3f<span style="color: #569cd6;">}</span><span style="color: #ce9178;">"</span>)
+
+<span style="color: #6a9955;"># Method 2: Using scipy</span>
+skewness_scipy = <span style="color: #4ec9b0;">stats</span>.skew(data)
+kurtosis_scipy = <span style="color: #4ec9b0;">stats</span>.kurtosis(data)  <span style="color: #6a9955;"># Excess kurtosis by default</span>
+
+<span style="color: #dcdcaa;">print</span>(<span style="color: #ce9178;">f"Skewness (scipy): </span><span style="color: #569cd6;">{</span>skewness_scipy<span style="color: #569cd6;">:</span>.3f<span style="color: #569cd6;">}</span><span style="color: #ce9178;">"</span>)
+<span style="color: #dcdcaa;">print</span>(<span style="color: #ce9178;">f"Kurtosis (scipy): </span><span style="color: #569cd6;">{</span>kurtosis_scipy<span style="color: #569cd6;">:</span>.3f<span style="color: #569cd6;">}</span><span style="color: #ce9178;">"</span>)
+
+<span style="color: #6a9955;"># Output:</span>
+<span style="color: #6a9955;"># Skewness (pandas): 0.353</span>
+<span style="color: #6a9955;"># Kurtosis (pandas): -1.292</span></code></pre>
+            </div>
+
+            <h2 id="interpretation-guide">Interpretation Guidelines</h2>
+
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 8px;
+                margin: 20px 0;
+              "
+            >
+              <h4><i class="fas fa-chart-bar"></i> Skewness Interpretation</h4>
+              <table
+                style="width: 100%; border-collapse: collapse; margin-top: 15px"
+              >
+                <thead>
+                  <tr style="background: #e5e7eb">
+                    <th
+                      style="
+                        padding: 10px;
+                        border: 1px solid #d1d5db;
+                        text-align: left;
+                      "
+                    >
+                      Skewness Value
+                    </th>
+                    <th
+                      style="
+                        padding: 10px;
+                        border: 1px solid #d1d5db;
+                        text-align: left;
+                      "
+                    >
+                      Interpretation
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      -0.5 to 0.5
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Fairly symmetric
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      -1 to -0.5 or 0.5 to 1
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Moderately skewed
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      < -1 or > 1
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Highly skewed
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 8px;
+                margin: 20px 0;
+              "
+            >
+              <h4><i class="fas fa-chart-area"></i> Kurtosis Interpretation</h4>
+              <table
+                style="width: 100%; border-collapse: collapse; margin-top: 15px"
+              >
+                <thead>
+                  <tr style="background: #e5e7eb">
+                    <th
+                      style="
+                        padding: 10px;
+                        border: 1px solid #d1d5db;
+                        text-align: left;
+                      "
+                    >
+                      Excess Kurtosis
+                    </th>
+                    <th
+                      style="
+                        padding: 10px;
+                        border: 1px solid #d1d5db;
+                        text-align: left;
+                      "
+                    >
+                      Type
+                    </th>
+                    <th
+                      style="
+                        padding: 10px;
+                        border: 1px solid #d1d5db;
+                        text-align: left;
+                      "
+                    >
+                      Meaning
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      > 0
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Leptokurtic
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Heavy tails, more outliers
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      ≈ 0
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Mesokurtic
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Normal-like distribution
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      < 0
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Platykurtic
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #d1d5db">
+                      Light tails, fewer outliers
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="practical-applications">Practical Applications</h2>
+            <div class="pillar-grid">
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(235, 111, 146, 0.1)"
+                >
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Finance & Risk</h3>
+                <p>
+                  High kurtosis in stock returns indicates higher risk of
+                  extreme movements. Skewness helps assess asymmetric risk
+                  profiles.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(246, 193, 119, 0.1)"
+                >
+                  <i class="fas fa-robot"></i>
+                </div>
+                <h3>Machine Learning</h3>
+                <p>
+                  Understanding distribution shape helps choose appropriate
+                  algorithms and transformations (e.g., log transform for
+                  right-skewed data).
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(156, 207, 216, 0.1)"
+                >
+                  <i class="fas fa-vial"></i>
+                </div>
+                <h3>Quality Control</h3>
+                <p>
+                  Detecting deviations from normality in manufacturing
+                  processes. Helps identify systemic issues or process shifts.
+                </p>
+              </div>
+
+              <div class="pillar-card">
+                <div
+                  class="pillar-icon"
+                  style="background: rgba(103, 58, 183, 0.1)"
+                >
+                  <i class="fas fa-flask"></i>
+                </div>
+                <h3>Research & Testing</h3>
+                <p>
+                  Many statistical tests assume normality. Checking skewness and
+                  kurtosis validates these assumptions.
+                </p>
+              </div>
+            </div>
+
+            <h2 id="key-takeaways">Key Takeaways</h2>
+            <div class="key-point">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <ul style="margin: 0; padding-left: 20px">
+                  <li>
+                    <strong>Skewness</strong> measures asymmetry: negative
+                    (left), zero (symmetric), positive (right)
+                  </li>
+                  <li>
+                    <strong>Kurtosis</strong> measures tail heaviness: more
+                    outliers = higher kurtosis
+                  </li>
+                  <li>
+                    Both are critical for understanding data distribution beyond
+                    mean and standard deviation
+                  </li>
+                  <li>Use Python's pandas or scipy for easy calculation</li>
+                  <li>
+                    Important for choosing appropriate statistical methods and
+                    transformations
+                  </li>
+                  <li>
+                    Essential for risk assessment, quality control, and ML
+                    preprocessing
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Navigation Footer -->
+          <div class="chapter-navigation">
+            <button
+              class="nav-button prev"
+              onclick="window.location.href = 'chapter-1_7.html'"
+            >
+              <i class="fas fa-arrow-left"></i> Previous: Z-Score
+            </button>
+            <button
+              class="nav-button next"
+              onclick="window.location.href = 'chapter-1_9.html'"
+            >
+              Next: Data Distribution <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+      </main>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="book-right-panel">
+        <div class="panel-block">
+          <h4>On This Page</h4>
+          <ul class="page-toc">
+            <li><a href="#skewness">What is Skewness?</a></li>
+            <li><a href="#skewness-formula">Skewness Formula</a></li>
+            <li><a href="#types-skewness">Types of Skewness</a></li>
+            <li><a href="#skewness-example">Worked Example</a></li>
+            <li><a href="#kurtosis">What is Kurtosis?</a></li>
+            <li><a href="#types-kurtosis">Types of Kurtosis</a></li>
+            <li><a href="#python-implementation">Python Code</a></li>
+            <li><a href="#practical-applications">Applications</a></li>
+          </ul>
+        </div>
+
+        <div class="panel-block">
+          <h4>Chapter Info</h4>
+          <ul class="chapter-info">
+            <li><i class="fas fa-layer-group"></i> Level: Intermediate</li>
+            <li><i class="fas fa-book-open"></i> Part: 1 - Statistics</li>
+            <li><i class="fas fa-calendar"></i> Updated: Feb 2026</li>
+          </ul>
+        </div>
+
+        <div class="panel-block resources">
+          <h4>Resources</h4>
+          <a href="#" class="resource-link">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+          <a href="#" class="resource-link">
+            <i class="fab fa-python"></i> Python Notebook
+          </a>
+          <a href="#" class="resource-link">
+            <i class="fas fa-chart-line"></i> Interactive Demo
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="blog-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>About This Book</h4>
+          <p>
+            A comprehensive guide to mastering data science from fundamentals to
+            professional practice.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-container">
+          <p>
+            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
+            learners worldwide.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../blog/assets/js/blog.js"></script>
+    <script src="/book/assets/js/book.js"></script>
+  </body>
+</html>

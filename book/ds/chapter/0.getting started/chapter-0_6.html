@@ -1,724 +1,495 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tools & Skills Overview - Data Science Book</title>
-    <link rel="stylesheet" href="../blog/assets/css/blog.css" />
-    <link rel="stylesheet" href="/book/assets/css/book.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-logo">JAHID HASAN</a>
-        <div class="nav-links">
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-          <a href="index.html#blog"><i class="fas fa-blog"></i> Blog</a>
-          <a href="book.html" class="active"
-            ><i class="fas fa-book"></i> Book</a
-          >
-          <a href="index.html#contact"
-            ><i class="fas fa-envelope"></i> Contact</a
-          >
+<article class="chapter-content">
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter 0.6</span>
+    <h1>Tools & Skills Overview</h1>
+    <div class="chapter-meta">
+      <span><i class="fas fa-clock"></i> 12 min read</span>
+      <span><i class="fas fa-signal"></i> Beginner</span>
+      <span><i class="fas fa-tag"></i> Foundation</span>
+    </div>
+  </div>
+
+  <div class="chapter-intro">
+    <p class="lead">
+      Data science requires a diverse toolkit. This chapter provides an overview
+      of essential tools, programming languages, and skills you'll need to
+      develop.
+    </p>
+  </div>
+
+  <section class="content-section">
+    <h2 id="programming">Programming Languages</h2>
+    <p>
+      The foundation of data science is programming. While you don't need to
+      master every language, you should be proficient in at least one.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(235, 111, 146, 0.1)">
+          <i class="fab fa-python"></i>
         </div>
+        <h3>Python</h3>
+        <p>
+          The most popular choice. Rich ecosystem (NumPy, pandas, scikit-learn),
+          easy to learn, versatile for ML, data analysis, and deployment.
+        </p>
       </div>
-    </nav>
 
-    <!-- BOOK CONTAINER -->
-    <div class="book-container">
-      <!-- LEFT SIDEBAR - Navigation -->
-      <aside class="book-sidebar">
-        <div class="book-brand">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Data Science Mastery</span>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 207, 216, 0.1)">
+          <i class="fab fa-r-project"></i>
         </div>
+        <h3>R</h3>
+        <p>
+          Designed for statistics. Excellent for statistical modeling,
+          visualization (ggplot2), and academic research.
+        </p>
+      </div>
 
-        <div class="progress-section">
-          <div class="progress-header">
-            <span>Your Progress</span>
-            <span class="progress-percentage">0%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
-          </div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(246, 193, 119, 0.1)">
+          <i class="fas fa-database"></i>
         </div>
-
-        <nav class="book-nav">
-          <!-- Getting Started -->
-          <div class="nav-section">
-            <div class="section-header" data-section="part0">
-              <i class="fas fa-circle section-icon"></i>
-              <span class="section-title">Getting Started</span>
-              <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <ul class="section-items">
-              <li data-chapter="0.1">
-                <a href="chapter-0_1.html">What Is Data Science?</a>
-              </li>
-              <li data-chapter="0.2">
-                <a href="chapter-0_2.html">DS vs ML vs AI</a>
-              </li>
-              <li data-chapter="0.3">
-                <a href="chapter-0_3.html">How Data Scientists Think</a>
-              </li>
-              <li data-chapter="0.4">
-                <a href="chapter-0_4.html">Types of Data Problems</a>
-              </li>
-              <li data-chapter="0.5">
-                <a href="chapter-0_5.html">Data Science Workflow</a>
-              </li>
-              <li data-chapter="0.6" class="active">
-                <a href="chapter-0_6.html">Tools & Skills Overview</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </aside>
-
-      <!-- MAIN CONTENT AREA -->
-      <main class="book-content">
-        <article class="chapter-content">
-          <div class="chapter-header">
-            <span class="chapter-label">Chapter 0.6</span>
-            <h1>Tools & Skills Overview</h1>
-            <div class="chapter-meta">
-              <span><i class="fas fa-clock"></i> 12 min read</span>
-              <span><i class="fas fa-signal"></i> Beginner</span>
-              <span><i class="fas fa-tag"></i> Foundation</span>
-            </div>
-          </div>
-
-          <div class="chapter-intro">
-            <p class="lead">
-              Data science requires a diverse toolkit. This chapter provides an
-              overview of essential tools, programming languages, and skills
-              you'll need to develop.
-            </p>
-          </div>
-
-          <section class="content-section">
-            <h2 id="programming">Programming Languages</h2>
-            <p>
-              The foundation of data science is programming. While you don't
-              need to master every language, you should be proficient in at
-              least one.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(235, 111, 146, 0.1)"
-                >
-                  <i class="fab fa-python"></i>
-                </div>
-                <h3>Python</h3>
-                <p>
-                  The most popular choice. Rich ecosystem (NumPy, pandas,
-                  scikit-learn), easy to learn, versatile for ML, data analysis,
-                  and deployment.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(156, 207, 216, 0.1)"
-                >
-                  <i class="fab fa-r-project"></i>
-                </div>
-                <h3>R</h3>
-                <p>
-                  Designed for statistics. Excellent for statistical modeling,
-                  visualization (ggplot2), and academic research.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(246, 193, 119, 0.1)"
-                >
-                  <i class="fas fa-database"></i>
-                </div>
-                <h3>SQL</h3>
-                <p>
-                  Essential for data extraction. Every data scientist needs SQL
-                  to query databases and manipulate data.
-                </p>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Start Here:</strong> Learn Python and SQL first. Python
-                for analysis and modeling, SQL for data extraction. You can add
-                R or other languages later if needed.
-              </div>
-            </div>
-
-            <h2 id="python-stack">The Python Data Science Stack</h2>
-            <p>
-              Python's power comes from its libraries. Here are the core
-              packages every data scientist should know:
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-table"></i> Data Manipulation</h4>
-                <ul>
-                  <li>
-                    <strong>NumPy:</strong> Numerical computing, arrays, linear
-                    algebra
-                  </li>
-                  <li>
-                    <strong>pandas:</strong> DataFrames, data cleaning,
-                    transformation
-                  </li>
-                  <li>
-                    <strong>Polars:</strong> Fast alternative to pandas (newer)
-                  </li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-chart-line"></i> Visualization</h4>
-                <ul>
-                  <li>
-                    <strong>Matplotlib:</strong> Foundation plotting library
-                  </li>
-                  <li><strong>Seaborn:</strong> Statistical visualizations</li>
-                  <li>
-                    <strong>Plotly:</strong> Interactive plots and dashboards
-                  </li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-robot"></i> Machine Learning</h4>
-                <ul>
-                  <li>
-                    <strong>scikit-learn:</strong> Classical ML algorithms
-                  </li>
-                  <li><strong>XGBoost/LightGBM:</strong> Gradient boosting</li>
-                  <li><strong>statsmodels:</strong> Statistical models</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-brain"></i> Deep Learning</h4>
-                <ul>
-                  <li><strong>TensorFlow:</strong> Google's ML framework</li>
-                  <li><strong>PyTorch:</strong> Facebook's ML framework</li>
-                  <li>
-                    <strong>Keras:</strong> High-level neural networks API
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 id="advanced-tools">Development & Analysis Tools</h2>
-            <p>
-              Beyond libraries, you need environments and tools for writing,
-              testing, and sharing code.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-book"></i>
-                </div>
-                <h3>Jupyter Notebooks</h3>
-                <p>
-                  Interactive notebooks for exploration, analysis, and sharing
-                  results. The standard for data science work.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-code"></i>
-                </div>
-                <h3>IDEs</h3>
-                <p>
-                  VS Code, PyCharm, or RStudio for production code. Better for
-                  larger projects and debugging.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fas fa-terminal"></i>
-                </div>
-                <h3>Command Line</h3>
-                <p>
-                  Basic terminal skills are essential. Navigate files, run
-                  scripts, manage environments.
-                </p>
-              </div>
-            </div>
-
-            <h2 id="databases">Databases & Data Storage</h2>
-            <p>
-              Data scientists work with various data storage systems.
-              Understanding these technologies is crucial for accessing and
-              managing data.
-            </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Relational Databases</h4>
-                  <p>
-                    PostgreSQL, MySQL, SQLite. Structured data with
-                    relationships. Master SQL queries, joins, and aggregations.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>NoSQL Databases</h4>
-                  <p>
-                    MongoDB, Cassandra. For unstructured or semi-structured
-                    data. Document stores, key-value pairs.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Data Warehouses</h4>
-                  <p>
-                    Snowflake, BigQuery, Redshift. Large-scale analytical
-                    databases optimized for complex queries.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Big Data Tools</h4>
-                  <p>
-                    Apache Spark, Hadoop. For processing datasets too large for
-                    single machines.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h2 id="visualization">Visualization & BI Tools</h2>
-            <p>
-              Communicating insights requires good visualization tools. From
-              code-based plots to drag-and-drop dashboards.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-code"></i> Code-Based</h4>
-                <ul>
-                  <li>Matplotlib, Seaborn (Python)</li>
-                  <li>ggplot2 (R)</li>
-                  <li>Plotly, Bokeh (interactive)</li>
-                  <li>D3.js (web-based, advanced)</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-mouse-pointer"></i> BI Platforms</h4>
-                <ul>
-                  <li>Tableau (industry standard)</li>
-                  <li>Power BI (Microsoft ecosystem)</li>
-                  <li>Looker (Google, SQL-based)</li>
-                  <li>Metabase (open source)</li>
-                </ul>
-              </div>
-            </div>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "A great visualization can convey in seconds what would take
-                paragraphs to explain. Invest time in learning how to visualize
-                effectively."
-              </p>
-              <cite>— Data Visualization Principle</cite>
-            </blockquote>
-
-            <h2 id="cloud-platforms">Cloud Platforms & Services</h2>
-            <p>
-              Modern data science happens in the cloud. Familiarity with at
-              least one major cloud provider is increasingly essential.
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fab fa-aws"></i>
-                </div>
-                <h3>AWS</h3>
-                <p>
-                  Amazon Web Services. S3 for storage, EC2 for compute,
-                  SageMaker for ML. Most comprehensive platform.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fab fa-google"></i>
-                </div>
-                <h3>Google Cloud</h3>
-                <p>
-                  BigQuery for data warehousing, Vertex AI for ML. Strong data
-                  analytics capabilities.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div class="pillar-icon">
-                  <i class="fab fa-microsoft"></i>
-                </div>
-                <h3>Azure</h3>
-                <p>
-                  Microsoft's cloud platform. Azure ML for machine learning.
-                  Popular in enterprise settings.
-                </p>
-              </div>
-            </div>
-
-            <h2 id="version-control">Version Control & Collaboration</h2>
-            <p>
-              Data science is a team sport. You need tools to share code,
-              collaborate, and track changes.
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fab fa-git-alt"></i> Git & GitHub</h4>
-                <ul>
-                  <li>Version control fundamentals</li>
-                  <li>Branching and merging</li>
-                  <li>Pull requests and code review</li>
-                  <li>GitHub Actions for automation</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-users"></i> Collaboration Tools</h4>
-                <ul>
-                  <li>Jupyter notebooks sharing</li>
-                  <li>Google Colab for cloud notebooks</li>
-                  <li>Documentation with Markdown</li>
-                  <li>Project management (Jira, Trello)</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-exclamation-triangle"></i>
-              <div>
-                <strong>Critical Skill:</strong> Learn Git early. Even if you
-                work alone, version control saves you from disasters and makes
-                collaboration possible.
-              </div>
-            </div>
-
-            <h2 id="deployment">Deployment & MLOps</h2>
-            <p>
-              Getting models into production requires deployment skills. This
-              area is called MLOps (Machine Learning Operations).
-            </p>
-
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                  <h4>Containerization</h4>
-                  <p>
-                    Docker for packaging applications. Ensures consistency
-                    across environments.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                  <h4>API Development</h4>
-                  <p>
-                    Flask, FastAPI for serving models. Create endpoints that
-                    applications can call.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                  <h4>Monitoring</h4>
-                  <p>
-                    Track model performance, data drift, system health. Tools
-                    like Prometheus, Grafana.
-                  </p>
-                </div>
-              </div>
-
-              <div class="workflow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                  <h4>Orchestration</h4>
-                  <p>
-                    Airflow, Prefect for workflow management. Schedule and
-                    monitor data pipelines.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h2 id="learning-path">Recommended Learning Path</h2>
-            <p>
-              Don't try to learn everything at once. Here's a practical
-              progression for beginners:
-            </p>
-
-            <div class="pillar-grid">
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(76, 175, 80, 0.1)"
-                >
-                  <i class="fas fa-seedling"></i>
-                </div>
-                <h3>Beginner (0-6 months)</h3>
-                <p>
-                  <strong>Focus:</strong> Python basics, pandas, NumPy, SQL,
-                  Jupyter notebooks, basic statistics, simple visualizations
-                  with Matplotlib.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(33, 150, 243, 0.1)"
-                >
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Intermediate (6-18 months)</h3>
-                <p>
-                  <strong>Add:</strong> scikit-learn, advanced pandas,
-                  Seaborn/Plotly, Git/GitHub, cloud basics (AWS or GCP),
-                  statistics & probability.
-                </p>
-              </div>
-
-              <div class="pillar-card">
-                <div
-                  class="pillar-icon"
-                  style="background: rgba(156, 39, 176, 0.1)"
-                >
-                  <i class="fas fa-rocket"></i>
-                </div>
-                <h3>Advanced (18+ months)</h3>
-                <p>
-                  <strong>Specialize:</strong> Deep learning
-                  (TensorFlow/PyTorch), big data (Spark), MLOps (Docker, APIs),
-                  advanced SQL, domain expertise.
-                </p>
-              </div>
-            </div>
-
-            <blockquote class="chapter-quote">
-              <i class="fas fa-quote-left"></i>
-              <p>
-                "Don't let the vast tool landscape intimidate you. Master the
-                fundamentals first, then expand based on what your projects
-                need."
-              </p>
-              <cite>— Learning Strategy</cite>
-            </blockquote>
-
-            <h2 id="skill-priorities">What to Prioritize</h2>
-            <p>
-              Not all skills are equally important, especially when starting.
-              Focus your energy on high-impact areas:
-            </p>
-
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4><i class="fas fa-star"></i> Must-Have (Learn First)</h4>
-                <ul>
-                  <li>Python programming</li>
-                  <li>SQL for data extraction</li>
-                  <li>pandas for data manipulation</li>
-                  <li>Basic statistics & probability</li>
-                  <li>Data visualization fundamentals</li>
-                  <li>Git version control</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4><i class="fas fa-arrow-up"></i> Important (Learn Next)</h4>
-                <ul>
-                  <li>scikit-learn for ML</li>
-                  <li>Advanced SQL (window functions, CTEs)</li>
-                  <li>Cloud platform basics</li>
-                  <li>API development</li>
-                  <li>Docker basics</li>
-                  <li>Experiment design & A/B testing</li>
-                </ul>
-              </div>
-
-              <div class="skill-category">
-                <h4>
-                  <i class="fas fa-puzzle-piece"></i> Nice-to-Have (Learn Later)
-                </h4>
-                <ul>
-                  <li>Deep learning frameworks</li>
-                  <li>Big data tools (Spark)</li>
-                  <li>Advanced MLOps</li>
-                  <li>R programming</li>
-                  <li>Advanced cloud services</li>
-                  <li>Specialized tools for your domain</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="key-point">
-              <i class="fas fa-lightbulb"></i>
-              <div>
-                <strong>Final Advice:</strong> Learn by doing. Build projects,
-                analyze real datasets, contribute to open source. Hands-on
-                experience beats passive learning every time.
-              </div>
-            </div>
-          </section>
-
-          <!-- Navigation Footer -->
-          <div class="chapter-navigation">
-            <button
-              class="nav-button prev"
-              onclick="window.location.href = 'chapter-0_5.html'"
-            >
-              <i class="fas fa-arrow-left"></i> Previous
-            </button>
-            <button class="nav-button next" disabled>
-              Next <i class="fas fa-arrow-right"></i>
-            </button>
-          </div>
-        </article>
-      </main>
-
-      <!-- RIGHT SIDEBAR - Table of Contents -->
-      <aside class="book-right-panel">
-        <div class="panel-block">
-          <h4>On This Page</h4>
-          <ul class="page-toc">
-            <li><a href="#programming">Programming Languages</a></li>
-            <li><a href="#python-stack">Python Data Science Stack</a></li>
-            <li><a href="#advanced-tools">Development & Analysis Tools</a></li>
-            <li><a href="#databases">Databases & Storage</a></li>
-            <li><a href="#visualization">Visualization & BI Tools</a></li>
-            <li><a href="#cloud-platforms">Cloud Platforms</a></li>
-            <li><a href="#version-control">Version Control</a></li>
-            <li><a href="#deployment">Deployment & MLOps</a></li>
-            <li><a href="#learning-path">Learning Path</a></li>
-            <li><a href="#skill-priorities">What to Prioritize</a></li>
-          </ul>
-        </div>
-
-        <div class="panel-block">
-          <h4>Chapter Info</h4>
-          <ul class="chapter-info">
-            <li><i class="fas fa-layer-group"></i> Level: Beginner</li>
-            <li><i class="fas fa-book-open"></i> Part: 0 - Getting Started</li>
-            <li><i class="fas fa-calendar"></i> Updated: Jan 2026</li>
-          </ul>
-        </div>
-
-        <div class="panel-block resources">
-          <h4>Resources</h4>
-          <a href="#" class="resource-link">
-            <i class="fas fa-download"></i> Download PDF
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fab fa-github"></i> Code Examples
-          </a>
-          <a href="#" class="resource-link">
-            <i class="fas fa-comments"></i> Discussion Forum
-          </a>
-        </div>
-      </aside>
+        <h3>SQL</h3>
+        <p>
+          Essential for data extraction. Every data scientist needs SQL to query
+          databases and manipulate data.
+        </p>
+      </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="blog-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>About This Book</h4>
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Start Here:</strong> Learn Python and SQL first. Python for
+        analysis and modeling, SQL for data extraction. You can add R or other
+        languages later if needed.
+      </div>
+    </div>
+
+    <h2 id="python-stack">The Python Data Science Stack</h2>
+    <p>
+      Python's power comes from its libraries. Here are the core packages every
+      data scientist should know:
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-table"></i> Data Manipulation</h4>
+        <ul>
+          <li>
+            <strong>NumPy:</strong> Numerical computing, arrays, linear algebra
+          </li>
+          <li>
+            <strong>pandas:</strong> DataFrames, data cleaning, transformation
+          </li>
+          <li><strong>Polars:</strong> Fast alternative to pandas (newer)</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-line"></i> Visualization</h4>
+        <ul>
+          <li><strong>Matplotlib:</strong> Foundation plotting library</li>
+          <li><strong>Seaborn:</strong> Statistical visualizations</li>
+          <li><strong>Plotly:</strong> Interactive plots and dashboards</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-robot"></i> Machine Learning</h4>
+        <ul>
+          <li><strong>scikit-learn:</strong> Classical ML algorithms</li>
+          <li><strong>XGBoost/LightGBM:</strong> Gradient boosting</li>
+          <li><strong>statsmodels:</strong> Statistical models</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-brain"></i> Deep Learning</h4>
+        <ul>
+          <li><strong>TensorFlow:</strong> Google's ML framework</li>
+          <li><strong>PyTorch:</strong> Facebook's ML framework</li>
+          <li><strong>Keras:</strong> High-level neural networks API</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="advanced-tools">Development & Analysis Tools</h2>
+    <p>
+      Beyond libraries, you need environments and tools for writing, testing,
+      and sharing code.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <h3>Jupyter Notebooks</h3>
+        <p>
+          Interactive notebooks for exploration, analysis, and sharing results.
+          The standard for data science work.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>IDEs</h3>
+        <p>
+          VS Code, PyCharm, or RStudio for production code. Better for larger
+          projects and debugging.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fas fa-terminal"></i>
+        </div>
+        <h3>Command Line</h3>
+        <p>
+          Basic terminal skills are essential. Navigate files, run scripts,
+          manage environments.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="databases">Databases & Data Storage</h2>
+    <p>
+      Data scientists work with various data storage systems. Understanding
+      these technologies is crucial for accessing and managing data.
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Relational Databases</h4>
           <p>
-            A comprehensive guide to mastering data science from fundamentals to
-            professional practice.
+            PostgreSQL, MySQL, SQLite. Structured data with relationships.
+            Master SQL queries, joins, and aggregations.
           </p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#blog">Blog</a></li>
-            <li><a href="book.html">Data Science Book</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Stay Updated</h4>
-          <p>Get notified about new chapters and updates.</p>
-          <form
-            class="newsletter-form"
-            onsubmit="return submitNewsletter(this);"
-          >
-            <input
-              type="email"
-              id="newsletterEmail"
-              placeholder="Your email"
-              required
-            />
-            <button type="submit">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-          <div id="emailFeedback" class="email-feedback"></div>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-container">
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>NoSQL Databases</h4>
           <p>
-            © 2026 Jahid Hasan. Made with <i class="fa-solid fa-heart"></i> for
-            learners worldwide.
+            MongoDB, Cassandra. For unstructured or semi-structured data.
+            Document stores, key-value pairs.
           </p>
         </div>
       </div>
-    </footer>
 
-    <script src="../blog/assets/js/blog.js"></script>
-    <script src="/book/assets/js/book.js"></script>
-  </body>
-</html>
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Data Warehouses</h4>
+          <p>
+            Snowflake, BigQuery, Redshift. Large-scale analytical databases
+            optimized for complex queries.
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Big Data Tools</h4>
+          <p>
+            Apache Spark, Hadoop. For processing datasets too large for single
+            machines.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="visualization">Visualization & BI Tools</h2>
+    <p>
+      Communicating insights requires good visualization tools. From code-based
+      plots to drag-and-drop dashboards.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-code"></i> Code-Based</h4>
+        <ul>
+          <li>Matplotlib, Seaborn (Python)</li>
+          <li>ggplot2 (R)</li>
+          <li>Plotly, Bokeh (interactive)</li>
+          <li>D3.js (web-based, advanced)</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-mouse-pointer"></i> BI Platforms</h4>
+        <ul>
+          <li>Tableau (industry standard)</li>
+          <li>Power BI (Microsoft ecosystem)</li>
+          <li>Looker (Google, SQL-based)</li>
+          <li>Metabase (open source)</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "A great visualization can convey in seconds what would take paragraphs
+        to explain. Invest time in learning how to visualize effectively."
+      </p>
+      <cite>— Data Visualization Principle</cite>
+    </blockquote>
+
+    <h2 id="cloud-platforms">Cloud Platforms & Services</h2>
+    <p>
+      Modern data science happens in the cloud. Familiarity with at least one
+      major cloud provider is increasingly essential.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fab fa-aws"></i>
+        </div>
+        <h3>AWS</h3>
+        <p>
+          Amazon Web Services. S3 for storage, EC2 for compute, SageMaker for
+          ML. Most comprehensive platform.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fab fa-google"></i>
+        </div>
+        <h3>Google Cloud</h3>
+        <p>
+          BigQuery for data warehousing, Vertex AI for ML. Strong data analytics
+          capabilities.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <i class="fab fa-microsoft"></i>
+        </div>
+        <h3>Azure</h3>
+        <p>
+          Microsoft's cloud platform. Azure ML for machine learning. Popular in
+          enterprise settings.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="version-control">Version Control & Collaboration</h2>
+    <p>
+      Data science is a team sport. You need tools to share code, collaborate,
+      and track changes.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fab fa-git-alt"></i> Git & GitHub</h4>
+        <ul>
+          <li>Version control fundamentals</li>
+          <li>Branching and merging</li>
+          <li>Pull requests and code review</li>
+          <li>GitHub Actions for automation</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-users"></i> Collaboration Tools</h4>
+        <ul>
+          <li>Jupyter notebooks sharing</li>
+          <li>Google Colab for cloud notebooks</li>
+          <li>Documentation with Markdown</li>
+          <li>Project management (Jira, Trello)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-exclamation-triangle"></i>
+      <div>
+        <strong>Critical Skill:</strong> Learn Git early. Even if you work
+        alone, version control saves you from disasters and makes collaboration
+        possible.
+      </div>
+    </div>
+
+    <h2 id="deployment">Deployment & MLOps</h2>
+    <p>
+      Getting models into production requires deployment skills. This area is
+      called MLOps (Machine Learning Operations).
+    </p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Containerization</h4>
+          <p>
+            Docker for packaging applications. Ensures consistency across
+            environments.
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>API Development</h4>
+          <p>
+            Flask, FastAPI for serving models. Create endpoints that
+            applications can call.
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Monitoring</h4>
+          <p>
+            Track model performance, data drift, system health. Tools like
+            Prometheus, Grafana.
+          </p>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Orchestration</h4>
+          <p>
+            Airflow, Prefect for workflow management. Schedule and monitor data
+            pipelines.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="learning-path">Recommended Learning Path</h2>
+    <p>
+      Don't try to learn everything at once. Here's a practical progression for
+      beginners:
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(76, 175, 80, 0.1)">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <h3>Beginner (0-6 months)</h3>
+        <p>
+          <strong>Focus:</strong> Python basics, pandas, NumPy, SQL, Jupyter
+          notebooks, basic statistics, simple visualizations with Matplotlib.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(33, 150, 243, 0.1)">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Intermediate (6-18 months)</h3>
+        <p>
+          <strong>Add:</strong> scikit-learn, advanced pandas, Seaborn/Plotly,
+          Git/GitHub, cloud basics (AWS or GCP), statistics & probability.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: rgba(156, 39, 176, 0.1)">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3>Advanced (18+ months)</h3>
+        <p>
+          <strong>Specialize:</strong> Deep learning (TensorFlow/PyTorch), big
+          data (Spark), MLOps (Docker, APIs), advanced SQL, domain expertise.
+        </p>
+      </div>
+    </div>
+
+    <blockquote class="chapter-quote">
+      <i class="fas fa-quote-left"></i>
+      <p>
+        "Don't let the vast tool landscape intimidate you. Master the
+        fundamentals first, then expand based on what your projects need."
+      </p>
+      <cite>— Learning Strategy</cite>
+    </blockquote>
+
+    <h2 id="skill-priorities">What to Prioritize</h2>
+    <p>
+      Not all skills are equally important, especially when starting. Focus your
+      energy on high-impact areas:
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4><i class="fas fa-star"></i> Must-Have (Learn First)</h4>
+        <ul>
+          <li>Python programming</li>
+          <li>SQL for data extraction</li>
+          <li>pandas for data manipulation</li>
+          <li>Basic statistics & probability</li>
+          <li>Data visualization fundamentals</li>
+          <li>Git version control</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-arrow-up"></i> Important (Learn Next)</h4>
+        <ul>
+          <li>scikit-learn for ML</li>
+          <li>Advanced SQL (window functions, CTEs)</li>
+          <li>Cloud platform basics</li>
+          <li>API development</li>
+          <li>Docker basics</li>
+          <li>Experiment design & A/B testing</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-puzzle-piece"></i> Nice-to-Have (Learn Later)</h4>
+        <ul>
+          <li>Deep learning frameworks</li>
+          <li>Big data tools (Spark)</li>
+          <li>Advanced MLOps</li>
+          <li>R programming</li>
+          <li>Advanced cloud services</li>
+          <li>Specialized tools for your domain</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <strong>Final Advice:</strong> Learn by doing. Build projects, analyze
+        real datasets, contribute to open source. Hands-on experience beats
+        passive learning every time.
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Footer -->
+  <div class="chapter-navigation">
+    <button
+      class="nav-button prev"
+      onclick="window.location.href = 'chapter-0_5.html'"
+    >
+      <i class="fas fa-arrow-left"></i> Previous
+    </button>
+    <button class="nav-button next" disabled>
+      Next <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</article>
