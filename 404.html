@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found | Jahid Hasan</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      /* ============================================
+         DESIGN TOKENS — from main.css :root
+         ============================================ */
+      :root {
+        --primary-color: #eb6f92;
+        --secondary-color: #9ccfd8;
+        --accent-color: #f6c177;
+        --highlight-color: #c4a7e7;
+        --teal-accent: #31748f;
+        --bg-dark: #191724;
+        --bg-darker: #1a1a1a;
+        --bg-surface: #1e1c2e;
+        --text-light: #e0def4;
+        --text-gray: #6e6a86;
+        --border-color: #26233a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Source Code Pro", "Courier New", monospace;
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ============================================
+         NAV — identical to style.css nav
+         ============================================ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(25, 23, 36, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 700;
+        position: relative;
+        padding: 8px 0;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 21px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1002;
+        flex-shrink: 0;
+      }
+
+      .hamburger {
+        width: 100%;
+        height: 3px;
+        background: var(--text-light);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-toggle.active .hamburger:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .nav-toggle.active .hamburger:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.active .hamburger:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+
+      /* ============================================
+         404 MAIN CONTENT
+         ============================================ */
+      .error-page {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 20px 60px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--bg-dark) 0%, #211f2e 100%);
+      }
+
+      /* Neural canvas background — same as header */
+      #neuralCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.3;
+      }
+
+      .error-content {
+        position: relative;
+        z-index: 1;
+        max-width: 650px;
+        width: 100%;
+      }
+
+      /* Glitching 404 number */
+      .error-code {
+        font-size: clamp(6rem, 18vw, 11rem);
+        font-weight: 700;
+        color: var(--primary-color);
+        letter-spacing: -4px;
+        line-height: 1;
+        margin-bottom: 10px;
+        position: relative;
+        display: inline-block;
+        animation: glitch 4s infinite;
+        text-shadow:
+          0 0 30px rgba(235, 111, 146, 0.5),
+          0 0 60px rgba(235, 111, 146, 0.2);
+      }
+
+      .error-code::before,
+      .error-code::after {
+        content: "404";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .error-code::before {
+        color: var(--secondary-color);
+        animation: glitch-before 4s infinite;
+        clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      }
+
+      .error-code::after {
+        color: var(--accent-color);
+        animation: glitch-after 4s infinite;
+        clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      }
+
+      @keyframes glitch {
+        0%,
+        90%,
+        100% {
+          transform: translate(0);
+        }
+        92% {
+          transform: translate(-2px, 1px);
+        }
+        94% {
+          transform: translate(2px, -1px);
+        }
+        96% {
+          transform: translate(-1px, 2px);
+        }
+        98% {
+          transform: translate(1px, -2px);
+        }
+      }
+
+      @keyframes glitch-before {
+        0%,
+        90%,
+        100% {
+          transform: translate(0);
+          opacity: 0;
+        }
+        92% {
+          transform: translate(-3px, 0);
+          opacity: 0.8;
+        }
+        94% {
+          transform: translate(3px, 0);
+          opacity: 0.6;
+        }
+        96% {
+          transform: translate(0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes glitch-after {
+        0%,
+        90%,
+        100% {
+          transform: translate(0);
+          opacity: 0;
+        }
+        93% {
+          transform: translate(3px, 0);
+          opacity: 0.8;
+        }
+        95% {
+          transform: translate(-3px, 0);
+          opacity: 0.6;
+        }
+        97% {
+          transform: translate(0);
+          opacity: 0;
+        }
+      }
+
+      /* Terminal-style card */
+      .error-terminal {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 30px 0;
+        text-align: left;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        transition: border-color 0.3s ease;
+      }
+
+      .error-terminal:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 20px 60px rgba(235, 111, 146, 0.15);
+      }
+
+      .terminal-bar {
+        background: rgba(38, 35, 58, 0.9);
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .terminal-dot.red {
+        background: #ff5f57;
+      }
+      .terminal-dot.yellow {
+        background: #febc2e;
+      }
+      .terminal-dot.green {
+        background: #28c840;
+      }
+
+      .terminal-label {
+        color: var(--text-gray);
+        font-size: 0.85rem;
+        margin-left: 6px;
+        font-family: "Source Code Pro", monospace;
+      }
+
+      .terminal-body {
+        padding: 24px 28px;
+        font-family: "Source Code Pro", monospace;
+        font-size: 0.92rem;
+        line-height: 2;
+      }
+
+      .terminal-line {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .terminal-line + .terminal-line {
+        margin-top: 4px;
+      }
+
+      .t-prompt {
+        color: var(--primary-color);
+        font-weight: 700;
+        flex-shrink: 0;
+        user-select: none;
+      }
+
+      .t-cmd {
+        color: var(--secondary-color);
+      }
+
+      .t-comment {
+        color: var(--text-gray);
+      }
+
+      .t-error {
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+
+      .t-path {
+        color: var(--highlight-color);
+      }
+
+      .t-cursor {
+        display: inline-block;
+        width: 9px;
+        height: 1.1em;
+        background: var(--primary-color);
+        vertical-align: text-bottom;
+        animation: blink 1s infinite;
+        margin-left: 2px;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Title & subtitle */
+      .error-title {
+        font-size: 1.5rem;
+        color: var(--text-light);
+        font-weight: 600;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      .error-subtitle {
+        color: var(--text-gray);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        max-width: 480px;
+        margin: 0 auto 32px;
+      }
+
+      /* Quick links */
+      .error-links {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 36px;
+      }
+
+      .error-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 26px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-family: "Source Code Pro", monospace;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .error-btn-primary {
+        background: var(--primary-color);
+        color: var(--bg-dark);
+        border: 2px solid var(--primary-color);
+      }
+
+      .error-btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.25),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .error-btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .error-btn-primary:hover {
+        background: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(235, 111, 146, 0.4);
+      }
+
+      .error-btn-secondary {
+        background: transparent;
+        color: var(--text-light);
+        border: 2px solid var(--border-color);
+      }
+
+      .error-btn-secondary:hover {
+        background: rgba(235, 111, 146, 0.1);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(235, 111, 146, 0.2);
+      }
+
+      /* Quick nav section cards */
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .quick-nav-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 16px 12px;
+        text-decoration: none;
+        color: var(--text-light);
+        font-size: 0.85rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quick-nav-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .quick-nav-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .quick-nav-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(235, 111, 146, 0.15);
+        color: var(--primary-color);
+      }
+
+      .quick-nav-card i {
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        transition: color 0.3s ease;
+      }
+
+      .quick-nav-card span {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.78rem;
+      }
+
+      /* Section label above quick nav */
+      .quick-nav-label {
+        color: var(--text-gray);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .quick-nav-label::before,
+      .quick-nav-label::after {
+        content: "";
+        flex: 1;
+        max-width: 60px;
+        height: 1px;
+        background: var(--border-color);
+      }
+
+      /* ============================================
+         FOOTER — matches main.css .footer
+         ============================================ */
+      .footer {
+        background: var(--bg-surface);
+        padding: 30px 5%;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer h3 {
+        margin-bottom: 8px;
+        color: #bd93f9;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      .footer p {
+        color: var(--text-gray);
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .social-links a {
+        color: var(--text-light);
+        font-size: 1.3rem;
+        transition: all 0.3s;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 2px solid transparent;
+      }
+
+      .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        border-color: var(--primary-color);
+        background: rgba(235, 111, 146, 0.1);
+      }
+
+      /* ============================================
+         RESPONSIVE
+         ============================================ */
+      @media (max-width: 768px) {
+        .nav-toggle {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 280px;
+          height: 100vh;
+          background: var(--bg-surface);
+          flex-direction: column;
+          padding: 80px 25px 25px 25px;
+          gap: 0;
+          border-left: 1px solid var(--border-color);
+          transition: right 0.35s ease;
+          overflow-y: auto;
+          box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-menu li {
+          width: 100%;
+        }
+
+        .nav-link {
+          display: block;
+          padding: 15px 0;
+          width: 100%;
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-link::after {
+          display: none;
+        }
+        .nav-link:hover {
+          padding-left: 10px;
+        }
+
+        .error-code {
+          letter-spacing: -2px;
+        }
+
+        .error-title {
+          font-size: 1.2rem;
+        }
+
+        .error-links {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .error-btn {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+
+        .quick-nav {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .terminal-body {
+          padding: 18px 18px;
+          font-size: 0.82rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .error-page {
+          padding: 100px 16px 50px;
+        }
+        .quick-nav {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+        .error-code {
+          letter-spacing: -1px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================
+         NAV — same structure as index.html
+         ============================================ -->
+    <nav class="nav">
+      <div class="nav-container">
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html#home" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#education" class="nav-link">Education</a></li>
+          <li>
+            <a href="index.html#publications" class="nav-link">Publications</a>
+          </li>
+          <li>
+            <a href="index.html#experience" class="nav-link">Experience</a>
+          </li>
+          <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+          <li>
+            <a href="index.html#certifications" class="nav-link"
+              >Certifications</a
+            >
+          </li>
+          <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+          <li><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li>
+            <a
+              href="assets/resume/HASAN_Resume.pdf"
+              class="nav-link"
+              target="_blank"
+              >Resume</a
+            >
+          </li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ============================================
+         404 MAIN CONTENT
+         ============================================ -->
+    <main class="error-page">
+      <canvas id="neuralCanvas"></canvas>
+
+      <div class="error-content">
+        <!-- Glitch 404 number -->
+        <div class="error-code">404</div>
+
+        <!-- Terminal card -->
+        <div class="error-terminal">
+          <div class="terminal-bar">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-label">jahid@portfolio ~ bash</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="t-prompt">~$</span>
+              <span class="t-cmd">GET</span>
+              <span class="t-path">/this-page</span>
+              <span class="t-comment">HTTP/1.1</span>
+            </div>
+            <div class="terminal-line">
+              <span class="t-prompt">&gt;</span>
+              <span class="t-error">Error 404: Page not found</span>
+            </div>
+            <div class="terminal-line">
+              <span class="t-prompt">&gt;</span>
+              <span class="t-comment"
+                ># The requested resource does not exist</span
+              >
+            </div>
+            <div class="terminal-line">
+              <span class="t-prompt">&gt;</span>
+              <span class="t-comment"
+                ># Suggestion: navigate back to a known route</span
+              >
+            </div>
+            <div class="terminal-line">
+              <span class="t-prompt">~$</span>
+              <span class="t-cmd">cd</span>
+              <span class="t-path">~/</span>
+              <span class="t-cursor"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Human-readable message -->
+        <h1 class="error-title">Oops — this page wandered off the dataset.</h1>
+        <p class="error-subtitle">
+          The page you're looking for doesn't exist, was moved, or the URL has a
+          typo. Let's get you back on track.
+        </p>
+
+        <!-- Primary CTAs -->
+        <div class="error-links">
+          <a href="index.html" class="error-btn error-btn-primary">
+            <i class="fas fa-house"></i> Back to Home
+          </a>
+          <a href="index.html#projects" class="error-btn error-btn-secondary">
+            <i class="fas fa-folder-open"></i> View Projects
+          </a>
+          <a href="index.html#contact" class="error-btn error-btn-secondary">
+            <i class="fas fa-paper-plane"></i> Contact Me
+          </a>
+        </div>
+
+        <!-- Quick nav grid -->
+        <p class="quick-nav-label">Or jump to a section</p>
+        <div class="quick-nav">
+          <a href="index.html#about" class="quick-nav-card"
+            ><i class="fas fa-user"></i><span>About</span></a
+          >
+          <a href="index.html#education" class="quick-nav-card"
+            ><i class="fas fa-graduation-cap"></i><span>Education</span></a
+          >
+          <a href="index.html#publications" class="quick-nav-card"
+            ><i class="fas fa-book-open"></i><span>Publications</span></a
+          >
+          <a href="index.html#experience" class="quick-nav-card"
+            ><i class="fas fa-briefcase"></i><span>Experience</span></a
+          >
+          <a href="index.html#skills" class="quick-nav-card"
+            ><i class="fas fa-code"></i><span>Skills</span></a
+          >
+          <a href="index.html#blog" class="quick-nav-card"
+            ><i class="fas fa-pen-nib"></i><span>Blog</span></a
+          >
+        </div>
+      </div>
+    </main>
+
+    <!-- ============================================
+         FOOTER — same as index.html footer
+         ============================================ -->
+    <footer class="footer">
+      <h3>Connect with Me</h3>
+      <p>
+        I'm always open to discussing new projects, creative ideas, or
+        opportunities.
+      </p>
+      <div class="social-links">
+        <a
+          href="https://scholar.google.com/citations?user=hWECAEcAAAAJ"
+          target="_blank"
+          title="Google Scholar"
+          ><i class="fas fa-graduation-cap"></i
+        ></a>
+        <a
+          href="https://orcid.org/0009-0001-1902-6142"
+          target="_blank"
+          title="ORCID"
+          ><i class="fab fa-orcid"></i
+        ></a>
+        <a href="https://www.x.com/msjahids" target="_blank"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a href="https://www.medium.com/@msjahid" target="_blank"
+          ><i class="fab fa-medium"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/msjahid" target="_blank"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a href="https://www.kaggle.com/msjahid" target="_blank"
+          ><i class="fab fa-kaggle"></i
+        ></a>
+        <a href="https://www.github.com/msjahid" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://discord.gg/eawXvwjy" target="_blank"
+          ><i class="fab fa-discord"></i
+        ></a>
+        <a href="https://t.me/msjahid" target="_blank"
+          ><i class="fab fa-telegram"></i
+        ></a>
+        <a href="https://msjahid.slack.com/" target="_blank"
+          ><i class="fab fa-slack"></i
+        ></a>
+        <a href="https://dev.to/msjahid" target="_blank"
+          ><i class="fab fa-dev"></i
+        ></a>
+      </div>
+      <p style="margin-top: 20px; color: var(--text-gray); font-size: 0.85rem">
+        © 2024 Jahid Hasan. All rights reserved.
+      </p>
+    </footer>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script>
+      // ============================================
+      // NAV TOGGLE — same logic as main.js
+      // ============================================
+      document.addEventListener("DOMContentLoaded", function () {
+        const navToggle = document.getElementById("navToggle");
+        const navMenu = document.getElementById("navMenu");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        if (navToggle) {
+          navToggle.addEventListener("click", function () {
+            navToggle.classList.toggle("active");
+            navMenu.classList.toggle("active");
+            document.body.style.overflow = navMenu.classList.contains("active")
+              ? "hidden"
+              : "";
+          });
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            navToggle.classList.remove("active");
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          const inside = navMenu.contains(event.target);
+          const onToggle = navToggle.contains(event.target);
+          if (!inside && !onToggle && navMenu.classList.contains("active")) {
+            navToggle.classList.remove("active");
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 768 && navMenu.classList.contains("active")) {
+            navToggle.classList.remove("active");
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        });
+      });
+
+      // ============================================
+      // NEURAL NETWORK CANVAS — same as main.js
+      // ============================================
+      const canvas = document.getElementById("neuralCanvas");
+      const ctx = canvas.getContext("2d");
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector(".error-page").offsetHeight;
+      }
+      resizeCanvas();
+
+      const particles = [];
+      const particleCount = 80;
+      const connectionDistance = 150;
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.radius = Math.random() * 2 + 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = "#12D640";
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectionDistance) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(18, 214, 64, ${0.3 * (1 - dist / connectionDistance)})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      window.addEventListener("resize", resizeCanvas);
+    </script>
+  </body>
+</html>
