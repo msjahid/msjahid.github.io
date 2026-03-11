@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Price Trends Analysis - Hassan Jahid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">Exploring Laptop Price Trends</h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="../../assets/img/project/Insight-ML/laptop-analysis.jpg"
+        alt="Exploring Laptop Price Trends"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span><span>2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">💻</span><span>1000 Laptop Records</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🤖</span><span>KNN Regression</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Regression</span>
+        <span class="tag">EDA</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/Machine-Learning-Projects/tree/main/laptop_price"
+          target="_blank"
+          class="btn btn-primary"
+          >📂 View Code on GitHub</a
+        >
+        <a
+          href="https://www.kaggle.com/code/msjahid/exploring-laptop-price-trends"
+          target="_blank"
+          class="btn btn-secondary"
+          >🚀 View Live on Kaggle</a
+        >
+      </div>
+
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          This project focuses on analyzing a dataset of laptops to understand
+          trends and patterns in laptop pricing. By examining attributes such as
+          brand, processor speed, RAM size, storage capacity, screen size, and
+          weight, the analysis aims to uncover insights into how these features
+          influence laptop prices.
+        </p>
+        <p>
+          The project combines thorough exploratory data analysis with KNN
+          regression and hyperparameter tuning to predict laptop prices and
+          identify which hardware specifications are the dominant pricing
+          drivers.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📊 Dataset Description</h2>
+        <p>
+          The dataset comprises <strong>1000 rows and 7 columns</strong>, each
+          representing different attributes related to laptops.
+        </p>
+        <table class="dataset-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Column</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Brand</strong></td>
+              <td>Manufacturer or brand name (Asus, Acer, Lenovo, HP, Dell)</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Processor_Speed</strong></td>
+              <td>Clock speed of the processor in GHz</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>RAM_Size</strong></td>
+              <td>Amount of RAM installed in GB</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Storage_Capacity</strong></td>
+              <td>Total storage capacity in GB</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Screen_Size</strong></td>
+              <td>Diagonal display size in inches</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Weight</strong></td>
+              <td>Physical weight of the laptop in kilograms</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>Price</strong></td>
+              <td>Retail price of the laptop</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Data Quality</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Missing Values:</strong> The dataset contains no missing
+            values.
+          </li>
+          <li>
+            <strong>Duplicates:</strong> The dataset contains no duplicate
+            values.
+          </li>
+          <li>
+            <strong>RangeIndex:</strong> The dataset includes 1000 entries.
+          </li>
+          <li>
+            <strong>Data Types:</strong> 4 float columns, 2 integer columns, and
+            1 object column.
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>📈 Exploratory Data Analysis</h2>
+
+        <h3>4.1 | Individual Variables Analysis</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/brand_wordcloud.png"
+              alt="Brand Wordcloud"
+            />
+            <h4>Brand Wordcloud</h4>
+            <p>
+              The five brands are nearly evenly distributed, with Dell slightly
+              leading at 21% and HP and Lenovo tied at the lowest at 19%.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/brand_distribution.png"
+              alt="Brand Distribution"
+            />
+            <h4>Brand Distribution</h4>
+            <p>
+              Bar chart confirming the near-equal spread of all five brands
+              across the 1000 laptop records.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/histogram.png"
+              alt="Histogram All Features"
+            />
+            <h4>Histogram — All Features</h4>
+            <p>
+              Processor speed shows a relatively flat spread across 1.5–4.0 GHz,
+              while RAM and storage cluster at discrete tiers.
+            </p>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/kde_plot.png"
+              alt="KDE All Features"
+            />
+            <h4>KDE — All Features</h4>
+            <p>
+              KDE curves reveal that RAM size and storage capacity have clear
+              multimodal patterns, confirming that values come in fixed tiers
+              rather than as a continuous range.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.2 | Outlier Identification</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/boxplot.png"
+              alt="Boxplots"
+            />
+            <h4>Boxplots — All Features</h4>
+            <p>
+              Box plots show that processor speed, screen size, weight, and
+              price have no outliers, while RAM and storage show visible spread
+              consistent with their discrete tier structure.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.3 | Pairs of Variables Insights</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/plot_scatter_vs_price.png"
+              alt="Scatter vs Price"
+            />
+            <h4>Scatter vs Price</h4>
+            <p>
+              Scatter plots of each feature against price reveal that price
+              exists at three distinct tiers (~10k, ~18k, ~32k), and no single
+              continuous feature drives a smooth price gradient.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/plot_box_and_scatter.png"
+              alt="Box and Scatter"
+            />
+            <h4>Box and Scatter</h4>
+            <p>
+              Box and scatter plots paired per feature confirm these discrete
+              price bands hold consistently regardless of processor speed,
+              screen size, or weight.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.4 | Multiple Variables Examination</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/correlation_heatmap.png"
+              alt="Correlation Heatmap"
+            />
+            <h4>Correlation Heatmap</h4>
+            <p>
+              Storage capacity has a near-perfect correlation with price (1.00),
+              making it the dominant pricing factor. All other features have
+              correlations close to zero.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/plot_scatter_with_regression.png"
+              alt="Scatter with Regression"
+            />
+            <h4>Scatter with Regression Lines</h4>
+            <p>
+              Storage capacity traces a clean linear relationship with price,
+              while all other features show horizontal bands with flat
+              regression slopes.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/pairplot.png"
+              alt="Pairplot"
+            />
+            <h4>Pairplot — All Features by Brand</h4>
+            <p>
+              The pairplot confirms that brand has no meaningful impact on how
+              features distribute or relate to each other.
+            </p>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/3d_scatter.png"
+              alt="3D Scatter"
+            />
+            <h4>3D Scatter — Price, Processor Speed, RAM Size</h4>
+            <p>
+              A 3D scatter visualizes the discrete pricing tiers in three
+              dimensions — the horizontal layering confirms that neither
+              processor speed nor RAM alone determines price tier.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/relplot.png"
+              alt="Relplot RAM vs Price by Storage"
+            />
+            <h4>Relplot — RAM vs Price by Storage Capacity</h4>
+            <p>
+              Price tier is entirely determined by storage (256 → ~10k, 512 →
+              ~18k, 1000 → ~32k), regardless of RAM or brand.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.5 | Hypothesis Testing with ANOVA</h3>
+        <p>
+          ANOVA was used to test whether mean prices differ significantly across
+          brands. Results confirm that brand is not a statistically significant
+          predictor of price in this dataset.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>🤖 Model Development &amp; Evaluation</h2>
+
+        <h3>5.1 | Data Normalization</h3>
+        <p>Feature values are normalized prior to model training.</p>
+
+        <h3>5.2 | Feature Encoding</h3>
+        <p>
+          The Brand categorical column is encoded for use in regression models.
+        </p>
+
+        <h3>5.3 | Model Training</h3>
+        <p>
+          KNN regression is trained across a range of K values to identify the
+          optimal hyperparameter.
+        </p>
+
+        <h3>5.4 | Model Evaluation</h3>
+        <p>
+          R² scores are computed for both training and test sets at each value
+          of K.
+        </p>
+
+        <h3>5.5 | Hyperparameter Tuning</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/laptop_price/laptop_charts/r2_knn.png"
+              alt="R² Score vs K KNN"
+            />
+            <h4>R² Score vs K — KNN Regression</h4>
+            <p>
+              The model peaks around K=3–5 and plateaus with near-perfect scores
+              above 0.9995 across most values of K.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.6 | Best Model Result</h3>
+        <p>
+          KNN regression achieved an R² score exceeding 0.9995, indicating that
+          storage capacity alone is nearly sufficient to predict price with very
+          high accuracy.
+        </p>
+
+        <h3>5.7 | Interactive Model Testing</h3>
+        <p>
+          An interactive widget allows users to input laptop specifications and
+          receive a predicted price from the trained model in real time.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>🎉 Key Insights</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Storage capacity is the sole pricing driver</strong> — it
+            correlates with price at ~1.00, while all other features have
+            near-zero correlations.
+          </li>
+          <li>
+            <strong>Price exists at three discrete tiers</strong>: ~10k for 256
+            GB, ~18k for 512 GB, and ~32k for 1000 GB storage, regardless of any
+            other specification.
+          </li>
+          <li>
+            <strong>Brand has no significant impact on price</strong> — ANOVA
+            confirms no statistically significant price difference across the
+            five brands (Asus, Acer, Lenovo, HP, Dell).
+          </li>
+          <li>
+            <strong>RAM and storage show multimodal KDE patterns</strong>,
+            confirming they come in fixed tiers rather than as a continuous
+            range — which explains the discrete pricing structure.
+          </li>
+          <li>
+            <strong>KNN regression achieved an R² score above 0.9995</strong>,
+            making it a near-perfect predictor of laptop price given the
+            storage-dominated pricing structure.
+          </li>
+          <li>
+            <strong>Processor speed, screen size, and weight</strong> show no
+            outliers and no meaningful correlation with price in this dataset.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>

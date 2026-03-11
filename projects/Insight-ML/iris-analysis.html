@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iris Diversity Analysis - Hassan Jahid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">
+          Iris Diversity: Analysis, Modeling, Prediction
+        </h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="../../assets/img/project/Insight-ML/iris-analysis.jpg"
+        alt="Iris Diversity Analysis"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span><span>2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🌸</span><span>150 Flower Records</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🤖</span><span>4 ML Models</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Classification</span>
+        <span class="tag">EDA</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/Machine-Learning-Projects/tree/main/iris_prediction"
+          target="_blank"
+          class="btn btn-primary"
+          >📂 View Code on GitHub</a
+        >
+        <a
+          href="https://www.kaggle.com/code/msjahid/iris-diversity-analysis-modeling-prediction"
+          target="_blank"
+          class="btn btn-secondary"
+          >🚀 View Live on Kaggle</a
+        >
+      </div>
+
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          This project focuses on analyzing a dataset of Iris flowers to
+          understand the diversity among different species. By examining various
+          attributes such as sepal length, sepal width, petal length, and petal
+          width, the analysis aims to uncover trends, disparities, and insights
+          into the different Iris species.
+        </p>
+        <p>
+          The project combines thorough exploratory data analysis with four
+          machine learning classifiers — KNN, Decision Tree, and three variants
+          of Naïve Bayes (Gaussian, Multinomial, and Bernoulli) — to predict
+          Iris species and evaluate which features drive prediction performance.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📊 Dataset Description</h2>
+        <p>
+          The dataset comprises <strong>150 rows and 6 columns</strong>, each
+          representing different attributes related to Iris flowers.
+        </p>
+        <table class="dataset-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Column</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Id</strong></td>
+              <td>A unique identifier for each Iris flower</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>SepalLengthCm</strong></td>
+              <td>Length of the sepals in centimeters</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>SepalWidthCm</strong></td>
+              <td>Width of the sepals in centimeters</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>PetalLengthCm</strong></td>
+              <td>Length of the petals in centimeters</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>PetalWidthCm</strong></td>
+              <td>Width of the petals in centimeters</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Species</strong></td>
+              <td>
+                Species of the Iris flower (Setosa, Versicolor, Virginica)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Data Quality</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Missing Values:</strong> The dataset contains no missing
+            values.
+          </li>
+          <li>
+            <strong>Duplicates:</strong> The dataset contains no duplicate
+            values.
+          </li>
+          <li>
+            <strong>RangeIndex:</strong> The dataset includes 150 entries.
+          </li>
+          <li>
+            <strong>Data Types:</strong> 4 float columns, 1 integer column, and
+            1 object column.
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>📈 Exploratory Data Analysis</h2>
+
+        <h3>4.1 | Individual Variables Analysis</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/species_distribution.png"
+              alt="Species Distribution"
+            />
+            <h4>Species Distribution</h4>
+            <p>
+              The dataset is perfectly balanced — each of the three species
+              accounts for exactly 33.33% of the records.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/hist_plot.png"
+              alt="Histogram Continuous Features"
+            />
+            <h4>Histogram — Continuous Features</h4>
+            <p>
+              Histogram distributions of the four continuous features, with
+              density curves overlaid across all species.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/kde_plot.png"
+              alt="KDE Continuous Features"
+            />
+            <h4>KDE — Continuous Features</h4>
+            <p>
+              KDE curves reveal that petal length and petal width show clear
+              bimodal patterns, indicating strong species separation.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.2 | Outlier Identification</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/boxplot.png"
+              alt="Boxplots"
+            />
+            <h4>Boxplots — All Features</h4>
+            <p>
+              Box plots exposing the spread and outliers across all four
+              features.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.3 | Handling Outliers</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/kde_pair-value.png"
+              alt="KDE by Species Post Outlier Treatment"
+            />
+            <h4>KDE by Species — Post Outlier Treatment</h4>
+            <p>
+              After applying Winsorization, KDE plots by species show how each
+              feature separates across Setosa, Versicolor, and Virginica.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/violin_grid.png"
+              alt="Violin Grid by Species"
+            />
+            <h4>Violin Grid by Species</h4>
+            <p>
+              Violin plots reinforce the same picture — Setosa is clearly
+              distinct, while Versicolor and Virginica overlap more on sepal
+              features.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.4 | Pairs of Variables Insights</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/multiple_variable_analysis.png"
+              alt="Multiple Variable Scatter"
+            />
+            <h4>Multiple Variable Scatter</h4>
+            <p>
+              Scatter plots of petal and sepal dimensions, colored by species,
+              confirm that petal measurements are the strongest separators.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/plot_violin_boxplots_grid.png"
+              alt="Violin Boxplot Grid"
+            />
+            <h4>Violin Boxplot Grid</h4>
+            <p>
+              Violin-boxplot overlays per species and feature, combining
+              distribution shape with quartile summaries.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/outlier_analysis.png"
+              alt="Outlier Analysis"
+            />
+            <h4>Outlier Analysis</h4>
+            <p>
+              Outlier analysis using regression plots across all features with
+              species as the grouping variable.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.5 | Multiple Variables Examination</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/correlation_heatmap.png"
+              alt="Correlation Heatmap"
+            />
+            <h4>Correlation Heatmap</h4>
+            <p>
+              The correlation heatmap shows that petal length and petal width
+              are highly correlated (0.96), and both correlate strongly with
+              sepal length (0.87 and 0.82 respectively).
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/relplot_sepal.png"
+              alt="Relplot Sepal"
+            />
+            <h4>Relplot — Sepal</h4>
+            <p>
+              Faceted relplot showing sepal relationships broken out per
+              species.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/relplot_petal.png"
+              alt="Relplot Petal"
+            />
+            <h4>Relplot — Petal</h4>
+            <p>
+              Faceted relplot showing petal relationships broken out per
+              species.
+            </p>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/pairplot.png"
+              alt="Pairplot"
+            />
+            <h4>Pairplot — All Features</h4>
+            <p>
+              Pairplot providing a full cross-feature view with per-species KDE
+              on the diagonal.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.6 | Hypothesis Testing with Z-test</h3>
+        <p>
+          Z-tests were conducted to assess whether mean differences across
+          species for each feature are statistically significant.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>🤖 Model Development &amp; Evaluation</h2>
+
+        <h3>5.1 | Feature Selection</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/fetaures_selection.png"
+              alt="Feature Importance"
+            />
+            <h4>Feature Importance</h4>
+            <p>
+              ExtraTreesClassifier feature importances confirm petal width and
+              petal length as the dominant predictors, with sepal features
+              contributing far less.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.2 | Data Normalization</h3>
+        <p>Feature values are normalized prior to model training.</p>
+
+        <h3>5.3 | KNeighborsClassifier</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/overfit_underfit.png"
+              alt="KNN Overfit Underfit"
+            />
+            <h4>Overfitting / Underfitting Detection — KNN</h4>
+            <p>
+              Overfit/underfit detection across different values of k, with
+              training and testing accuracy tracked.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/confusion_knn.png"
+              alt="KNN Confusion Matrix"
+            />
+            <h4>Confusion Matrix — KNN</h4>
+            <p>KNN achieves 97% accuracy on the test set.</p>
+          </div>
+        </div>
+
+        <h3>5.4 | DecisionTreeClassifier</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/dt_confusion.png"
+              alt="Decision Tree Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Decision Tree</h4>
+            <p>Decision Tree classification results on the Iris test set.</p>
+          </div>
+        </div>
+
+        <h3>5.5 | Naïve Bayes</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/gnb_confusion.png"
+              alt="Gaussian NB Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Gaussian Naïve Bayes</h4>
+            <p>
+              Three Naïve Bayes variants were evaluated — Gaussian, Multinomial,
+              and Bernoulli — all achieving 96.7% accuracy.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/mnb_confusion.png"
+              alt="Multinomial NB Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Multinomial Naïve Bayes</h4>
+            <p>
+              Multinomial Naïve Bayes achieves 96.7% accuracy on the test set.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/BNB_confusion.png"
+              alt="Bernoulli NB Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Bernoulli Naïve Bayes</h4>
+            <p>
+              Bernoulli Naïve Bayes achieves 96.7% accuracy on the test set.
+            </p>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/nb_all_result.png"
+              alt="Naive Bayes Algorithm Scores"
+            />
+            <h4>Naïve Bayes Algorithm Scores</h4>
+            <p>All three Naïve Bayes variants scored identically at 96.7%.</p>
+          </div>
+        </div>
+
+        <h3>5.6 | Best Model Result</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Machine-Learning-Projects/main/iris_prediction/iris_charts/Best%20Model%20Result.png"
+              alt="Best Model Result"
+            />
+            <h4>Best Model Result — All Classifiers</h4>
+            <p>
+              KNN and GaussianNB tied for the top spot at 96.7%, with Decision
+              Tree close behind at 93.3%.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎉 Key Insights</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Petal measurements are the strongest separators</strong>
+            — petal length and petal width are highly correlated (0.96) and
+            provide the clearest class boundaries across all three species.
+          </li>
+          <li>
+            <strong>Setosa is perfectly separable</strong> from Versicolor and
+            Virginica across all feature combinations, while Versicolor and
+            Virginica show moderate overlap on sepal features.
+          </li>
+          <li>
+            <strong>The dataset is perfectly balanced</strong> — each of the
+            three species accounts for exactly 33.33% of the 150 records,
+            removing class imbalance as a concern.
+          </li>
+          <li>
+            <strong>Winsorization</strong> cleaned extreme outlier values while
+            preserving the between-species signal needed for classification.
+          </li>
+          <li>
+            <strong>KNN and GaussianNB tied at 96.7%</strong> test accuracy,
+            with Decision Tree close behind at 93.3%. All three Naïve Bayes
+            variants scored identically.
+          </li>
+          <li>
+            <strong>Sepal features contribute far less</strong> to prediction
+            than petal features, as confirmed by ExtraTreesClassifier feature
+            importance scores.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>
