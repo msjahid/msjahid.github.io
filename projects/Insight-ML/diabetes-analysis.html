@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Risk Analysis - Hassan Jahid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">Diabetes Risk Analysis</h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="../../assets/img/project/Insight-ML/diabetes-analysis.jpg"
+        alt="Diabetes Risk Analysis"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span><span>2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🩸</span><span>768 Patient Records</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🤖</span><span>5 ML Models</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Healthcare Analytics</span>
+        <span class="tag">EDA</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/Data_Science_Projects/tree/main/diabetes_risk_analysis"
+          target="_blank"
+          class="btn btn-primary"
+          >📂 View Code on GitHub</a
+        >
+        <a
+          href="https://www.kaggle.com/code/msjahid/diabetes-risk-analysis"
+          target="_blank"
+          class="btn btn-secondary"
+          >🚀 View Live on Kaggle</a
+        >
+      </div>
+
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          This project focuses on analyzing a dataset of Pima Indians to
+          understand the risk factors associated with diabetes. By examining
+          various attributes such as glucose levels, BMI, insulin, and age, the
+          analysis aims to uncover trends, correlations, and insights into
+          diabetes risk.
+        </p>
+        <p>
+          The project combines thorough exploratory data analysis with five
+          machine learning classifiers — KNN, Decision Tree, Naïve Bayes, Random
+          Forest, and SVM — to predict diabetes status and evaluate which
+          features drive prediction performance.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📊 Dataset Description</h2>
+        <p>
+          The dataset comprises <strong>768 rows and 9 columns</strong>, each
+          representing different attributes related to diabetes risk in Pima
+          Indian women.
+        </p>
+        <table class="dataset-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Column</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Pregnancies</strong></td>
+              <td>Number of pregnancies the individual has had</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Glucose</strong></td>
+              <td>
+                Plasma glucose concentration (2-hour oral glucose tolerance
+                test)
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>BloodPressure</strong></td>
+              <td>Diastolic blood pressure (mm Hg)</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>SkinThickness</strong></td>
+              <td>Triceps skin fold thickness (mm)</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Insulin</strong></td>
+              <td>2-hour serum insulin (mu U/ml)</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>BMI</strong></td>
+              <td>Body mass index (weight in kg / height in m²)</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>DiabetesPedigreeFunction</strong></td>
+              <td>Likelihood of diabetes based on family history</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><strong>Age</strong></td>
+              <td>Age of the individual in years</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><strong>Outcome</strong></td>
+              <td>Diabetes status: 1 = diabetic, 0 = non-diabetic</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Data Quality</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Missing Values:</strong> The dataset contains no missing
+            values.
+          </li>
+          <li>
+            <strong>Duplicates:</strong> The dataset contains no duplicate
+            values.
+          </li>
+          <li>
+            <strong>RangeIndex:</strong> The dataset includes 768 entries.
+          </li>
+          <li>
+            <strong>Data Types:</strong> 7 integer columns and 2 float columns.
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>📈 Exploratory Data Analysis</h2>
+
+        <h3>4.1 | Individual Variables Analysis</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/hist_plot.png"
+              alt="Histogram All Features"
+            />
+            <h4>Histogram — All Features</h4>
+            <p>
+              Pregnancies and insulin are heavily right-skewed; glucose follows
+              a near-normal distribution with a slight right tail (μ = 120.89).
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/kde_plot.png"
+              alt="KDE All Features"
+            />
+            <h4>KDE — All Features</h4>
+            <p>
+              Blood pressure is unimodal and symmetric; skin thickness and
+              insulin show bimodal shapes suggesting zero-value clusters in the
+              data.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_categorical_distribution.png"
+              alt="Categorical Distribution"
+            />
+            <h4>Categorical Distribution — Pregnancies &amp; Outcome</h4>
+            <p>
+              Frequency distributions confirm a class imbalance: 65.1%
+              non-diabetic vs 34.9% diabetic.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.2 | Pairs of Variables Insights</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_continuous_vs_target.png"
+              alt="Continuous Features vs Target"
+            />
+            <h4>Continuous Features vs Target</h4>
+            <p>
+              Diabetic individuals consistently show higher mean glucose (141 vs
+              110), higher BMI (35.1 vs 30.3), and are older (37.1 vs 31.2).
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/visualize_count_data.png"
+              alt="Count Data by Outcome"
+            />
+            <h4>Count Data by Outcome</h4>
+            <p>
+              Pregnancies, Blood Pressure, Skin Thickness, and Age all show
+              visible distributional shifts between diabetic and non-diabetic
+              groups.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/visualize_grouped_count_data.png"
+              alt="Grouped Count Data by Outcome"
+            />
+            <h4>Grouped Count Data by Outcome</h4>
+            <p>
+              Higher glucose groups (&gt;25) and higher BMI groups (6–7) skew
+              strongly toward diabetic outcomes.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_stripplots.png"
+              alt="Strip Plots by Outcome"
+            />
+            <h4>Strip Plots by Outcome</h4>
+            <p>
+              Glucose and BMI have the clearest vertical separation between the
+              two classes.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_scatter_matrix.png"
+              alt="Scatter Matrix"
+            />
+            <h4>Scatter Matrix</h4>
+            <p>
+              Glucose vs BMI and glucose vs age pairings show the clearest class
+              separation across all feature combinations.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.3 | Outlier Identification</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_boxplots.png"
+              alt="Boxplots"
+            />
+            <h4>Boxplots — All Features</h4>
+            <p>
+              Insulin has the most severe upper outliers (up to ~850 mu U/ml);
+              pregnancies and diabetes pedigree function also show significant
+              right-tail spread.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.4 | Handling Outliers</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_violin_grid.png"
+              alt="Violin Grid Post Winsorization"
+            />
+            <h4>Violin Grid by Outcome — Post Winsorization</h4>
+            <p>
+              After Winsorization, distributions are cleaner with the class
+              separation signal preserved across all features.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/visualize_numeric_data.png"
+              alt="Numeric Data After Winsorization"
+            />
+            <h4>Numeric Data After Winsorization</h4>
+            <p>
+              A three-panel view (KDE, box, scatter vs outcome) confirms tighter
+              distributions while retaining meaningful between-group
+              differences.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.5 | Multiple Variables Examination</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/pairplot.png"
+              alt="Pairplot"
+            />
+            <h4>Pairplot — All Features</h4>
+            <p>
+              Diagonal KDE plots show glucose and BMI have the most distinct
+              separation between diabetic and non-diabetic distributions.
+            </p>
+          </div>
+        </div>
+
+        <h3>4.6 | Correlation Analysis</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_corr_heatmap_single.png"
+              alt="Correlation Heatmap Lower Triangle"
+            />
+            <h4>Correlation Heatmap — Lower Triangle</h4>
+            <p>
+              Strongest pairings: Skin Thickness &amp; Insulin (0.51), Age &amp;
+              Pregnancies (0.58), Glucose &amp; Outcome (0.49).
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_correlation_heatmap.png"
+              alt="Correlation Heatmap Full"
+            />
+            <h4>Correlation Heatmap — Full</h4>
+            <p>
+              Full symmetric heatmap confirms Glucose as the highest correlate
+              with Outcome at 0.49.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/plot_scatter_with_regression.png"
+              alt="Scatter with Regression Lines"
+            />
+            <h4>Scatter with Regression Lines</h4>
+            <p>
+              Glucose shows the steepest positive slope; Blood Pressure and
+              Pregnancies show much weaker trends against the outcome.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🤖 Model Development &amp; Evaluation</h2>
+
+        <h3>5.2 | Feature Selection</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/features_important.png"
+              alt="Feature Importance"
+            />
+            <h4>Feature Importance — All Features</h4>
+            <p>
+              ExtraTreesClassifier ranks Glucose as the dominant feature
+              (importance ≈ 0.25), followed by BMI and Age. Insulin ranks last
+              due to its noisy zero-heavy distribution.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/selected_features.png"
+              alt="Selected Features"
+            />
+            <h4>Selected Features Above Threshold</h4>
+            <p>
+              All 8 features are retained — none fall below the importance
+              cutoff, confirming every feature contributes meaningfully to
+              prediction.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/train_test.png"
+              alt="Train Test Split"
+            />
+            <h4>Train / Test Split Distribution</h4>
+            <p>
+              An 80/20 split produces 614 training instances and 154 test
+              instances.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.4 | KNeighborsClassifier</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/overfit_underfit.png"
+              alt="KNN Overfit Underfit"
+            />
+            <h4>Overfitting / Underfitting Detection — KNN</h4>
+            <p>
+              Training accuracy starts at 100% (K=1) and falls sharply; test
+              accuracy rises from 64%. Curves converge around K=25–30,
+              indicating the optimal K for generalization.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/knn_confusion.png"
+              alt="KNN Confusion Matrix"
+            />
+            <h4>Confusion Matrix — KNN</h4>
+            <p>
+              KNN achieves 77.92% test accuracy after hyperparameter tuning.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.5 | DecisionTreeClassifier</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/decsion_tree.png"
+              alt="Decision Tree Plot"
+            />
+            <h4>Decision Tree Plot</h4>
+            <p>
+              The tree first splits on Glucose (≤ 0.213), then branches on Age,
+              BMI, and Blood Pressure — visually confirming the feature
+              importance ranking.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/dt_matrix.png"
+              alt="Decision Tree Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Decision Tree</h4>
+            <p>Decision Tree achieves the highest test accuracy at 79.22%.</p>
+          </div>
+        </div>
+
+        <h3>5.6 | Naïve Bayes</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/gnb_matrix.png"
+              alt="Naive Bayes Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Gaussian Naïve Bayes</h4>
+            <p>
+              Naïve Bayes lands around 72–74% test accuracy with the simplest
+              model assumptions.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.7 | RandomForestClassifier</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/rf_matrix.png"
+              alt="Random Forest Confusion Matrix"
+            />
+            <h4>Confusion Matrix — Random Forest</h4>
+            <p>
+              Random Forest scores 75.32% test accuracy despite the highest
+              training accuracy (88.27%), indicating mild overfitting.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.8 | Support Vector Machine</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/svm_matrix.png"
+              alt="SVM Confusion Matrix"
+            />
+            <h4>Confusion Matrix — SVM</h4>
+            <p>
+              SVM lands around 73–74% test accuracy after kernel and
+              regularization tuning.
+            </p>
+          </div>
+        </div>
+
+        <h3>5.9 | Best Model Result</h3>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/Data-Science-Projects/main/diabetes_risk_analysis/diabetes_charts/Best%20Model%20Result.png"
+              alt="Best Model Result"
+            />
+            <h4>Best Model Result — All Classifiers</h4>
+            <p>
+              Decision Tree leads at 79.22%, narrowly beating KNN (77.92%).
+              Random Forest shows mild overfitting; Naïve Bayes and SVM both
+              land around 72–74%.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎉 Key Insights</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Glucose is the strongest predictor</strong> of diabetes,
+            with the highest feature importance (≈ 0.25) and the highest
+            correlation with Outcome (0.49).
+          </li>
+          <li>
+            <strong>Class imbalance is present</strong> — 65.1% non-diabetic vs
+            34.9% diabetic — which influences model performance and evaluation
+            strategy.
+          </li>
+          <li>
+            <strong>Insulin and Skin Thickness</strong> contain heavy zero-value
+            clusters suggesting missing or unreported measurements, reflected in
+            bimodal KDE shapes.
+          </li>
+          <li>
+            <strong>Age and Pregnancies</strong> are strongly correlated (0.58),
+            while Skin Thickness and Insulin share a moderate correlation
+            (0.51).
+          </li>
+          <li>
+            <strong>Decision Tree outperformed all models</strong> at 79.22%
+            test accuracy, with KNN close behind at 77.92%. Random Forest
+            overfits slightly despite higher training accuracy.
+          </li>
+          <li>
+            <strong>Winsorization</strong> effectively tightened extreme
+            distributions — particularly insulin — while preserving the
+            between-group signal needed for classification.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>
