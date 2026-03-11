@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoanEase - Loan Prediction App - Hassan Jahid</title>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <a href="https://msjahid.github.io/" class="back-btn"
+          >← Back to Portfolio</a
+        >
+        <h1 class="project-title">LoanEase — Loan Prediction App</h1>
+      </div>
+    </div>
+
+    <div class="hero">
+      <img
+        src="https://raw.githubusercontent.com/msjahid/loan-approval-analysis/main/project_images/home.png"
+        alt="LoanEase Loan Prediction App"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="content">
+      <div class="meta-info">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span><span>2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🌐</span><span>Flask Web App</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🚀</span><span>Deployed on Railway</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Gaussian Naïve Bayes</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Railway</span>
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">Machine Learning</span>
+      </div>
+
+      <div class="action-buttons">
+        <a
+          href="https://github.com/msjahid/loan-approval-analysis"
+          target="_blank"
+          class="btn btn-primary"
+          >📂 View Code on GitHub</a
+        >
+        <a
+          href="https://loan-approval.msjahid.me/"
+          target="_blank"
+          class="btn btn-secondary"
+          >🚀 View Live App</a
+        >
+      </div>
+
+      <!-- Overview -->
+      <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+          LoanEase is a Flask-based web application designed to predict loan
+          approval status using machine learning. The app uses a trained
+          Gaussian Naïve Bayes model to provide instant predictions based on
+          user-provided input, and is deployed on Railway for ease of access.
+        </p>
+        <p>
+          Users fill in a simple loan application form with their income, loan
+          amount, loan term, credit history, and property area. The app
+          validates all inputs, runs them through the pre-trained model, and
+          returns a personalized approval or rejection result in real time.
+        </p>
+      </div>
+
+      <!-- Features -->
+      <div class="section">
+        <h2>✨ Features</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>User-friendly form</strong> — clean loan application
+            interface with clearly labeled input fields.
+          </li>
+          <li>
+            <strong>ML-powered predictions</strong> — Gaussian Naïve Bayes model
+            predicts approval status instantly.
+          </li>
+          <li>
+            <strong>Input validation</strong> — enforces rules on income, loan
+            amount, term, and credit history before submission.
+          </li>
+          <li>
+            <strong>Personalized results</strong> — displays approval or
+            rejection messages addressed to the applicant by name.
+          </li>
+          <li>
+            <strong>Graceful error handling</strong> — descriptive error pages
+            guide users to correct invalid inputs.
+          </li>
+          <li>
+            <strong>Cloud deployment</strong> — hosted on Railway for seamless,
+            always-on access.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="section">
+        <h2>🛠️ Technologies Used</h2>
+        <ul class="findings-list">
+          <li>
+            <strong>Python</strong> — core programming language for the app and
+            ML logic.
+          </li>
+          <li>
+            <strong>Flask</strong> — lightweight web framework handling routing,
+            templates, and request processing.
+          </li>
+          <li>
+            <strong>Scikit-learn</strong> — Gaussian Naïve Bayes model for loan
+            approval prediction.
+          </li>
+          <li>
+            <strong>Docker &amp; Docker Compose</strong> — containerization for
+            consistent local and production environments.
+          </li>
+          <li>
+            <strong>HTML/CSS</strong> — frontend templates and styling for all
+            app pages.
+          </li>
+          <li>
+            <strong>Railway</strong> — cloud platform for automated deployment
+            and hosting.
+          </li>
+        </ul>
+      </div>
+
+      <!-- App Screenshots -->
+      <div class="section">
+        <h2>🖼️ App Preview</h2>
+        <div class="charts-grid">
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/loan-approval-analysis/main/project_images/home.png"
+              alt="Home Page"
+            />
+            <h4>Home Page — Loan Application Form</h4>
+            <p>
+              Displays the loan application form with input fields for Name,
+              Account Number, Income, Loan Amount, Term, Credit History, and
+              Property Area.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/loan-approval-analysis/main/project_images/prediction.png"
+              alt="Prediction Page"
+            />
+            <h4>Prediction Page — Result Display</h4>
+            <p>
+              Shows the loan approval or rejection result with a personalized
+              message addressed to the applicant by name and account number.
+            </p>
+          </div>
+          <div class="chart-item">
+            <img
+              src="https://raw.githubusercontent.com/msjahid/loan-approval-analysis/main/project_images/error.png"
+              alt="Error Page"
+            />
+            <h4>Error Page — Validation Feedback</h4>
+            <p>
+              Displays descriptive error messages for invalid inputs with a
+              visual illustration for a better user experience.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Validation -->
+      <div class="section">
+        <h2>✅ Input Validation Rules</h2>
+        <ul class="findings-list">
+          <li><strong>Name</strong> — cannot be empty or "0".</li>
+          <li><strong>Account Number</strong> — cannot be "0".</li>
+          <li><strong>Applicant Income</strong> — must be greater than 0.</li>
+          <li><strong>Loan Amount</strong> — must be greater than 0.</li>
+          <li><strong>Loan Term</strong> — must be at least 36 months.</li>
+          <li>
+            <strong>Credit History</strong> — must be a valid value (0 or 1).
+          </li>
+        </ul>
+      </div>
+
+      <!-- Example Workflow -->
+      <div class="section">
+        <h2>🔄 Example Workflow</h2>
+
+        <h3>Sample Input</h3>
+        <ul class="findings-list">
+          <li><strong>Name:</strong> Hasan</li>
+          <li><strong>Account Number:</strong> 123456</li>
+          <li><strong>Applicant Income:</strong> 5000</li>
+          <li><strong>Loan Amount:</strong> 150</li>
+          <li><strong>Loan Term:</strong> 360 months</li>
+          <li><strong>Credit History:</strong> 1 (meets guidelines)</li>
+          <li><strong>Property Area:</strong> Urban</li>
+        </ul>
+
+        <h3>Possible Outputs</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Approved:</strong> "Congratulations, Hasan! Your loan has
+            been approved. Account Number: 123456"
+          </li>
+          <li>
+            <strong>Rejected:</strong> "Unfortunately, Hasan your loan has not
+            been approved. Account Number: 123456"
+          </li>
+        </ul>
+      </div>
+
+      <!-- Installation -->
+      <div class="section">
+        <h2>⚙️ Installation Guide</h2>
+
+        <h3>Local Setup</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Step 1 — Clone the repository:</strong>
+            <code
+              >git clone
+              https://github.com/msjahid/loan-approval-analysis.git</code
+            >
+          </li>
+          <li>
+            <strong>Step 2 — Create a virtual environment:</strong>
+            <code>python -m venv venv</code> then activate it.
+          </li>
+          <li>
+            <strong>Step 3 — Install dependencies:</strong>
+            <code>pip install -r requirements.txt</code>
+          </li>
+          <li>
+            <strong>Step 4 — Run the app:</strong> <code>python app.py</code>
+          </li>
+          <li>
+            <strong>Step 5 — Open in browser:</strong>
+            <code>http://127.0.0.1:5000/</code>
+          </li>
+        </ul>
+
+        <h3>Docker Setup</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Step 1 — Build the image:</strong>
+            <code>docker-compose build</code>
+          </li>
+          <li>
+            <strong>Step 2 — Start the container:</strong>
+            <code>docker-compose up</code>
+          </li>
+          <li>
+            <strong>Step 3 — Open in browser:</strong>
+            <code>http://127.0.0.1:4000</code>
+          </li>
+        </ul>
+
+        <h3>Deploy on Railway</h3>
+        <ul class="findings-list">
+          <li>
+            <strong>Step 1</strong> — Sign up or log in at
+            <strong>railway.app</strong>.
+          </li>
+          <li>
+            <strong>Step 2</strong> — Create a new project → Deploy from GitHub
+            repo.
+          </li>
+          <li>
+            <strong>Step 3</strong> — Railway auto-detects the Procfile and
+            runtime.txt.
+          </li>
+          <li>
+            <strong>Step 4</strong> — Wait for the build and deployment to
+            complete.
+          </li>
+          <li>
+            <strong>Step 5</strong> — Access your app at the Railway-provided
+            unique URL.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    </div>
+  </body>
+</html>
