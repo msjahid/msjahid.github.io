@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LangDetect - Language Detection System - Hassan Jahid</title>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+</head>
+<body>
+
+<div class="header">
+    <div class="header-content">
+        <a href="https://msjahid.github.io/" class="back-btn">← Back to Portfolio</a>
+        <h1 class="project-title">LangDetect — Language Detection System</h1>
+    </div>
+</div>
+
+<div class="hero">
+    <img
+            src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/home.png"
+            alt="LangDetect Language Detection System"
+            class="hero-image"
+    />
+</div>
+
+<div class="content">
+
+    <div class="meta-info">
+        <div class="meta-item">
+            <span class="meta-icon">📅</span><span>2024</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-icon">🌍</span><span>17 Languages</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-icon">🎯</span><span>98% Accuracy</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-icon">🚀</span><span>Deployed on Railway</span>
+        </div>
+    </div>
+
+    <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Multinomial Naïve Bayes</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Railway</span>
+        <span class="tag">HTML/CSS/JS</span>
+    </div>
+
+    <div class="action-buttons">
+        <a
+                href="https://github.com/msjahid/langdetect-app"
+                target="_blank"
+                class="btn btn-primary"
+        >📂 View Code on GitHub</a
+        >
+        <a
+                href="https://language-prediction-app-production.up.railway.app/"
+                target="_blank"
+                class="btn btn-secondary"
+        >🚀 View Live App</a
+        >
+    </div>
+
+    <!-- Overview -->
+    <div class="section">
+        <h2>🎯 Project Overview</h2>
+        <p>
+            LangDetect is a Flask-based web application that detects the language
+            of any input text using machine learning. The app uses a trained
+            Multinomial Naïve Bayes model to deliver instant predictions with
+            <strong>98% accuracy</strong> across <strong>17 supported languages</strong>,
+            and is deployed on Railway for seamless access.
+        </p>
+        <p>
+            Users paste or type any text into the input field, hit Predict, and
+            the model identifies the language in real time — along with a
+            confidence score. If the input falls outside the 17 supported
+            languages, the app returns a custom "Unable to detect language"
+            message rather than a wrong guess.
+        </p>
+    </div>
+
+    <!-- Features -->
+    <div class="section">
+        <h2>✨ Features</h2>
+        <ul class="findings-list">
+            <li><strong>Real-time language detection</strong> — Multinomial Naïve Bayes model identifies the language instantly from any text input.</li>
+            <li><strong>98% accuracy</strong> — trained and evaluated on a Kaggle dataset covering 17 languages.</li>
+            <li><strong>Confidence score</strong> — displays how certain the model is about its prediction alongside the result.</li>
+            <li><strong>Unsupported language handling</strong> — shows a custom "Unable to detect language" message for inputs outside the 17 supported languages.</li>
+            <li><strong>Flag-based language display</strong> — all 17 supported languages are shown with their country flags for a visual, user-friendly experience.</li>
+            <li><strong>Graceful error handling</strong> — descriptive error pages guide users when invalid or empty input is submitted.</li>
+            <li><strong>Cloud deployment</strong> — hosted on Railway for always-on access.</li>
+        </ul>
+    </div>
+
+    <!-- Supported Languages -->
+    <div class="section">
+        <h2>🌍 Supported Languages</h2>
+        <div class="charts-grid">
+            <div class="chart-item">
+                <h4>🇺🇸 English &nbsp;&nbsp; 🇫🇷 French &nbsp;&nbsp; 🇪🇸 Spanish</h4>
+                <p>Western European languages with the broadest global reach.</p>
+            </div>
+            <div class="chart-item">
+                <h4>🇵🇹 Portuguese &nbsp;&nbsp; 🇮🇹 Italian &nbsp;&nbsp; 🇩🇪 German</h4>
+                <p>Romance and Germanic language family representatives.</p>
+            </div>
+            <div class="chart-item">
+                <h4>🇷🇺 Russian &nbsp;&nbsp; 🇸🇪 Swedish &nbsp;&nbsp; 🇳🇱 Dutch</h4>
+                <p>Northern and Eastern European languages.</p>
+            </div>
+            <div class="chart-item">
+                <h4>🇸🇦 Arabic &nbsp;&nbsp; 🇹🇷 Turkish &nbsp;&nbsp; 🇬🇷 Greek</h4>
+                <p>Middle Eastern and Mediterranean language coverage.</p>
+            </div>
+            <div class="chart-item">
+                <h4>🇮🇳 Hindi &nbsp;&nbsp; 🇮🇳 Tamil &nbsp;&nbsp; 🇮🇳 Malayalam &nbsp;&nbsp; 🇮🇳 Kannada</h4>
+                <p>Major Indian subcontinent languages across multiple language families.</p>
+            </div>
+            <div class="chart-item">
+                <h4>🇩🇰 Danish</h4>
+                <p>Scandinavian language rounding out the 17-language coverage.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Screenshots -->
+    <div class="section">
+        <h2>🖼️ App Preview</h2>
+        <div class="charts-grid">
+            <div class="chart-item">
+                <img
+                        src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/home.png"
+                        alt="Home Page"
+                />
+                <h4>Home Page — Detection Interface</h4>
+                <p>Text input area with a Predict button and a full grid of 17 supported languages shown with flag icons.</p>
+            </div>
+            <div class="chart-item">
+                <img
+                        src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/prediction.png"
+                        alt="Prediction Page"
+                />
+                <h4>Prediction Page — Result Display</h4>
+                <p>Shows the detected language and confidence score. Displays a custom message for unsupported languages.</p>
+            </div>
+            <div class="chart-item">
+                <img
+                        src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/non_listed_language.png"
+                        alt="Non listed Page"
+                />
+                <h4>Non listed Page — Result Display</h4>
+                <p>Shows the non-listed language result and custom message showing.</p>
+            </div>
+            <div class="chart-item">
+                <img
+                        src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/error.png"
+                        alt="Error Page"
+                />
+                <h4>Error Page — Validation Feedback</h4>
+                <p>Descriptive error messages for empty or invalid inputs, with a visual illustration for better UX.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="section">
+        <h2>🛠️ Technologies Used</h2>
+        <ul class="findings-list">
+            <li><strong>Python</strong> — core programming language for the app and ML pipeline.</li>
+            <li><strong>Flask</strong> — lightweight web framework handling routing, templates, and request processing.</li>
+            <li><strong>Scikit-learn</strong> — Multinomial Naïve Bayes model for language detection, trained on a Kaggle dataset.</li>
+            <li><strong>Docker &amp; Docker Compose</strong> — containerization for consistent local and production environments.</li>
+            <li><strong>HTML / CSS / JavaScript</strong> — frontend templates and styling for all app pages.</li>
+            <li><strong>Railway</strong> — cloud platform for automated deployment and hosting.</li>
+        </ul>
+    </div>
+
+    <!-- Input Validation -->
+    <div class="section">
+        <h2>✅ Input Validation Rules</h2>
+        <ul class="findings-list">
+            <li><strong>Text Input</strong> — cannot be empty or whitespace only.</li>
+            <li><strong>Text Length</strong> — must be at least 3 characters for reliable detection.</li>
+            <li><strong>Unsupported Language</strong> — if the detected language is outside the 17 supported ones, a custom "Unable to detect language" message is displayed.</li>
+            <li><strong>Confidence Level</strong> — the model's confidence percentage is reported alongside every prediction.</li>
+        </ul>
+    </div>
+
+    <!-- Example Workflow -->
+    <div class="section">
+        <h2>🔄 Example Workflow</h2>
+
+        <h3>Sample Input</h3>
+        <ul class="findings-list">
+            <li><strong>Text:</strong> "Bonjour, comment ça va?"</li>
+        </ul>
+
+        <h3>Possible Outputs</h3>
+        <ul class="findings-list">
+            <li><strong>Detected:</strong> "French 🇫🇷 — Confidence: 99.2%"</li>
+            <li><strong>Unsupported:</strong> "Unable to detect language. Please enter text in one of the 17 supported languages."</li>
+        </ul>
+    </div>
+
+    <!-- Installation -->
+    <div class="section">
+        <h2>⚙️ Installation Guide</h2>
+
+        <h3>Local Setup</h3>
+        <ul class="findings-list">
+            <li><strong>Step 1 — Clone the repository:</strong> <code>git clone https://github.com/msjahid/langdetect-app.git</code></li>
+            <li><strong>Step 2 — Create a virtual environment:</strong> <code>python -m venv venv</code> then activate it.</li>
+            <li><strong>Step 3 — Install dependencies:</strong> <code>pip install -r requirements.txt</code></li>
+            <li><strong>Step 4 — Run the app:</strong> <code>python app.py</code></li>
+            <li><strong>Step 5 — Open in browser:</strong> <code>http://127.0.0.1:5000/</code></li>
+        </ul>
+
+        <h3>Docker Setup</h3>
+        <ul class="findings-list">
+            <li><strong>Step 1 — Build the image:</strong> <code>docker-compose build</code></li>
+            <li><strong>Step 2 — Start the container:</strong> <code>docker-compose up</code></li>
+            <li><strong>Step 3 — Open in browser:</strong> <code>http://127.0.0.1:4000</code></li>
+        </ul>
+
+        <h3>Deploy on Railway</h3>
+        <ul class="findings-list">
+            <li><strong>Step 1</strong> — Sign up or log in at <strong>railway.app</strong>.</li>
+            <li><strong>Step 2</strong> — Create a new project → Deploy from GitHub repo.</li>
+            <li><strong>Step 3</strong> — Railway auto-detects the Procfile and runtime.txt.</li>
+            <li><strong>Step 4</strong> — Wait for the build and deployment to complete.</li>
+            <li><strong>Step 5</strong> — Access your app at the Railway-provided unique URL.</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+</div>
+
+</body>
+</html>
