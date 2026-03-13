@@ -1,92 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web-App - Hassan Jahid</title>
-    <link rel="icon" type="image/png" href="../../favicon.png" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web-App - Hassan Jahid</title>
+  <link rel="icon" type="image/png" href="../../favicon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
 
-    <!-- Template Main CSS File -->
-    <link href="../assets/css/main.css" rel="stylesheet" />
-  </head>
-  <body>
+<div class="header">
+  <div class="header-content">
+    <a href="https://msjahid.github.io/" class="back-btn">← Back to Portfolio</a>
+    <h1 class="page-title">🌐 Web-App</h1>
+  </div>
+</div>
 
-    <div class="header">
-      <div class="header-content">
-        <a href="../../index.html" class="back-btn">← Back to Portfolio</a>
-        <h1 class="page-title">🌐 Web-App</h1>
+<div class="content">
+  <div class="section-intro">
+    <h2>Web Application Projects</h2>
+    <p>Flask and full-stack web apps powered by machine learning — deployed and accessible live.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <img
+              src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/home.png"
+              alt="Language Support System"
+      />
+      <div class="card-body">
+        <h4>Language Support System</h4>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Railway</span>
+        </div>
+        <p>Detects 17 languages with 98% accuracy using Multinomial Naïve Bayes. Includes confidence scoring and unsupported language handling.</p>
+        <a href="language-support-system.html">View Details →</a>
       </div>
     </div>
 
-    <div class="content">
-      <div class="section-intro">
-        <h2>Web Application Projects</h2>
-        <p>Flask and full-stack web apps powered by machine learning — deployed and accessible live.</p>
-      </div>
-
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <img
-            src="https://raw.githubusercontent.com/msjahid/language-prediction-app/refs/heads/main/project-image/home.png"
-            alt="Language Support System"
-          />
-          <div class="card-body">
-            <h4>Language Support System</h4>
-            <div class="tag-row">
-              <span class="tag">Python</span>
-              <span class="tag">Flask</span>
-              <span class="tag">NLP</span>
-              <span class="tag">Railway</span>
-            </div>
-            <p>Detects 17 languages with 98% accuracy using Multinomial Naïve Bayes. Includes confidence scoring and unsupported language handling.</p>
-            <a href="../../projects/Web-APP/language-support-system.html" target="_blank">View Details →</a>
-          </div>
+    <div class="project-card">
+      <img
+              src="https://raw.githubusercontent.com/msjahid/loan-approval-analysis/main/project_images/home.png"
+              alt="LoanEase - Loan Approval"
+      />
+      <div class="card-body">
+        <h4>LoanEase — Loan Approval</h4>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Gaussian NB</span>
+          <span class="tag">Docker</span>
         </div>
-
-        <div class="project-card">
-          <img
-            src="https://raw.githubusercontent.com/msjahid/loan-approval-analysis/main/project_images/home.png"
-            alt="LoanEase - Loan Approval"
-          />
-          <div class="card-body">
-            <h4>LoanEase — Loan Approval</h4>
-            <div class="tag-row">
-              <span class="tag">Python</span>
-              <span class="tag">Flask</span>
-              <span class="tag">Gaussian NB</span>
-              <span class="tag">Docker</span>
-            </div>
-            <p>Instant loan approval predictions using Gaussian Naïve Bayes with input validation, personalized results, and Railway deployment.</p>
-            <a href="../../projects/Web-APP/loanease-loan-prediction.html" target="_blank">View Details →</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="../../assets/img/project/Web-APP/school.png"
-            alt="Student Information System"
-          />
-          <div class="card-body">
-            <h4>Student Information System</h4>
-            <div class="tag-row">
-              <span class="tag">Django</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">REST API</span>
-            </div>
-            <p>A university student management system with full CRUD operations, role-based access, and a clean admin interface.</p>
-            <a href="../../projects/Web-APP/university-students-app.html" target="_blank">View Details →</a>
-          </div>
-        </div>
-
+        <p>Instant loan approval predictions using Gaussian Naïve Bayes with input validation, personalized results, and Railway deployment.</p>
+        <a href="loanease-loan-prediction.html">View Details →</a>
       </div>
     </div>
 
-    <div class="footer">
-      <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+    <div class="project-card">
+      <img
+              src="../../assets/img/project/Web-APP/school.png"
+              alt="Student Information System"
+      />
+      <div class="card-body">
+        <h4>Student Information System</h4>
+        <div class="tag-row">
+          <span class="tag">Django</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">REST API</span>
+        </div>
+        <p>A university student management system with full CRUD operations, role-based access, and a clean admin interface.</p>
+        <a href="university-students-app.html">View Details →</a>
+      </div>
     </div>
 
-  </body>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2024 Hassan Jahid | Data Science Portfolio</p>
+</div>
+
+</body>
 </html>
