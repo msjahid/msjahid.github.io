@@ -1211,3 +1211,93 @@ section {
   color: #e74c3c;
   font-size: 1rem;
 }
+
+/* ── Dash View Cards ── */
+/* Paste at the bottom of main.css */
+
+.dash-card-link {
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+}
+
+.dash-card-wrap {
+  background: var(--bg-surface);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 40px rgba(156, 207, 216, 0.1);
+  cursor: pointer;
+}
+
+.dash-card-inner {
+  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    var(--bg-surface) 0%,
+    var(--bg-dark) 100%
+  );
+}
+
+.dash-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dash-card-header h3 {
+  color: var(--text-light);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.dash-card-header span {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.dash-card-preview {
+  background: var(--bg-dark);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+}
+
+.dash-card-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.dash-card-fallback {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: var(--text-gray);
+}
+
+.dash-card-fallback i {
+  font-size: 4rem;
+  color: var(--secondary-color);
+}
+
+.dash-card-tags {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dash-tag {
+  background: var(--bg-darker);
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+}
