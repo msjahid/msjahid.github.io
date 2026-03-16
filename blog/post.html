@@ -58,7 +58,7 @@
             <div class="category-item" data-category="all">
               <i class="fas fa-layer-group"></i>
               <span>All Posts</span>
-              <span class="count">12</span>
+              <span class="count">13</span>
             </div>
             <div class="category-item" data-category="data-science">
               <i class="fas fa-chart-line"></i>
@@ -85,6 +85,11 @@
               <span>DevOps</span>
               <span class="count">1</span>
             </div>
+            <div class="category-item" data-category="database">
+              <i class="fas fa-database"></i>
+              <span>Database</span>
+              <span class="count">1</span>
+            </div>
           </div>
         </div>
 
@@ -92,6 +97,10 @@
         <div class="sidebar-section">
           <h3><i class="fas fa-clock"></i> Recently Updated</h3>
           <div class="recent-list">
+            <a href="database/postgresql-jupyter.html" class="recent-item">
+              <span class="recent-title">PostgreSQL in Jupyter Notebook</span>
+              <span class="recent-date">Mar 16, 2026</span>
+            </a>
             <a href="posts/transformer-architecture.html" class="recent-item">
               <span class="recent-title"
                 >Understanding Transformer Architecture</span
@@ -129,6 +138,9 @@
             <span class="tag">pandas</span>
             <span class="tag">scikit-learn</span>
             <span class="tag">aws</span>
+            <span class="tag">postgresql</span>
+            <span class="tag">sql</span>
+            <span class="tag">jupyter</span>
           </div>
         </div>
       </aside>
@@ -142,6 +154,39 @@
 
         <!-- Posts Grid -->
         <div class="posts-grid" id="postsGrid">
+
+          <!-- Post - PostgreSQL in Jupyter -->
+          <article class="post-card" data-category="database">
+            <div class="post-image">
+              <img
+                src="assets/images/jupyter-postgres.png"
+                alt="PostgreSQL in Jupyter Notebook"
+              />
+              <span class="post-category">Database</span>
+            </div>
+            <div class="post-content">
+              <h2 class="post-title">
+                <a href="database/postgresql-jupyter.html"
+                  >Running PostgreSQL in Jupyter Notebook</a
+                >
+              </h2>
+              <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> Mar 16, 2026</span>
+                <span><i class="fas fa-clock"></i> 5 min read</span>
+              </div>
+              <p class="post-excerpt">
+                A complete setup guide — from conda install to writing SQL queries
+                directly in your notebook using ipython-sql and SQLAlchemy.
+              </p>
+              <div class="post-tags">
+                <span class="tag">postgresql</span>
+                <span class="tag">jupyter</span>
+                <span class="tag">sql</span>
+                <span class="tag">python</span>
+              </div>
+            </div>
+          </article>
+
           <!-- Post 1 -->
           <article class="post-card" data-category="nlp">
             <div class="post-image">
@@ -354,8 +399,7 @@
             <a href="https://www.github.com/msjahid" target="_blank"
               ><i class="fab fa-github"></i
             ></a>
-            <a href="mailto:msjahid.ai@gmail.com" target="_blank" class="google"
-              ><i class="fa-brands fa-google"></i
+            <a href="/cdn-cgi/l/email-protection#b0ddc3dad1d8d9d49ed1d9f0d7ddd1d9dc9ed3dfdd" target="_blank" class="google"><i class="fa-brands fa-google"></i
             ></a>
           </div>
         </div>
@@ -436,6 +480,4 @@
       </div>
     </footer>
 
-    <script src="assets/js/blog.js"></script>
-  </body>
-</html>
+    <script data-cfasync="false" src
